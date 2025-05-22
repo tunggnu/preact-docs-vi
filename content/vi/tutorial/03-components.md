@@ -1,20 +1,15 @@
 ---
-title: Components
+title: Thành phần
 prev: /tutorial/02-events
 next: /tutorial/04-state
 solvable: true
 ---
 
-# Components
+# Thành phần
 
-As we alluded to in part one of this tutorial, the key building block
-in Virtual DOM applications is the Component. A Component is a self-contained
-piece of an application that can be rendered as part of the Virtual DOM
-tree just like an HTML element. You can think of a Component like a function
-call: both are mechanisms that allow code reuse and indirection.
+Như chúng ta đã đề cập ở phần một của hướng dẫn này, khối xây dựng chính trong các ứng dụng Virtual DOM là Thành phần (Component). Một Thành phần là một phần tự chứa của ứng dụng có thể được render như một phần của cây Virtual DOM giống như một phần tử HTML. Bạn có thể nghĩ về Thành phần như một lời gọi hàm: cả hai đều là cơ chế cho phép tái sử dụng mã và trừu tượng hóa.
 
-To illustrate, let's create a simple component called `MyButton` that
-returns a Virtual DOM tree describing an HTML `<button>` element:
+Để minh họa, hãy tạo một thành phần đơn giản tên là `MyButton` trả về một cây Virtual DOM mô tả một phần tử HTML `<button>`:
 
 ```jsx
 function MyButton(props) {
@@ -22,42 +17,35 @@ function MyButton(props) {
 }
 ```
 
-We can use this component in an application by referencing it in JSX:
+Chúng ta có thể sử dụng thành phần này trong ứng dụng bằng cách tham chiếu nó trong JSX:
 
 ```js
-let vdom = <MyButton text="Click Me!" />
+let vdom = <MyButton text="Nhấn tôi!" />
 
-// remember createElement? here's what the line above compiles to:
-let vdom = createElement(MyButton, { text: "Click Me!" })
+// còn nhớ createElement chứ? dòng trên sẽ được biên dịch thành:
+let vdom = createElement(MyButton, { text: "Nhấn tôi!" })
 ```
 
-Anywhere you use JSX to describe trees of HTML, you can also describe trees
-of Components. The difference is that a component is described in JSX using
-a name beginning with an uppercase character that corresponds to the
-component's name (a JavaScript variable).
+Bất cứ nơi nào bạn dùng JSX để mô tả cây HTML, bạn cũng có thể mô tả cây Thành phần. Sự khác biệt là một thành phần được mô tả trong JSX bằng một tên bắt đầu bằng chữ hoa tương ứng với tên thành phần (một biến JavaScript).
 
-As Preact renders the Virtual DOM tree described by your JSX, each component
-function it encounters will be invoked at that spot in the tree. As an example,
-we can render our `MyButton` component into the body of a web page by passing
-a JSX element describing that component to `render()`:
+Khi Preact render cây Virtual DOM được mô tả bởi JSX của bạn, mỗi hàm thành phần mà nó gặp sẽ được gọi tại vị trí đó trong cây. Ví dụ, chúng ta có thể render thành phần `MyButton` vào body của trang web bằng cách truyền một phần tử JSX mô tả thành phần đó cho `render()`:
 
 ```jsx
 import { render } from 'preact';
 
-render(<MyButton text="Click me!" />, document.body)
+render(<MyButton text="Nhấn tôi!" />, document.body)
 ```
 
-### Nesting Components
+## Lồng thành phần
 
-Components can reference other components in Virtual DOM tree they return.
-This creates a tree of components:
+Các thành phần có thể tham chiếu các thành phần khác trong cây Virtual DOM mà chúng trả về. Điều này tạo ra một cây các thành phần:
 
 ```jsx
 function MediaPlayer() {
   return (
     <div>
-      <MyButton text="Play" />
-      <MyButton text="Stop" />
+      <MyButton text="Phát" />
+      <MyButton text="Dừng" />
     </div>
   )
 }
@@ -65,47 +53,35 @@ function MediaPlayer() {
 render(<MediaPlayer />, document.body)
 ```
 
-We can use this technique to render different trees of components for
-different scenarios. Let's make that `MediaPlayer` show a "Play" button
-when no sound is playing, and a "Stop" button when sound is playing:
+Chúng ta có thể sử dụng kỹ thuật này để render các cây thành phần khác nhau cho các trường hợp khác nhau. Hãy làm cho `MediaPlayer` hiển thị nút "Phát" khi chưa phát âm thanh, và nút "Dừng" khi đang phát:
 
 ```jsx
 function MediaPlayer(props) {
   return (
     <div>
       {props.playing ? (
-        <MyButton text="Stop" />
+        <MyButton text="Dừng" />
       ) : (
-        <MyButton text="Play" />
+        <MyButton text="Phát" />
       )}
     </div>
   )
 }
 
 render(<MediaPlayer playing={false} />, document.body)
-// renders <button>Play</button>
+// render ra <button>Phát</button>
 
 render(<MediaPlayer playing={true} />, document.body)
-// renders <button>Stop</button>
+// render ra <button>Dừng</button>
 ```
 
-> **Remember:** `{curly}` braces in JSX let us jump back into plain JavaScript.
-> Here we're using a [ternary] expression to show different buttons based on
-> the value of the `playing` prop.
+> **Nhớ rằng:** dấu ngoặc nhọn `{curly}` trong JSX cho phép chúng ta nhảy vào JavaScript thuần. Ở đây chúng ta dùng biểu thức [ternary] để hiển thị các nút khác nhau dựa trên giá trị của prop `playing`.
 
+## Con của thành phần
 
-### Component Children
+Các thành phần cũng có thể được lồng vào nhau giống như các phần tử HTML. Một trong những lý do Thành phần là một nguyên thủy mạnh mẽ là vì chúng cho phép chúng ta áp dụng logic tùy chỉnh để kiểm soát cách các phần tử Virtual DOM lồng bên trong một thành phần được render.
 
-Components can also be nested just like HTML elements. One of the reasons
-Components are a powerful primitive is because they let us apply custom logic
-to control how Virtual DOM elements nested within a component should be rendered.
-
-The way this works is deceptively simple: any Virtual DOM elements nested
-within a component in JSX are passed to that component as a special `children`
-prop. A component can choose where to place its children by referencing them in
-JSX using a `{children}` expression. Or, components can simply return the
-`children` value, and Preact will render those Virtual DOM elements right where
-that Component was placed in the Virtual DOM tree.
+Cách hoạt động rất đơn giản: bất kỳ phần tử Virtual DOM nào lồng bên trong một thành phần trong JSX sẽ được truyền vào thành phần đó dưới dạng prop đặc biệt `children`. Một thành phần có thể chọn vị trí đặt các con của nó bằng cách tham chiếu chúng trong JSX với biểu thức `{children}`. Hoặc, thành phần có thể chỉ cần trả về giá trị `children`, và Preact sẽ render các phần tử Virtual DOM đó ngay tại vị trí thành phần đó trong cây Virtual DOM.
 
 ```jsx
 <Foo>
@@ -118,11 +94,9 @@ function Foo(props) {
 }
 ```
 
-Thinking back to the previous example, our `MyButton` component expected
-a `text` prop that was inserted into a `<button>` element as its display
-text. What if we wanted to display an image instead of text?
+Quay lại ví dụ trước, thành phần `MyButton` của chúng ta mong đợi một prop `text` được chèn vào phần tử `<button>` làm nội dung hiển thị. Nếu chúng ta muốn hiển thị một hình ảnh thay vì văn bản thì sao?
 
-Let's rewrite `MyButton` to allow nesting using the `children` prop:
+Hãy viết lại `MyButton` để cho phép lồng nội dung bằng prop `children`:
 
 ```jsx
 function MyButton(props) {
@@ -133,7 +107,7 @@ function App() {
   return (
     <MyButton>
       <img src="icon.png" />
-      Click Me!
+      Nhấn tôi!
     </MyButton>
   )
 }
@@ -141,36 +115,21 @@ function App() {
 render(<App />, document.body)
 ```
 
-Now that we've seen a few examples of components rendering other
-components, hopefully it's starting to become clear how nested
-components let us assemble complex applications out of many smaller
-individual pieces.
+Bây giờ, sau khi xem một vài ví dụ về các thành phần render các thành phần khác, hy vọng bạn đã thấy rõ cách các thành phần lồng nhau giúp chúng ta xây dựng các ứng dụng phức tạp từ nhiều mảnh nhỏ hơn.
 
 ---
 
-### Types of Components
+## Các loại thành phần
 
 <!--
-So far, we've seen Components that are functions. Function components
-take in `props` as their input, and return a Virtual DOM tree as
-their output. What if we wanted to write a Component that rendered
-different Virtual DOM trees based on an input other than `props`?
+Cho đến giờ, chúng ta đã thấy các Thành phần là hàm. Thành phần hàm nhận vào `props` làm đầu vào và trả về một cây Virtual DOM làm đầu ra. Nếu chúng ta muốn viết một Thành phần render các cây Virtual DOM khác nhau dựa trên đầu vào ngoài `props` thì sao?
 
-In addition to providing a way to map `props` to a Virtual DOM tree,
-components can also update _themselves_. There are two ways to do this:
-class components, and hooks. We'll cover hooks 
+Ngoài việc ánh xạ `props` sang cây Virtual DOM, thành phần cũng có thể tự cập nhật _chính nó_. Có hai cách để làm điều này: class component và hooks. Chúng ta sẽ nói về hooks sau.
 -->
 
-So far, we've seen Components that are functions. Function components
-take in `props` as their input, and return a Virtual DOM tree as
-their output. Components can also be written as JavaScript classes,
-which get instantiated by Preact and provide a `render()` method that
-works much like a function component.
+Cho đến giờ, chúng ta đã thấy các Thành phần là hàm. Thành phần hàm nhận vào `props` làm đầu vào và trả về một cây Virtual DOM làm đầu ra. Thành phần cũng có thể được viết dưới dạng class JavaScript, được Preact khởi tạo và cung cấp phương thức `render()` hoạt động giống như một thành phần hàm.
 
-Class components are created by extending Preact's `Component` base class.
-In the example below, notice how `render()` takes `props` as its input and
-returns a Virtual DOM tree as its output - just like a function component!
-
+Class component được tạo bằng cách kế thừa lớp cơ sở `Component` của Preact. Trong ví dụ dưới đây, hãy chú ý cách `render()` nhận `props` làm đầu vào và trả về một cây Virtual DOM làm đầu ra - giống như một thành phần hàm!
 
 ```jsx
 import { Component } from 'preact';
@@ -181,67 +140,50 @@ class MyButton extends Component {
   }
 }
 
-render(<MyButton>Click Me!</MyButton>, document.body)
+render(<MyButton>Nhấn tôi!</MyButton>, document.body)
 ```
 
-The reason we might use a class to define a component is to keep track of
-the _lifecycle_ of our component. Each time Preact encounters a component
-when rendering a Virtual DOM tree, it will create a new instance of our
-class (`new MyButton()`).
+Lý do chúng ta có thể dùng class để định nghĩa thành phần là để theo dõi _vòng đời_ của thành phần. Mỗi lần Preact gặp một thành phần khi render cây Virtual DOM, nó sẽ tạo một instance mới của class đó (`new MyButton()`).
 
-However, if you recall from chapter one - Preact can be repeatedly given
-new Virtual DOM trees. Each time we give Preact a new tree, it gets
-compared against the previous tree to determine what changed between the
-two, and those changes are applied to the page.
+Tuy nhiên, nếu bạn còn nhớ từ chương một - Preact có thể liên tục nhận các cây Virtual DOM mới. Mỗi lần chúng ta cung cấp cho Preact một cây mới, nó sẽ so sánh với cây trước để xác định những gì đã thay đổi, và áp dụng các thay đổi đó lên trang.
 
-When a component is defined using a class, any _updates_ to that component
-in the tree will reuse the same class instance. That means it's possible to
-store data inside a class component that will be available the next time
-its `render()` method is called.
+Khi một thành phần được định nghĩa bằng class, mọi _cập nhật_ cho thành phần đó trong cây sẽ tái sử dụng cùng một instance class. Điều đó có nghĩa là bạn có thể lưu trữ dữ liệu bên trong class component và dữ liệu đó sẽ có sẵn cho lần gọi `render()` tiếp theo.
 
-Class components can also implement a number of [lifecycle methods], which
-Preact will call in response to changes in the Virtual DOM tree:
+Class component cũng có thể triển khai một số [phương thức vòng đời] mà Preact sẽ gọi khi có thay đổi trong cây Virtual DOM:
 
 ```jsx
 class MyButton extends Component {
   componentDidMount() {
-    console.log('Hello from a new <MyButton> component!')
+    console.log('Xin chào từ một component <MyButton> mới!')
   }
   componentDidUpdate() {
-    console.log('A <MyButton> component was updated!')
+    console.log('Một component <MyButton> đã được cập nhật!')
   }
   render(props) {
     return <button class="my-button">{props.children}</button>
   }
 }
 
-render(<MyButton>Click Me!</MyButton>, document.body)
-// logs: "Hello from a new <MyButton> component!"
+render(<MyButton>Nhấn tôi!</MyButton>, document.body)
+// log: "Xin chào từ một component <MyButton> mới!"
 
-render(<MyButton>Click Me!</MyButton>, document.body)
-// logs: "A <MyButton> component was updated!"
+render(<MyButton>Nhấn tôi!</MyButton>, document.body)
+// log: "Một component <MyButton> đã được cập nhật!"
 ```
 
-The lifecycle of class components makes them a useful tool for building
-pieces of an application that respond to changes, rather than strictly
-mapping `props` to trees. They also provide a way to store information
-separately at each location where they're placed in the Virtual DOM tree.
-In the next chapter, we'll see how components can update their section of
-the tree whenever they want to change it.
+Vòng đời của class component khiến chúng trở thành công cụ hữu ích để xây dựng các phần của ứng dụng phản ứng với thay đổi, thay vì chỉ ánh xạ `props` sang cây. Chúng cũng cung cấp cách lưu trữ thông tin riêng biệt tại mỗi vị trí chúng được đặt trong cây Virtual DOM. Ở chương tiếp theo, chúng ta sẽ xem cách các thành phần có thể cập nhật phần cây của mình bất cứ khi nào muốn thay đổi nó.
 
 ---
 
-## Try it!
+## Thực hành!
 
-To practise, let's combine what we've learned about components with our
-event skills from the previous two chapters!
+Để luyện tập, hãy kết hợp những gì bạn đã học về thành phần với kỹ năng sự kiện từ hai chương trước!
 
-Create a `MyButton` component that accepts `style`, `children` and `onClick`
-props, and returns an HTML `<button>` element with those props applied.
+Tạo một thành phần `MyButton` nhận các prop `style`, `children` và `onClick`, và trả về một phần tử HTML `<button>` với các prop đó được áp dụng.
 
 <solution>
-  <h4>🎉 Congratulations!</h4>
-  <p>You're on your way to being a component pro!</p>
+  <h4>🎉 Chúc mừng!</h4>
+  <p>Bạn đang trên con đường trở thành chuyên gia về thành phần!</p>
 </solution>
 
 
@@ -288,18 +230,18 @@ useRealm(function (realm) {
 import { render } from "preact";
 
 function MyButton(props) {
-  // start here!
+  // bắt đầu từ đây!
 }
 
 function App() {
   const clicked = () => {
-    console.log('Hello!')
+    console.log('Xin chào!')
   }
 
   return (
     <div>
-      <p class="count">Count:</p>
-      <button style={{ color: 'purple' }} onClick={clicked}>Click me</button>
+      <p class="count">Số đếm:</p>
+      <button style={{ color: 'purple' }} onClick={clicked}>Nhấn tôi</button>
     </div>
   )
 }
@@ -316,13 +258,13 @@ function MyButton(props) {
 
 function App() {
   const clicked = () => {
-    console.log('Hello!')
+    console.log('Xin chào!')
   }
 
   return (
     <div>
-      <p class="count">Count:</p>
-      <MyButton style={{ color: 'purple' }} onClick={clicked}>Click me</MyButton>
+      <p class="count">Số đếm:</p>
+      <MyButton style={{ color: 'purple' }} onClick={clicked}>Nhấn tôi</MyButton>
     </div>
   )
 }
@@ -331,4 +273,4 @@ render(<App />, document.getElementById("app"));
 ```
 
 [ternary]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
-[lifecycle methods]: /guide/v10/components#lifecycle-methods
+[phương thức vòng đời]: /guide/v10/components#lifecycle-methods

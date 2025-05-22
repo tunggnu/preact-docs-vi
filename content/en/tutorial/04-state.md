@@ -19,7 +19,7 @@ means Preact will re-invoke the function, whereas for class components it
 will only re-invoke the class' `render()` method. Let's look at an example
 of each.
 
-### State in class components
+## State in class components
 
 Class components have a `state` property, which is an object that holds
 data the component can use when its `render()` method is called. A component
@@ -51,7 +51,7 @@ the text "Clicked" instead of "No clicks yet", causing Preact to update
 the button's text in the DOM.
 
 
-### State in function components using hooks
+## State in function components using hooks
 
 Function components can have state too! While they don't have a
 `this.state` property like class components, a tiny add-on module
