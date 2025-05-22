@@ -3,7 +3,7 @@
 	"name": "Preact",
 	"languages": {
 		"en": "English",
-		"vi": "English"
+		"vi": "Tiếng Việt"
 	},
 	"repo": "preact",
 	"docsearch": {
@@ -14,24 +14,24 @@
 	"i18n": {
 		"next": {
 			"en": "Next Page",
-			"vi": "Next Page"
+			"vi": "Trang sau"
 		},
 		"previous": {
 			"en": "Previous Page",
-			"vi": "Previous Page"
+			"vi": "Trang trước"
 		},
 		"continueReading": {
 			"en": "Continue reading",
-			"vi": "Continue reading"
+			"vi": "Đọc tiếp"
 		},
 		"tutorial": {
 			"begin": {
 				"en": "Begin Tutorial",
-				"vi": "Begin Tutorial"
+				"vi": "Bắt đầu Tutorial"
 			},
 			"help": {
 				"en": "Help",
-				"vi": "Help"
+				"vi": "Trợ giúp"
 			},
 			"solve": {
 				"en": "Solve",
@@ -137,7 +137,7 @@
 			{
 				"name": {
 					"en": "Introduction",
-					"vi": "Introduction"
+					"vi": "Giới thiệu"
 				},
 				"routes": [
 					{
@@ -165,7 +165,7 @@
 						"path": "/tutorial",
 						"name": {
 							"en": "Tutorial",
-							"vi": "Tutorial"
+							"vi": "Hướng dẫn từng bước"
 						}
 					}
 				]
@@ -514,7 +514,7 @@
 			"path": "/tutorial",
 			"name": {
 				"en": "Learn Preact",
-				"vi": "Learn Preact"
+				"vi": "Học Preact"
 			}
 		},
 		{
@@ -528,7 +528,7 @@
 			"path": "/tutorial/02-events",
 			"name": {
 				"en": "Events",
-				"vi": "Events"
+				"vi": "Sự kiện"
 			}
 		},
 		{

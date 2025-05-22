@@ -7,78 +7,66 @@ solvable: true
 
 # Virtual DOM
 
-You might have heard people refer to "Virtual DOM", and wondered:
-what makes it "virtual"? How is a "virtual" DOM different from
-the real DOM we use when programming for the browser?
+Bạn có thể đã nghe mọi người nhắc đến "Virtual DOM" và tự hỏi:
+điều gì làm cho nó "ảo"? "Virtual" DOM khác gì so với DOM thật mà chúng ta sử dụng khi lập trình cho trình duyệt?
 
-A Virtual DOM is a simple description of a tree structure using objects:
+Virtual DOM là một mô tả đơn giản về một cấu trúc cây sử dụng các đối tượng:
 
 ```js
 let vdom = {
-  type: 'p',         // a <p> element
+  type: 'p',         // một phần tử <p>
   props: {
-    class: 'big',    // with class="big"
+    class: 'big',    // với class="big"
     children: [
-      'Hello World!' // and the text "Hello World!"
+      'Hello World!' // và văn bản "Hello World!"
     ]
   }
 }
 ```
 
-Libraries like Preact provide a way to construct these descriptions, which can
-then be compared against the browser's DOM tree. As each part of the tree is
-compared, and the browser's DOM tree is updated to match the structure described
-by the Virtual DOM tree.
+Các thư viện như Preact cung cấp một cách để xây dựng các mô tả này, sau đó có thể được so sánh với cây DOM của trình duyệt. Khi từng phần của cây được so sánh, cây DOM của trình duyệt sẽ được cập nhật để khớp với cấu trúc được mô tả bởi cây Virtual DOM.
 
-This is a useful tool, because it lets us compose user interfaces _declaratively_
-rather than _imperatively_. Instead of describing _how_ to update the DOM in
-response to things like keyboard or mouse input, we only need to describe _what_
-the DOM should look like after that input is received. It means we can repeatedly
-give Preact descriptions of tree structures, and it will update the browser's DOM
-tree to match each new description – regardless of its current structure. 
+Đây là một công cụ hữu ích, vì nó cho phép chúng ta xây dựng giao diện người dùng một cách _khai báo_ thay vì _tường minh_. Thay vì mô tả _cách_ cập nhật DOM khi có các sự kiện như bàn phím hoặc chuột, chúng ta chỉ cần mô tả _DOM nên trông như thế nào_ sau khi nhận được đầu vào đó. Điều này có nghĩa là chúng ta có thể liên tục cung cấp cho Preact các mô tả về cấu trúc cây, và nó sẽ cập nhật cây DOM của trình duyệt để khớp với mỗi mô tả mới – bất kể cấu trúc hiện tại là gì.
 
-In this chapter, we'll learn how to create Virtual DOM trees, and how to tell
-Preact to update the DOM to match those trees.
+Trong chương này, chúng ta sẽ học cách tạo cây Virtual DOM, và cách yêu cầu Preact cập nhật DOM để khớp với các cây đó.
 
-### Creating Virtual DOM trees
+### Tạo cây Virtual DOM
 
-There are a few ways to create Virtual DOM trees:
+Có một vài cách để tạo cây Virtual DOM:
 
-- `createElement()`: a function provided by Preact
-- [JSX]: HTML-like syntax that can be compiled to JavaScript
-- [HTM]: HTML-like syntax you can write directly in JavaScript
+- `createElement()`: một hàm được cung cấp bởi Preact
+- [JSX]: cú pháp giống HTML có thể được biên dịch sang JavaScript
+- [HTM]: cú pháp giống HTML bạn có thể viết trực tiếp trong JavaScript
 
-It's useful to start things off with the simplest approach, which would be to call Preact's `createElement()` function directly:
+Sẽ hữu ích nếu bắt đầu với cách đơn giản nhất, đó là gọi trực tiếp hàm `createElement()` của Preact:
 
 ```jsx
 import { createElement, render } from 'preact';
 
 let vdom = createElement(
-  'p',              // a <p> element
-  { class: 'big' }, // with class="big"
-  'Hello World!'    // and the text "Hello World!"
+  'p',              // một phần tử <p>
+  { class: 'big' }, // với class="big"
+  'Hello World!'    // và văn bản "Hello World!"
 );
 
 render(vdom, document.body);
 ```
 
-The code above creates a Virtual DOM "description" of a paragraph element.
-The first argument to createElement is the HTML element name.
-The second argument is the element's "props" - an object containing attributes
-(or properties) to set on the element.
-Any additional arguments are children for the element, which can be strings (like
-`'Hello World!'`) or Virtual DOM elements from additional `createElement()` calls.
+Đoạn mã trên tạo ra một "mô tả" Virtual DOM của một phần tử đoạn văn.
+Tham số đầu tiên của createElement là tên phần tử HTML.
+Tham số thứ hai là "props" của phần tử - một đối tượng chứa các thuộc tính
+(hoặc thuộc tính) để gán cho phần tử.
+Bất kỳ tham số bổ sung nào là con của phần tử, có thể là chuỗi (như
+`'Hello World!'`) hoặc các phần tử Virtual DOM từ các lần gọi `createElement()` khác.
 
-The last line tells Preact to build a real DOM tree that matches our Virtual DOM
-"description", and to insert that DOM tree into the `<body>` of a web page.
+Dòng cuối cùng yêu cầu Preact xây dựng một cây DOM thật khớp với "mô tả" Virtual DOM của chúng ta, và chèn cây DOM đó vào `<body>` của trang web.
 
-### Now with more JSX!
+### JSX tuyệt vời hơn!
 
-We can rewrite the previous example using [JSX] without changing its functionality.
-JSX lets us describe our paragraph element using HTML-like syntax, which can help
-keep things readable as we describe more complex trees. The drawback of JSX is that
-our code is no longer written in JavaScript, and must be compiled by a tool like [Babel]. Compilers do the work of converting the JSX example below into the exact
-`createElement()` code we saw in the previous example.
+Chúng ta có thể viết lại ví dụ trước bằng [JSX] mà không thay đổi chức năng.
+JSX cho phép chúng ta mô tả phần tử đoạn văn bằng cú pháp giống HTML, giúp
+giữ cho mã dễ đọc hơn khi mô tả các cây phức tạp hơn. Nhược điểm của JSX là
+mã của chúng ta không còn là JavaScript thuần nữa, và phải được biên dịch bởi một công cụ như [Babel]. Các trình biên dịch sẽ chuyển đổi ví dụ JSX dưới đây thành đúng mã `createElement()` mà chúng ta đã thấy ở ví dụ trước.
 
 ```jsx
 import { createElement, render } from 'preact';
@@ -88,14 +76,10 @@ let vdom = <p class="big">Hello World!</p>;
 render(vdom, document.body);
 ```
 
-It looks a lot more like HTML now!
+Trông giống HTML hơn nhiều rồi!
 
-There's one final thing to keep in mind about JSX: code inside of a JSX element
-(within the angle brackets) is special syntax and not JavaScript. To use JavaScript
-syntax like numbers or variables, you first need to "jump" back out from JSX using
-an `{expression}` - similar to fields in a template. The example below shows two
-expressions: one to set `class` to a randomized string, and another to calculate
-a number.
+Có một điều cuối cùng cần lưu ý về JSX: mã bên trong một phần tử JSX
+(bên trong dấu ngoặc nhọn) là cú pháp đặc biệt và không phải JavaScript. Để sử dụng cú pháp JavaScript như số hoặc biến, bạn cần "nhảy" ra khỏi JSX bằng một `{biểu_thức}` - tương tự như các trường trong template. Ví dụ dưới đây cho thấy hai biểu thức: một để gán `class` thành một chuỗi ngẫu nhiên, và một để tính toán một số.
 
 ```jsx
 let maybeBig = Math.random() > .5 ? 'big' : 'small';
@@ -104,21 +88,20 @@ let vdom = <p class={maybeBig}>Hello {40 + 2}!</p>;
                  // ^---JS---^       ^--JS--^
 ```
 
-If we were to `render(vdom, document.body)`, the text "Hello 42!" would be shown.
+Nếu chúng ta `render(vdom, document.body)`, văn bản "Hello 42!" sẽ được hiển thị.
 
-### Once more with HTM
+### Thêm một lần nữa với HTM
 
-[HTM] is an alternative to JSX that uses standard JavaScript tagged templates,
-removing the need for a compiler. If you haven't encountered tagged templates,
-they're a special type of String literal that can contain `${expression}` fields:
+[HTM] là một lựa chọn thay thế cho JSX sử dụng template string chuẩn của JavaScript,
+loại bỏ nhu cầu về trình biên dịch. Nếu bạn chưa từng gặp template string,
+chúng là một loại chuỗi đặc biệt có thể chứa các trường `${biểu_thức}`:
 
 ```js
-let str = `Quantity: ${40 + 2} units`;  // "Quantity: 42 units"
+let str = `Số lượng: ${40 + 2} đơn vị`;  // "Số lượng: 42 đơn vị"
 ```
 
-HTM uses `${expression}` instead of the `{expression}` syntax from JSX, which
-can make it clearer what parts of your code are HTM/JSX elements, and what
-parts are plain JavaScript:
+HTM sử dụng `${biểu_thức}` thay vì cú pháp `{biểu_thức}` của JSX, điều này
+giúp phân biệt rõ hơn đâu là phần tử HTM/JSX, đâu là JavaScript thuần:
 
 ```js
 import { html } from 'htm/preact';
@@ -129,66 +112,63 @@ let vdom = html`<p class=${maybeBig}>Hello ${40 + 2}!</p>`;
                         // ^--JS--^          ^-JS-^
 ```
 
-All of these examples produce the same result: a Virtual DOM tree that can
-be given to Preact to create or update an existing DOM tree.
+Tất cả các ví dụ trên đều cho ra kết quả giống nhau: một cây Virtual DOM có thể
+được đưa cho Preact để tạo hoặc cập nhật một cây DOM hiện có.
 
 ---
 
-### Detour: Components
+### Ngoại truyện: Component
 
-We'll get into a lot more detail about Components later in this tutorial, but
-for now it's important to know that HTML elements like `<p>` are just one of
-_two_ types of Virtual DOM elements. The other type is a Component, which is
-a Virtual DOM element where the type is a function instead of a string like `p`.
+Chúng ta sẽ tìm hiểu chi tiết hơn về Component ở các chương sau, nhưng
+hiện tại điều quan trọng là biết rằng các phần tử HTML như `<p>` chỉ là một trong
+_hai_ loại phần tử Virtual DOM. Loại còn lại là Component, là một phần tử Virtual DOM mà type là một hàm thay vì một chuỗi như `p`.
 
-Components are the building blocks of Virtual DOM applications. For now, we'll
-create a very simple component by moving our JSX into a function:
+Component là các khối xây dựng của ứng dụng Virtual DOM. Hiện tại, chúng ta sẽ
+tạo một component đơn giản bằng cách chuyển JSX vào một hàm:
 
 ```jsx
 import { createElement } from 'preact';
 
 export default function App() {
-	return (
-		<p class="big">Hello World!</p>
-	)
+    return (
+        <p class="big">Hello World!</p>
+    )
 }
 
 render(<App />, document.getElementById("app"));
 ```
 
-When passing a component to `render()`, it's important to let Preact do the
-instantiation rather than invoking your component directly, which will break
-in unexpected ways:
+Khi truyền một component vào `render()`, điều quan trọng là để Preact tự khởi tạo thay vì gọi trực tiếp component của bạn, điều này sẽ gây lỗi không mong muốn:
 
 ```jsx
 const App = () => <div>foo</div>;
 
-// DON'T: Invoking components directly means they won't be counted as a
-// VNode and hence not be able to use functionality relating to vnodes.
-render(App(), rootElement); // ERROR
-render(App, rootElement); // ERROR
+// KHÔNG NÊN: Gọi trực tiếp component nghĩa là chúng sẽ không được tính là một
+// VNode và do đó không thể sử dụng các chức năng liên quan đến vnode.
+render(App(), rootElement); // LỖI
+render(App, rootElement); // LỖI
 
-// DO: Passing components using createElement() or JSX allows Preact to render correctly:
-render(createElement(App), rootElement); // success
-render(<App />, rootElement); // success
+// NÊN: Truyền component bằng createElement() hoặc JSX cho phép Preact render đúng:
+render(createElement(App), rootElement); // thành công
+render(<App />, rootElement); // thành công
 ```
 
-## Try it!
+## Thực hành!
 
-On the right side of this page, you'll see the code from our previous example
-at the top. Below that is a box with the result of running that code. You can
-edit the code and see how your changes affect (or break!) the result as you go.
+Ở phía bên phải của trang này, bạn sẽ thấy mã từ ví dụ trước ở phía trên cùng.
+Bên dưới là một hộp với kết quả khi chạy mã đó. Bạn có thể
+chỉnh sửa mã và xem các thay đổi ảnh hưởng (hoặc làm hỏng!) kết quả như thế nào.
 
-To test what you've learned in this chapter, try giving the text some more pizazz!
-Make the word `World` stand out by wrapping it in HTML tags: `<em>` and `</em>`.
+Để kiểm tra những gì bạn đã học trong chương này, hãy thử làm cho văn bản nổi bật hơn!
+Làm cho từ `World` nổi bật bằng cách bọc nó trong thẻ HTML: `<em>` và `</em>`.
 
-Then, make all of the text <span style="color:purple">purple</span> by adding a
-`style` prop. The `style` prop is special, and allows an object value with
-one or more CSS properties to set on the element. To pass an object as a prop value, you'll need to use an `{expression}`, like `style={{ property: 'value' }}`.
+Sau đó, làm cho toàn bộ văn bản <span style="color:purple">màu tím</span> bằng cách thêm thuộc tính
+`style`. Thuộc tính `style` là đặc biệt, cho phép truyền một đối tượng với
+một hoặc nhiều thuộc tính CSS để gán cho phần tử. Để truyền một đối tượng làm giá trị prop, bạn cần dùng `{biểu_thức}`, ví dụ: `style={{ property: 'value' }}`.
 
 <solution>
-  <h4>🎉 Congratulations!</h4>
-  <p>We've made things appear on the screen. Next we'll make them interactive.</p>
+  <h4>🎉 Chúc mừng!</h4>
+  <p>Chúng ta đã làm cho mọi thứ xuất hiện trên màn hình. Tiếp theo chúng ta sẽ làm cho chúng tương tác.</p>
 </solution>
 
 
