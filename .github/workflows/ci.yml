@@ -9,16 +9,24 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
+  deploy:
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node
+        uses: actions/setup-node@v4
         with:
           node-version-file: 'package.json'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
       - run: npm ci
       - run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: preact.tomnguyen.site
