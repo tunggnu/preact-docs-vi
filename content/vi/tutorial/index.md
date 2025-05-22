@@ -1,34 +1,32 @@
 ---
-title: Learn Preact
+title: Học Preact
 next: /tutorial/01-vdom
 code: false
 solvable: false
 ---
 
-# Learn Preact
+# Học Preact
 
-Have you ever wondered what Preact is all about, or how it works?
+Bạn đã bao giờ tự hỏi Preact là gì, hoặc nó hoạt động như thế nào chưa?
 
-Maybe you've been creating awesome websites using WordPress, designing
-graphics with D3, or building helpful interactive forms with jQuery.
-At some point, the JavaScript you've written became complex enough that
-it was difficult to manage - remembering which file controls part of a
-page, or debugging an interaction between two plugins trying to enhance
-the same element.
+Có thể bạn đã từng tạo những website tuyệt vời bằng WordPress, thiết kế
+đồ họa với D3, hoặc xây dựng các biểu mẫu tương tác hữu ích với jQuery.
+Đến một lúc nào đó, JavaScript bạn viết trở nên đủ phức tạp khiến bạn
+khó kiểm soát – phải nhớ file nào điều khiển phần nào của trang, hoặc
+gỡ lỗi khi hai plugin cùng cố gắng nâng cấp một phần tử giống nhau.
 
-Perhaps you've come across Preact at some point, and wondered what's so
-special about it? Why do high-traffic sites like IKEA, Bing, Etsy and
-[others] use Preact?
+Có lẽ bạn đã từng nghe đến Preact ở đâu đó, và tự hỏi điều gì làm nó đặc biệt?
+Tại sao các trang web có lượng truy cập lớn như IKEA, Bing, Etsy và
+[các trang khác] lại sử dụng Preact?
 
-The simplest answer is that Preact provides the tools needed to construct
-complex web applications out of small reusable pieces called Components.
-What makes Preact unique is that it provides these tools in a uniquely
-small package: just 3kb of JavaScript code, or around
-[one page of text](https://unpkg.com/preact).
+Câu trả lời đơn giản nhất là Preact cung cấp các công cụ cần thiết để xây dựng
+các ứng dụng web phức tạp từ những mảnh nhỏ có thể tái sử dụng gọi là Component (Thành phần).
+Điều làm Preact trở nên độc đáo là nó cung cấp các công cụ này trong một gói cực kỳ nhỏ gọn: chỉ 3kb mã JavaScript, hoặc khoảng
+[một trang văn bản](https://unpkg.com/preact).
 
-If that sounds compelling to you, this tutorial is a great place to start.
-You'll learn not only how to build applications using Preact, but also how
-Preact works under the hood. Each chapter contains an opportunity to test
-what you've learned, or use the _Help_ button to see the answer.
+Nếu điều đó khiến bạn hứng thú, hướng dẫn này là nơi tuyệt vời để bắt đầu.
+Bạn sẽ học không chỉ cách xây dựng ứng dụng với Preact, mà còn hiểu cách
+Preact hoạt động bên trong. Mỗi chương đều có cơ hội để bạn kiểm tra
+những gì đã học, hoặc sử dụng nút _Trợ giúp_ để xem đáp án.
 
 [others]: /about/we-are-using/

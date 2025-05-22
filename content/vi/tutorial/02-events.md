@@ -44,7 +44,6 @@ Khi mã của bạn chạy, hãy nhấn nút để gọi hàm xử lý sự ki�
   <p>Bạn vừa học cách xử lý sự kiện trong Preact.</p>
 </solution>
 
-
 ```js:setup
 useRealm(function (realm) {
   var win = realm.globalThis;
@@ -59,7 +58,6 @@ useRealm(function (realm) {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render } from "preact";

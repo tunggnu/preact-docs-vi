@@ -9,7 +9,7 @@ solvable: true
 
 Tác động phụ là những đoạn mã được chạy khi có sự thay đổi trong cây Virtual DOM. Chúng không tuân theo cách tiếp cận tiêu chuẩn là nhận `props` và trả về một cây Virtual DOM mới, và thường "vươn ra ngoài" cây để thay đổi trạng thái hoặc gọi mã kiểu mệnh lệnh, như gọi các API của DOM. Tác động phụ cũng thường được dùng để kích hoạt việc lấy dữ liệu.
 
-### Effects: tác động phụ trong thành phần hàm
+## Effects: tác động phụ trong thành phần hàm
 
 Chúng ta đã từng thấy một ví dụ về tác động phụ trong một chương trước, khi học về refs và hook `useRef()`. Khi ref của chúng ta đã được gán thuộc tính `current` trỏ đến một phần tử DOM, chúng ta cần một cách để "kích hoạt" mã sẽ tương tác với phần tử đó.
 
@@ -56,7 +56,7 @@ export default function App() {
 }
 ```
 
-### Phương thức vòng đời: tác động phụ trong thành phần lớp
+## Phương thức vòng đời: tác động phụ trong thành phần lớp
 
 Thành phần lớp cũng có thể định nghĩa các tác động phụ, bằng cách triển khai bất kỳ [phương thức vòng đời] nào mà Preact cung cấp. Dưới đây là một số phương thức vòng đời thường dùng nhất:
 
@@ -108,7 +108,6 @@ Chúng ta sẽ giữ bài tập này đơn giản: hãy thay đổi đoạn mã 
   <p>Bạn đã học cách sử dụng tác động phụ trong Preact.</p>
 </solution>
 
-
 ```js:setup
 useRealm(function (realm) {
   var win = realm.globalThis;
@@ -125,7 +124,6 @@ useRealm(function (realm) {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render } from 'preact';

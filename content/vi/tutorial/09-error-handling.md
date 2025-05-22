@@ -11,7 +11,7 @@ JavaScript là một ngôn ngữ linh hoạt và được thông dịch, điều
 
 Trong Preact, cách chúng ta làm điều này là bắt lỗi và lưu chúng vào state. Điều này cho phép một component chặn một lần render bị lỗi hoặc không mong muốn và chuyển sang render một nội dung khác như một phương án dự phòng.
 
-### Chuyển lỗi thành state
+## Chuyển lỗi thành state
 
 Có hai API để bắt lỗi và chuyển chúng thành state:
 `componentDidCatch` và `getDerivedStateFromError`. Chúng khá giống nhau về chức năng, và đều là các phương thức bạn có thể triển khai trên một component lớp:
@@ -48,7 +48,7 @@ class ErrorBoundary extends Component {
 
 Component trên là một ví dụ khá phổ biến về cách xử lý lỗi được triển khai trong các ứng dụng Preact, thường được gọi là _Error Boundary_ (biên lỗi).
 
-### Lồng nhau và lan truyền lỗi
+## Lồng nhau và lan truyền lỗi
 
 Các lỗi gặp phải khi Preact render cây Virtual DOM của bạn sẽ "lan truyền lên trên", giống như các sự kiện DOM. Bắt đầu từ component gặp lỗi, mỗi component cha trong cây sẽ có cơ hội xử lý lỗi đó.
 
@@ -62,7 +62,6 @@ Do đó, các Error Boundary có thể được lồng nhau nếu được tri�
   <h4>🎉 Chúc mừng!</h4>
   <p>Bạn đã học cách xử lý lỗi trong mã Preact!</p>
 </solution>
-
 
 ```js:setup
 useResult(function(result) {
@@ -86,7 +85,6 @@ useResult(function(result) {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render, Component } from 'preact';

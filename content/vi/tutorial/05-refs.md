@@ -100,7 +100,6 @@ Bây giờ hãy thực hành bằng cách tạo một nút, khi nhấn vào sẽ
   <p><code>pro = createRef()</code> → <code>pro.current = 'bạn'</code></p>
 </solution>
 
-
 ```js:setup
 function patch(input) {
   if (input.__patched) return;
@@ -139,7 +138,6 @@ useResult(function (result) {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render } from 'preact';

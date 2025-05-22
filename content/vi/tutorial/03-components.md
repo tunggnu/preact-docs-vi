@@ -186,7 +186,6 @@ Tạo một thành phần `MyButton` nhận các prop `style`, `children` và `o
   <p>Bạn đang trên con đường trở thành chuyên gia về thành phần!</p>
 </solution>
 
-
 ```js:setup
 useRealm(function (realm) {
   var options = require('preact').options;
@@ -224,7 +223,6 @@ useRealm(function (realm) {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render } from "preact";

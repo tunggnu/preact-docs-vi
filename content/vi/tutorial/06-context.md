@@ -11,10 +11,8 @@ Khi một ứng dụng phát triển lớn hơn, cây Virtual DOM của nó thư
 
 Context là một tính năng cho phép chúng ta truyền giá trị xuống qua cây _một cách tự động_, mà các thành phần không cần phải biết gì cả. Điều này được thực hiện bằng cách tiếp cận Provider/Consumer:
 
-
 - `<Provider>` thiết lập giá trị context trong một <abbr title="Cây Virtual DOM nằm trong <Provider>...</Provider>, bao gồm tất cả các con">cây con</abbr>
 - `<Consumer>` nhận giá trị context được thiết lập bởi Provider cha gần nhất
-
 
 Để bắt đầu, hãy xem một ví dụ đơn giản chỉ với một thành phần. Trong trường hợp này, chúng ta cung cấp một giá trị context "Username" _và_ tiêu thụ giá trị đó:
 
@@ -44,7 +42,7 @@ export default function App() {
 
 Trong thực tế, context hiếm khi được cung cấp và tiêu thụ trong cùng một thành phần – trạng thái thành phần thường là giải pháp tốt nhất cho trường hợp đó.
 
-### Sử dụng với hooks
+## Sử dụng với hooks
 
 API `<Consumer>` của context là đủ cho hầu hết các trường hợp, nhưng có thể hơi rườm rà vì nó dựa vào các hàm lồng nhau để lấy phạm vi. Thành phần hàm có thể chọn sử dụng hook `useContext()` của Preact, trả về giá trị của một `Context` tại vị trí thành phần đó trong cây Virtual DOM.
 
@@ -77,7 +75,7 @@ function User() {
 
 Nếu bạn tưởng tượng trường hợp `User` cần truy cập giá trị của nhiều Context, API `useContext()` đơn giản sẽ dễ theo dõi hơn nhiều.
 
-### Sử dụng thực tế
+## Sử dụng thực tế
 
 Một ví dụ thực tế hơn về context là lưu trạng thái xác thực của ứng dụng (liệu người dùng đã đăng nhập hay chưa).
 
@@ -128,7 +126,7 @@ function Login() {
 }
 ```
 
-### Context lồng nhau
+## Context lồng nhau
 
 Context có một siêu năng lực ẩn rất hữu ích trong các ứng dụng lớn: các provider context có thể được lồng nhau để "ghi đè" giá trị của chúng trong một cây con Virtual DOM. Hãy tưởng tượng một ứng dụng email trên web, nơi các phần khác nhau của giao diện người dùng được hiển thị dựa trên đường dẫn URL:
 
@@ -196,7 +194,7 @@ function Settings() {
 }
 ```
 
-### Giá trị mặc định của context
+## Giá trị mặc định của context
 
 Context lồng nhau là một tính năng mạnh mẽ, và chúng ta thường sử dụng nó mà không nhận ra. Ví dụ, trong ví dụ minh họa đầu tiên của chương này, chúng ta dùng `<Provider value="Bob">` để định nghĩa giá trị context `Username` trong cây.
 
@@ -225,7 +223,6 @@ Là một bài tập, hãy tạo một phiên bản _đồng bộ_ của bộ đ
   <h4>🎉 Chúc mừng!</h4>
   <p>Bạn đã học cách sử dụng context trong Preact.</p>
 </solution>
-
 
 ```js:setup
 var output = useRef();
@@ -275,7 +272,6 @@ useResult(function (result) {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render, createContext } from 'preact';

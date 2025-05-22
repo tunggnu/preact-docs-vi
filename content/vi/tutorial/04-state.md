@@ -90,7 +90,6 @@ Vì chúng ta đã dùng thành phần hàm ở chương trước, nên có th�
   <p>Bạn đã học cách sử dụng state!</p>
 </solution>
 
-
 ```js:setup
 useResult(function () {
   var options = require('preact').options;
@@ -129,7 +128,6 @@ useResult(function () {
   };
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { render } from 'preact';

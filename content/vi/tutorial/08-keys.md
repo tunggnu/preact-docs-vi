@@ -68,7 +68,7 @@ Bạn có nhận ra vấn đề không? Mặc dù với chúng ta thì rõ ràng
 
 Kết quả về mặt kỹ thuật là đúng – chỉ còn một mục với nội dung "make bed" – nhưng cách mà chúng ta đạt được kết quả đó là không tối ưu. Hãy tưởng tượng nếu có 1000 mục trong danh sách và chúng ta xóa mục đầu tiên: thay vì chỉ xóa một `<li>`, Preact sẽ cập nhật văn bản của 999 mục còn lại và xóa mục cuối cùng.
 
-### **key** cho việc render danh sách
+## __key__ cho việc render danh sách
 
 Trong các tình huống như ví dụ trên, các mục đang thay đổi _thứ tự_. Chúng ta cần một cách để giúp Preact biết mục nào là mục nào, để nó có thể phát hiện khi nào mỗi mục được thêm, xóa hoặc thay thế. Để làm điều này, chúng ta có thể thêm prop `key` cho mỗi mục.
 
@@ -132,7 +132,7 @@ Lần đầu tiên chúng ta render phiên bản mới của component `<TodoLis
 
 Lần này, Preact có thể thấy rằng mục đầu tiên đã bị xóa, vì cây thứ hai không còn mục nào với `key="wake up"`. Nó sẽ xóa mục đầu tiên, và giữ nguyên mục thứ hai.
 
-### Khi **không nên** dùng key
+## Khi __không nên__ dùng key
 
 Một trong những lỗi phổ biến nhất mà lập trình viên gặp phải với key là vô tình chọn key _không ổn định_ giữa các lần render. Trong ví dụ của chúng ta, hãy tưởng tượng nếu chúng ta dùng đối số index từ `map()` làm giá trị `key` thay vì chuỗi `item`:
 
@@ -170,7 +170,7 @@ Một trong những lỗi phổ biến nhất mà lập trình viên gặp phả
 
 Vấn đề là `index` thực ra không xác định một _**giá trị**_ trong danh sách của chúng ta, nó xác định một _**vị trí**_. Render như vậy thực ra _bắt buộc_ Preact phải khớp các mục theo thứ tự, giống như nó sẽ làm nếu không có key nào. Việc dùng index làm key thậm chí có thể gây ra kết quả tốn kém hoặc sai khi áp dụng cho các mục danh sách có kiểu khác nhau, vì key không thể khớp các phần tử có kiểu khác nhau.
 
-> 🚙 **Ví dụ minh họa!** Hãy tưởng tượng bạn gửi xe ở bãi đỗ xe có nhân viên trông xe.
+> 🚙 __Ví dụ minh họa!__ Hãy tưởng tượng bạn gửi xe ở bãi đỗ xe có nhân viên trông xe.
 >
 > Khi bạn quay lại lấy xe, bạn nói với nhân viên rằng bạn lái một chiếc SUV màu xám. Thật không may, hơn một nửa số xe ở bãi là SUV màu xám, và bạn nhận nhầm xe của người khác. Chủ xe SUV màu xám tiếp theo cũng nhận nhầm xe, và cứ thế tiếp tục.
 >
@@ -223,7 +223,6 @@ Cuối cùng, cập nhật JSX để render từng mục từ `todos` thành m�
   </p>
 </solution>
 
-
 ```js:setup
 useRealm(function (realm) {
   // the app element
@@ -254,7 +253,6 @@ useRealm(function (realm) {
   };
 });
 ```
-
 
 ```jsx:repl-initial
 import { render } from 'preact';

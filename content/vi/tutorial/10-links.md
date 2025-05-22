@@ -1,28 +1,26 @@
 ---
-title: Congratulations!
+title: Chúc mừng!
 prev: /tutorial/09-error-handling
 solvable: false
 ---
 
-# Congratulations!
+# Chúc mừng!
 
-You've completed the Preact tutorial!
+Bạn đã hoàn thành hướng dẫn Preact!
 
-Feel free to play around a bit more with the demo code.
+Hãy thoải mái thử nghiệm thêm với mã ví dụ.
 
-### Next Steps
+## Bước tiếp theo
 
-- [Learn more about class components](/guide/v10/components)
-- [Learn more about hooks](/guide/v10/hooks)
-- [Create your own project](https://vite.new/preact)
+- [Tìm hiểu thêm về class component](/guide/v10/components)
+- [Tìm hiểu thêm về hooks](/guide/v10/hooks)
+- [Tạo dự án của riêng bạn](https://vite.new/preact)
 
-> **We want your feedback!**
+> **Chúng tôi muốn nhận phản hồi từ bạn!**
 >
-> Do you feel like you learned Preact? Did you get stuck?
+> Bạn có cảm thấy mình đã học được Preact không? Bạn có gặp khó khăn ở đâu không?
 >
-> Feedback is welcome in [this discussion](https://github.com/preactjs/preact-www/discussions/815).
-
-
+> Mọi phản hồi đều được hoan nghênh tại [thảo luận này](https://github.com/preactjs/preact-www/discussions/815).
 
 ```jsx:repl-initial
 import { render } from 'preact';
