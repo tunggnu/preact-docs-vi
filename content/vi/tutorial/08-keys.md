@@ -1,21 +1,15 @@
 ---
-title: Keys
+title: Keys (Khóa)
 prev: /tutorial/07-side-effects
 next: /tutorial/09-error-handling
 solvable: true
 ---
 
-# Keys
+# Keys (Khóa)
 
-In chapter one, we saw how Preact uses a Virtual DOM to calculate what
-changed between two trees described by our JSX, then applies those
-changes to the HTML DOM to update pages. This works well for most
-scenarios, but occasionally requires that Preact "guesses" how
-the shape of the tree has changed between two renders.
+Ở chương đầu tiên, chúng ta đã thấy cách Preact sử dụng Virtual DOM để tính toán những gì đã thay đổi giữa hai cây được mô tả bởi JSX của chúng ta, sau đó áp dụng các thay đổi đó lên HTML DOM để cập nhật trang. Điều này hoạt động tốt trong hầu hết các trường hợp, nhưng đôi khi yêu cầu Preact phải "đoán" hình dạng của cây đã thay đổi như thế nào giữa hai lần render.
 
-The most common scenario where Preact's guess is likely to be different
-than our intent is when comparing lists. Consider a simple to-do list
-component:
+Tình huống phổ biến nhất mà dự đoán của Preact có thể khác với ý định của chúng ta là khi so sánh các danh sách. Hãy xem xét một component danh sách việc cần làm đơn giản:
 
 ```jsx
 export default function TodoList() {
@@ -32,21 +26,19 @@ export default function TodoList() {
           <li>{todo}</li>
         ))}
       </ul>
-      <button onClick={wakeUp}>I'm Awake!</button>
+      <button onClick={wakeUp}>Tôi đã thức dậy!</button>
     </div>
   )
 }
 ```
 
-The first time this component is rendered, two `<li>` list items will
-be drawn. After clicking the __"I'm Awake!"__ button, our `todos` state
-Array is updated to contain only the second item, `"make bed"`.
+Lần đầu tiên component này được render, hai phần tử `<li>` sẽ được vẽ ra. Sau khi nhấn nút __"Tôi đã thức dậy!"__, mảng state `todos` của chúng ta được cập nhật chỉ còn mục thứ hai, `"make bed"`.
 
-Here's what Preact "sees" for the first and second renders:
+Đây là những gì Preact "thấy" ở lần render đầu tiên và lần render thứ hai:
 
 <table><thead><tr>
-  <th>First Render</th>
-  <th>Second Render</th>
+  <th>Lần render đầu tiên</th>
+  <th>Lần render thứ hai</th>
 </tr></thead><tbody><tr><td>
 
 ```jsx
@@ -55,7 +47,7 @@ Here's what Preact "sees" for the first and second renders:
     <li>wake up</li>
     <li>make bed</li>
   </ul>
-  <button>I'm Awake!</button>
+  <button>Tôi đã thức dậy!</button>
 </div>
 ```
 
@@ -65,43 +57,24 @@ Here's what Preact "sees" for the first and second renders:
 <div>
   <ul>
     <li>make bed</li>
-
   </ul>
-  <button>I'm Awake!</button>
+  <button>Tôi đã thức dậy!</button>
 </div>
 ```
 
 </td></tr></tbody></table>
 
-Notice a problem? While it's clear to us that the _first_ list item
-("wake up") was removed, Preact doesn't know that. All Preact sees
-is that there were two items, and now there is one. When applying this
-update, it will actually remove the second item (`<li>make bed</li>`),
-then update the text of the first item from `wake up` to `make bed`.
+Bạn có nhận ra vấn đề không? Mặc dù với chúng ta thì rõ ràng phần tử danh sách đầu tiên ("wake up") đã bị xóa, nhưng Preact không biết điều đó. Tất cả những gì Preact thấy là trước đó có hai mục, bây giờ chỉ còn một. Khi áp dụng cập nhật này, thực tế nó sẽ xóa mục thứ hai (`<li>make bed</li>`), sau đó cập nhật văn bản của mục đầu tiên từ `wake up` thành `make bed`.
 
-The result is technically correct – a single item with the text "make bed"
-– the way we arrived at that result was suboptimal. Imagine if there
-were 1000 list items and we removed the first item: instead of removing
-a single `<li>`, Preact would update the text of the first 999 other items
-and remove the last one.
+Kết quả về mặt kỹ thuật là đúng – chỉ còn một mục với nội dung "make bed" – nhưng cách mà chúng ta đạt được kết quả đó là không tối ưu. Hãy tưởng tượng nếu có 1000 mục trong danh sách và chúng ta xóa mục đầu tiên: thay vì chỉ xóa một `<li>`, Preact sẽ cập nhật văn bản của 999 mục còn lại và xóa mục cuối cùng.
 
+### **key** cho việc render danh sách
 
-### The **key** to list rendering
+Trong các tình huống như ví dụ trên, các mục đang thay đổi _thứ tự_. Chúng ta cần một cách để giúp Preact biết mục nào là mục nào, để nó có thể phát hiện khi nào mỗi mục được thêm, xóa hoặc thay thế. Để làm điều này, chúng ta có thể thêm prop `key` cho mỗi mục.
 
-In situations like the previous example, items are changing _order_.
-We need a way to help Preact know which items are which, so it can
-detect when each item is added, removed or replaced. To do this, we
-can add a `key` prop to each item.
+Prop `key` là một định danh cho một phần tử nhất định. Thay vì so sánh _thứ tự_ các phần tử giữa hai cây, các phần tử có prop `key` sẽ được so sánh bằng cách tìm phần tử trước đó có cùng giá trị prop `key`. Một `key` có thể là bất kỳ kiểu giá trị nào, miễn là nó "ổn định" giữa các lần render: các lần render lặp lại của cùng một mục phải có giá trị prop `key` giống hệt nhau.
 
-The `key` prop is an identifier for a given element. Instead of comparing
-the _order_ of elements between two trees, elements with a `key` prop are
-compared by finding the previous element with that same `key` prop value.
-A `key` can be any type of value, as long as it is "stable" between
-renders: repeated renders of the same item should have the exact same
-`key` prop value.
-
-Let's add keys to the previous example. Since our todo list is a simple
-Array of strings that don't change, we can use those strings as keys:
+Hãy thêm key vào ví dụ trước. Vì danh sách việc cần làm của chúng ta là một mảng các chuỗi đơn giản không thay đổi, chúng ta có thể dùng chính các chuỗi đó làm key:
 
 ```jsx
 export default function TodoList() {
@@ -116,25 +89,22 @@ export default function TodoList() {
       <ul>
         {todos.map(todo => (
           <li key={todo}>{todo}</li>
-          //  ^^^^^^^^^^ adding a key prop
+          //  ^^^^^^^^^^ thêm prop key
         ))}
       </ul>
-      <button onClick={wakeUp}>I'm Awake!</button>
+      <button onClick={wakeUp}>Tôi đã thức dậy!</button>
     </div>
   )
 }
 ```
 
-The first time we render this new version of the `<TodoList>` component,
-two `<li>` items will be drawn. When clicking the "I'm Awake!" button,
-our `todos` state Array is updated to contain only the second item,
-`"make bed"`.
+Lần đầu tiên chúng ta render phiên bản mới của component `<TodoList>`, hai mục `<li>` sẽ được vẽ ra. Khi nhấn nút "Tôi đã thức dậy!", mảng state `todos` của chúng ta được cập nhật chỉ còn mục thứ hai, `"make bed"`.
 
-Here's what Preact sees now that we've added `key` to the list items:
+Đây là những gì Preact thấy bây giờ khi chúng ta đã thêm `key` cho các mục danh sách:
 
 <table><thead><tr>
-  <th>First Render</th>
-  <th>Second Render</th>
+  <th>Lần render đầu tiên</th>
+  <th>Lần render thứ hai</th>
 </tr></thead><tbody><tr><td>
 
 ```jsx
@@ -143,7 +113,7 @@ Here's what Preact sees now that we've added `key` to the list items:
     <li key="wake up">wake up</li>
     <li key="make bed">make bed</li>
   </ul>
-  <button>I'm Awake!</button>
+  <button>Tôi đã thức dậy!</button>
 </div>
 ```
 
@@ -152,35 +122,27 @@ Here's what Preact sees now that we've added `key` to the list items:
 ```jsx
 <div>
   <ul>
-
     <li key="make bed">make bed</li>
   </ul>
-  <button>I'm Awake!</button>
+  <button>Tôi đã thức dậy!</button>
 </div>
 ```
 
 </td></tr></tbody></table>
 
-This time, Preact can see that the first item was removed, because
-the second tree is missing an item with `key="wake up"`. It will
-remove the first item, and leave the second item untouched.
+Lần này, Preact có thể thấy rằng mục đầu tiên đã bị xóa, vì cây thứ hai không còn mục nào với `key="wake up"`. Nó sẽ xóa mục đầu tiên, và giữ nguyên mục thứ hai.
 
+### Khi **không nên** dùng key
 
-### When **not** to use keys
-
-One of the most common pitfalls developers encounter with keys is
-accidentally choosing keys that are _unstable_ between renders.
-In our example, imagine if we had used the index argument from `map()`
-as our `key` value rather than the `item` string itself:
+Một trong những lỗi phổ biến nhất mà lập trình viên gặp phải với key là vô tình chọn key _không ổn định_ giữa các lần render. Trong ví dụ của chúng ta, hãy tưởng tượng nếu chúng ta dùng đối số index từ `map()` làm giá trị `key` thay vì chuỗi `item`:
 
 `items.map((item, index) => <li key={index}>{item}</li>`
 
-This would result in Preact seeing the following trees on the first
-and second render:
+Điều này sẽ khiến Preact thấy các cây sau ở lần render đầu tiên và lần render thứ hai:
 
 <table><thead><tr>
-  <th>First Render</th>
-  <th>Second Render</th>
+  <th>Lần render đầu tiên</th>
+  <th>Lần render thứ hai</th>
 </tr></thead><tbody><tr><td>
 
 ```jsx
@@ -189,7 +151,7 @@ and second render:
     <li key={0}>wake up</li>
     <li key={1}>make bed</li>
   </ul>
-  <button>I'm Awake!</button>
+  <button>Tôi đã thức dậy!</button>
 </div>
 ```
 
@@ -198,48 +160,31 @@ and second render:
 ```jsx
 <div>
   <ul>
-
     <li key={0}>make bed</li>
   </ul>
-  <button>I'm Awake!</button>
+  <button>Tôi đã thức dậy!</button>
 </div>
 ```
 
 </td></tr></tbody></table>
 
-The problem is that `index` doesn't actually identify a _**value**_ in
-our list, it identifies a _**position**_. Rendering this way actually
-_forces_ Preact to match items in-order, which is what it would have
-done if no keys were present. Using index keys can even force expensive
-or broken output when applied to list items with differing type, since
-keys cannot match elements with differing type.
+Vấn đề là `index` thực ra không xác định một _**giá trị**_ trong danh sách của chúng ta, nó xác định một _**vị trí**_. Render như vậy thực ra _bắt buộc_ Preact phải khớp các mục theo thứ tự, giống như nó sẽ làm nếu không có key nào. Việc dùng index làm key thậm chí có thể gây ra kết quả tốn kém hoặc sai khi áp dụng cho các mục danh sách có kiểu khác nhau, vì key không thể khớp các phần tử có kiểu khác nhau.
 
-> 🚙 **Analogy Time!** Imagine you leave your car with a valet car park.
+> 🚙 **Ví dụ minh họa!** Hãy tưởng tượng bạn gửi xe ở bãi đỗ xe có nhân viên trông xe.
 >
-> When you return to pick up your car, you tell the valet you drive
-> a grey SUV. Unfortunately, over half of the parked cars are grey
-> SUV's, and you end up with someone else's car. The next grey SUV
-> owner gets the wrong one, and so on.
+> Khi bạn quay lại lấy xe, bạn nói với nhân viên rằng bạn lái một chiếc SUV màu xám. Thật không may, hơn một nửa số xe ở bãi là SUV màu xám, và bạn nhận nhầm xe của người khác. Chủ xe SUV màu xám tiếp theo cũng nhận nhầm xe, và cứ thế tiếp tục.
 >
-> If you instead tell the valet you drive a grey SUV with the license
-> plate "PR3ACT", you can be sure that your own car will be returned.
+> Nếu thay vào đó bạn nói với nhân viên rằng bạn lái chiếc SUV màu xám với biển số "PR3ACT", bạn chắc chắn sẽ nhận lại đúng xe của mình.
 
 <!--
-> 🍫 **Chocolate Analogy:** Imagine a friend is holding a box of
-> chocolates, and asks you if you'd like to try one. You have your eye
-> on the mint truffle.
+> 🍫 **Ví dụ sô-cô-la:** Hãy tưởng tượng một người bạn cầm một hộp sô-cô-la và hỏi bạn muốn thử cái nào. Bạn để ý đến viên sô-cô-la vị bạc hà.
 >
-> If you reply "the fourth one", there is a risk that the chocolates
-> have been switched or re-ordered, and you may end up with the wrong
-> chocolate. (gasp!)
+> Nếu bạn trả lời "viên thứ tư", có nguy cơ các viên sô-cô-la đã bị xáo trộn hoặc đổi chỗ, và bạn có thể nhận nhầm viên. (ôi trời!)
 >
-> If you reply "the mint truffle", it would be clear which chocolate
-> you were interested in trying, regardless of order.
+> Nếu bạn trả lời "viên bạc hà", sẽ rõ ràng bạn muốn thử viên nào, bất kể thứ tự ra sao.
 -->
 
-As a general rule of thumb, never use an Array or loop index as a `key`.
-Use the list item value itself, or generate a unique ID for items and use
-that:
+Nguyên tắc chung là không bao giờ dùng index của mảng hoặc vòng lặp làm `key`. Hãy dùng chính giá trị của mục trong danh sách, hoặc tạo một ID duy nhất cho từng mục và dùng nó:
 
 ```jsx
 const todos = [
@@ -260,29 +205,21 @@ export default function ToDos() {
 }
 ```
 
-Remember: if you genuinely can't find a stable key, it's better to omit
-the `key` prop entirely than to use an index as a key.
+Hãy nhớ: nếu bạn thực sự không thể tìm được một key ổn định, tốt hơn là bỏ qua prop `key` hoàn toàn thay vì dùng index làm key.
 
+## Thực hành!
 
-## Try it!
+Ở bài tập chương này, chúng ta sẽ kết hợp những gì đã học về key với kiến thức về tác động phụ từ chương trước.
 
-For this chapter's exercise, we'll combine what we learned about keys
-with our knowledge of side effects from the previous chapter.
+Hãy dùng một effect để gọi hàm `getTodos()` đã cho sau khi `<TodoList>` được render lần đầu. Lưu ý rằng hàm này trả về một Promise, bạn có thể lấy giá trị bằng cách gọi `.then(value => { })`. Khi đã có giá trị Promise, hãy lưu nó vào hook useState `todos` bằng cách gọi phương thức `setTodos` liên quan.
 
-Use an effect to call the provided `getTodos()` function after `<TodoList>`
-is first rendered. Note that this function returns a Promise, which
-you can obtain the value of by calling `.then(value => { })`. Once
-you have the Promise's value, store it in the `todos` useState hook
-by calling its associated `setTodos` method.
-
-Finally, update the JSX to render each item from `todos` as an
-`<li>` containing that todo item's `.text` property value.
+Cuối cùng, cập nhật JSX để render từng mục từ `todos` thành một `<li>` chứa giá trị thuộc tính `.text` của mục todo đó.
 
 <solution>
-  <h4>🎉 Congratulations!</h4>
+  <h4>🎉 Chúc mừng!</h4>
   <p>
-    You've completed the second to last chapter,
-    and learned how to render lists effectively.
+    Bạn đã hoàn thành chương áp chót,
+    và đã học cách render danh sách một cách hiệu quả.
   </p>
 </solution>
 
