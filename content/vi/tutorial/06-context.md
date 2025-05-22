@@ -1,32 +1,22 @@
 ---
-title: Context
+title: Ngữ cảnh (Context)
 prev: /tutorial/05-refs
 next: /tutorial/07-side-effects
 solvable: true
 ---
 
-# Context
+# Ngữ cảnh (Context)
 
-As an application grows larger, its Virtual DOM tree often becomes deeply
-nested and composed of many different components. Components at various
-locations within the tree sometimes need to access common data - typically
-pieces of application state like authentication, user profile info, caches,
-storage, etc. While it's possible to pass all of that information down through
-the tree as component props, doing so means every component needs to have
-some awareness of all of that state - even if all it does is forward it on
-through the tree.
+Khi một ứng dụng phát triển lớn hơn, cây Virtual DOM của nó thường trở nên lồng sâu và bao gồm nhiều thành phần khác nhau. Các thành phần ở nhiều vị trí khác nhau trong cây đôi khi cần truy cập dữ liệu chung – thường là các phần của trạng thái ứng dụng như xác thực, thông tin hồ sơ người dùng, bộ nhớ đệm, lưu trữ, v.v. Mặc dù có thể truyền tất cả thông tin đó xuống qua cây dưới dạng props của thành phần, nhưng làm như vậy nghĩa là mọi thành phần đều phải biết về tất cả trạng thái đó – ngay cả khi chúng chỉ chuyển tiếp nó xuống dưới cây.
 
-Context is a feature that lets us pass values down through the tree
-_automatically_, without components needing to be aware of anything.
-This is done using a Provider/Consumer approach:
+Context là một tính năng cho phép chúng ta truyền giá trị xuống qua cây _một cách tự động_, mà các thành phần không cần phải biết gì cả. Điều này được thực hiện bằng cách tiếp cận Provider/Consumer:
 
 
-- `<Provider>` sets the context's value within a <abbr title="The Virtual DOM tree within <Provider>...</Provider>, including all children">subtree</abbr>
-- `<Consumer>` gets the context value set by the nearest parent Provider
+- `<Provider>` thiết lập giá trị context trong một <abbr title="Cây Virtual DOM nằm trong <Provider>...</Provider>, bao gồm tất cả các con">cây con</abbr>
+- `<Consumer>` nhận giá trị context được thiết lập bởi Provider cha gần nhất
 
 
-To start off, let's look at a simple example with only one component. In this
-case, we're providing a "Username" context value _and_ consuming that value:
+Để bắt đầu, hãy xem một ví dụ đơn giản chỉ với một thành phần. Trong trường hợp này, chúng ta cung cấp một giá trị context "Username" _và_ tiêu thụ giá trị đó:
 
 ```jsx
 import { createContext } from 'preact'
@@ -35,13 +25,13 @@ const Username = createContext()
 
 export default function App() {
   return (
-    // provide the username value to our subtree:
+    // cung cấp giá trị username cho cây con:
     <Username.Provider value="Bob">
       <div>
         <p>
           <Username.Consumer>
             {username => (
-              // access the current username from context:
+              // truy cập username hiện tại từ context:
               <span>{username}</span>
             )}
           </Username.Consumer>
@@ -52,19 +42,13 @@ export default function App() {
 }
 ```
 
-In actual usage, context is rarely provided and consumed within the same
-component - component state is usually the best solution for that.
+Trong thực tế, context hiếm khi được cung cấp và tiêu thụ trong cùng một thành phần – trạng thái thành phần thường là giải pháp tốt nhất cho trường hợp đó.
 
-### Usage with hooks
+### Sử dụng với hooks
 
-The context `<Consumer>` API is sufficient for most use-cases, but can be
-a bit tedious to write since it relies on nested functions for scope.
-Function components can choose to instead use Preact's `useContext()` hook,
-which returns the value of a `Context` at the component's location in the
-Virtual DOM tree.
+API `<Consumer>` của context là đủ cho hầu hết các trường hợp, nhưng có thể hơi rườm rà vì nó dựa vào các hàm lồng nhau để lấy phạm vi. Thành phần hàm có thể chọn sử dụng hook `useContext()` của Preact, trả về giá trị của một `Context` tại vị trí thành phần đó trong cây Virtual DOM.
 
-Here's the previous example again, this time split into two components
-and using `useContext()` to get the context's current value:
+Dưới đây là ví dụ trước, lần này được tách thành hai thành phần và sử dụng `useContext()` để lấy giá trị hiện tại của context:
 
 ```jsx
 import { createContext } from 'preact'
@@ -85,25 +69,19 @@ export default function App() {
 }
 
 function User() {
-  // access the current username from context:
+  // truy cập username hiện tại từ context:
   const username = useContext(Username) // "Bob"
   return <span>{username}</span>
 }
 ```
 
-If you can imagine a case where `User` needs to access the value of
-multiple Contexts, the simpler `useContext()` API remains much easier
-to follow.
+Nếu bạn tưởng tượng trường hợp `User` cần truy cập giá trị của nhiều Context, API `useContext()` đơn giản sẽ dễ theo dõi hơn nhiều.
 
-### Realistic usage
+### Sử dụng thực tế
 
-A more realistic usage of context would be to store an application's
-authentication state (whether the user is logged in or not).
+Một ví dụ thực tế hơn về context là lưu trạng thái xác thực của ứng dụng (liệu người dùng đã đăng nhập hay chưa).
 
-To do this, we can create a context to hold the information, which
-we'll call `AuthContext`. The value for AuthContext will be an object
-with a `user` property containing our signed-in user, along with
-a `setUser` method to modify that state.
+Để làm điều này, chúng ta có thể tạo một context để lưu thông tin, gọi là `AuthContext`. Giá trị cho AuthContext sẽ là một đối tượng với thuộc tính `user` chứa người dùng đã đăng nhập, cùng với phương thức `setUser` để thay đổi trạng thái đó.
 
 ```jsx
 import { createContext } from 'preact'
@@ -121,7 +99,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={auth}>
       <div class="app">
-        {auth.user && <p>Welcome {auth.user.name}!</p>}
+        {auth.user && <p>Chào mừng {auth.user.name}!</p>}
         <Login />
       </div>
     </AuthContext.Provider>
@@ -133,9 +111,9 @@ function Login() {
 
   if (user) return (
     <div class="logged-in">
-      Logged in as {user.name}.
+      Đã đăng nhập với tên {user.name}.
       <button onClick={() => setUser(null)}>
-        Log Out
+        Đăng xuất
       </button>
     </div>
   )
@@ -143,29 +121,23 @@ function Login() {
   return (
     <div class="logged-out">
       <button onClick={() => setUser({ name: 'Bob' })}>
-        Log In
+        Đăng nhập
       </button>
     </div>
   )
 }
 ```
 
-### Nested context
+### Context lồng nhau
 
-Context has a hidden superpower that becomes quite useful in large applications:
-context providers can be nested to "override" their value within a Virtual DOM
-subtree. Imagine a web-based email app, where various parts of the user interface
-are shown based on URL paths:
+Context có một siêu năng lực ẩn rất hữu ích trong các ứng dụng lớn: các provider context có thể được lồng nhau để "ghi đè" giá trị của chúng trong một cây con Virtual DOM. Hãy tưởng tượng một ứng dụng email trên web, nơi các phần khác nhau của giao diện người dùng được hiển thị dựa trên đường dẫn URL:
 
-> - `/inbox`: show the inbox
-> - `/inbox/compose`: show inbox and a new message
-> - `/settings`: show settings
-> - `/settings/forwarding`: show forwarding settings
+> - `/inbox`: hiển thị hộp thư đến
+> - `/inbox/compose`: hiển thị hộp thư đến và một tin nhắn mới
+> - `/settings`: hiển thị cài đặt
+> - `/settings/forwarding`: hiển thị cài đặt chuyển tiếp
 
-We can create a `<Route path="..">` component that renders a Virtual DOM tree
-only when the current path matches a given path segment. To simplify defining
-nested Routes, each matched Route can override the "current path" context value
-within its subtree to exclude the part of the path that was matched.
+Chúng ta có thể tạo một thành phần `<Route path="..">` để render một cây Virtual DOM chỉ khi đường dẫn hiện tại khớp với một đoạn đường dẫn nhất định. Để đơn giản hóa việc định nghĩa các Route lồng nhau, mỗi Route khớp sẽ ghi đè giá trị context "current path" trong cây con của nó để loại bỏ phần đường dẫn đã khớp.
 
 ```jsx
 import { createContext } from 'preact'
@@ -174,7 +146,7 @@ import { useContext } from 'preact/hooks'
 const Path = createContext(location.pathname)
 
 function Route(props) {
-  const path = useContext(Path) // the current path
+  const path = useContext(Path) // đường dẫn hiện tại
   const isMatch = path.startsWith(props.path)
   const innerPath = path.substring(props.path.length)
   return isMatch && (
@@ -185,9 +157,7 @@ function Route(props) {
 }
 ```
 
-Now we can use this new `Route` component to define the email app's interface.
-Notice how the `Inbox` component doesn't need to know its own path in order
-to define `<Route path="..">` matching for its children:
+Bây giờ chúng ta có thể sử dụng thành phần `Route` mới này để định nghĩa giao diện ứng dụng email. Lưu ý rằng thành phần `Inbox` không cần biết đường dẫn của chính nó để định nghĩa `<Route path="..">` cho các con của nó:
 
 ```jsx
 export default function App() {
@@ -217,7 +187,7 @@ function Inbox() {
 function Settings() {
   return (
     <div class="settings">
-      <h1>Settings</h1>
+      <h1>Cài đặt</h1>
       <Route path="/forwarding">
         <Forwarding />
       </Route>
@@ -226,18 +196,13 @@ function Settings() {
 }
 ```
 
-### The default context value
+### Giá trị mặc định của context
 
-Nested context is a powerful feature, and we often use it without realizing.
-For example, in the very first illustrative example of this chapter, we used
-`<Provider value="Bob">` to define a `Username` context value within the tree.
+Context lồng nhau là một tính năng mạnh mẽ, và chúng ta thường sử dụng nó mà không nhận ra. Ví dụ, trong ví dụ minh họa đầu tiên của chương này, chúng ta dùng `<Provider value="Bob">` để định nghĩa giá trị context `Username` trong cây.
 
-However, this was actually overriding the default value of the `Username`
-context. All contexts have a default value, which is whatever value was
-passed as the first argument to `createContext()`. In the example, we didn't pass any arguments to `createContext`, so the default value was `undefined`.
+Tuy nhiên, điều này thực ra đã ghi đè giá trị mặc định của context `Username`. Mọi context đều có một giá trị mặc định, là giá trị được truyền làm đối số đầu tiên cho `createContext()`. Trong ví dụ, chúng ta không truyền đối số nào cho `createContext`, nên giá trị mặc định là `undefined`.
 
-Here's what the first example would have looked like using the default context
-value instead of a Provider:
+Dưới đây là ví dụ đầu tiên nếu dùng giá trị mặc định của context thay vì Provider:
 
 ```jsx
 import { createContext } from 'preact'
@@ -246,26 +211,19 @@ import { useContext } from 'preact/hooks'
 const Username = createContext('Bob')
 
 export default function App() {
-  const username = useContext(Username) // returns "Bob"
+  const username = useContext(Username) // trả về "Bob"
 
   return <span>{username}</span>
 }
 ```
 
+## Thực hành!
 
-## Try it!
-
-As an exercise, let's create a _synchronized_ version of the counter we
-created in the previous chapter. To do this, you'll want to use the
-`useMemo()` technique from the authentication example in this chapter.
-Alternatively, you could also define _two_ contexts: one to share the
-`count` value, and another to share an `increment` function that
-updates the value.
-
+Là một bài tập, hãy tạo một phiên bản _đồng bộ_ của bộ đếm mà chúng ta đã tạo ở chương trước. Để làm điều này, bạn sẽ muốn sử dụng kỹ thuật `useMemo()` từ ví dụ xác thực trong chương này. Ngoài ra, bạn cũng có thể định nghĩa _hai_ context: một để chia sẻ giá trị `count`, và một để chia sẻ hàm `increment` để cập nhật giá trị đó.
 
 <solution>
-  <h4>🎉 Congratulations!</h4>
-  <p>You learned how to use context in Preact.</p>
+  <h4>🎉 Chúc mừng!</h4>
+  <p>Bạn đã học cách sử dụng context trong Preact.</p>
 </solution>
 
 
@@ -289,7 +247,7 @@ useResult(function (result) {
   if (getCounts().length !== 3) {
     console.warn('It looks like you haven\'t initialized the `count` value to 0.');
   }
-  
+
   var timer;
   var count = 0;
   var options = require('preact').options;
