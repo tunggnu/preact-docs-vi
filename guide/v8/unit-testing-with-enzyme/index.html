@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Unit Testing with Enzyme – Preact Version 8</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="Testing Preact applications made easy with enzyme">
+<meta property="og:url" content="https://preactjs.com/guide/v8/unit-testing-with-enzyme">
+<meta property="og:title" content="Unit Testing with Enzyme – Preact Version 8">
+<meta property="og:description" content="Testing Preact applications made easy with enzyme">
+<meta name="robots" content="noindex"></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_1a7q2_90">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div data-open="false" class="_wrapper_t9oa6_1"><button value="sidebar" class="_toggle_t9oa6_6">Guide</button><aside class="_sidebar_t9oa6_58"><div class="_sidebarInner_t9oa6_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v10">10.x (current)</option><option selected value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><a href="/guide/v8/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v8/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a><a href="/guide/v8/switching-to-preact" class="_link_1ttwe_16  ">Switching to Preact</a><a href="/guide/v8/types-of-components" class="_link_1ttwe_16  ">Types of Components</a><a href="/guide/v8/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v8/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v8/linked-state" class="_link_1ttwe_16  ">Linked State</a><a href="/guide/v8/external-dom-mutations" class="_link_1ttwe_16  ">External DOM Mutations</a><a href="/guide/v8/extending-component" class="_link_1ttwe_16  ">Extending Component</a><a href="/guide/v8/unit-testing-with-enzyme" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Unit Testing with Enzyme</a><a href="/guide/v8/progressive-web-apps" class="_link_1ttwe_16  ">Progressive Web Apps</a></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_stickyWarning_sqynl_71">You are viewing the documentation for an older version of Preact. Switch to the <a href="/guide/v10/unit-testing-with-enzyme">current version</a>.</div><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v8/unit-testing-with-enzyme.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><content-region name="/guide/v8/unit-testing-with-enzyme" data-page-nav="false" can-edit><div class="markup"><h1>Unit Testing with Enzyme</h1><p>Airbnb's <a href="https://airbnb.io/enzyme/" target="_blank" rel="noopener noreferrer">Enzyme</a> is a library for writing
+tests for React components. It supports different versions of React and
+React-like libraries using &quot;adapters&quot;. There is an adapter for Preact,
+maintained by the Preact team.</p>
+<p>Enzyme supports tests that run in a normal or headless browser using a tool
+such as <a href="http://karma-runner.github.io/latest/index.html" target="_blank" rel="noopener noreferrer">Karma</a> or tests that
+run in Node using <a href="https://github.com/jsdom/jsdom" target="_blank" rel="noopener noreferrer">jsdom</a> as a fake
+implementation of browser APIs.</p>
+<p>For a detailed introduction to using Enzyme and an API reference, see the
+<a href="https://airbnb.io/enzyme/" target="_blank" rel="noopener noreferrer">Enzyme documentation</a>. The remainder of this guide
+explains how to set Enzyme up with Preact, as well as ways in which Enzyme with
+Preact differs from Enzyme with React.</p>
+<hr>
+<nav><ul><li><a href="#installation">Installation</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#example">Example</a></li><li><a href="#how-enzyme-works">How Enzyme works</a></li><li><a href="#full-shallow-and-string-rendering">Full, shallow and string rendering</a></li><li><a href="#triggering-state-updates">Triggering state updates</a></li><li><a href="#differences-from-enzyme-with-react">Differences from Enzyme with React</a></li></ul></nav><hr>
+
+				<h2 id="installation">
+					<a href="#installation" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Installation (#installation)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Installation</span>
+				</h2><p>Install Enzyme and the Preact adapter using:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev enzyme enzyme-adapter-preact-pure</code></pre>
+					
+				</div>
+			
+				<h2 id="configuration">
+					<a href="#configuration" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Configuration (#configuration)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Configuration</span>
+				</h2><p>In your test setup code, you'll need to configure Enzyme to use the Preact
+adapter:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> configure <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'enzyme'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Adapter <span class="token keyword">from</span> <span class="token string">'enzyme-adapter-preact-pure'</span><span class="token punctuation">;</span>
+
+<span class="token function">configure</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">adapter</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Adapter</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>For guidance on using Enzyme with different test runners, see the
+<a href="https://airbnb.io/enzyme/docs/guides.html" target="_blank" rel="noopener noreferrer">Guides</a> section of the Enzyme
+documentation.</p>
+
+				<h2 id="example">
+					<a href="#example" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Example (#example)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Example</span>
+				</h2><p>Suppose we have a simple <code>Counter</code> component which displays an initial value,
+with a button to update it:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> h <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">count</span><span class="token operator">:</span> props<span class="token punctuation">.</span>initialCount<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">increment</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> count <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">count</span><span class="token operator">:</span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">></span>
+        Current value<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>increment<span class="token punctuation">}</span><span class="token operator">></span>Increment<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>Using a test runner such as mocha or Jest, you can write a test to check that
+it works as expected:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'chai'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> h <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> mount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'enzyme'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">'../src/Counter'</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'Counter'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should display initial count'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">mount</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Counter initialCount<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'Current value: 5'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should increment after &quot;Increment&quot; button is clicked'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">mount</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Counter initialCount<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    wrapper<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">simulate</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'Current value: 6'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>For a runnable version of this project and other examples, see the
+<a href="https://github.com/preactjs/enzyme-adapter-preact-pure/blob/master/README.md#example-projects" target="_blank" rel="noopener noreferrer">examples/</a>
+directory in the Preact adapter's repository.</p>
+
+				<h2 id="how-enzyme-works">
+					<a href="#how-enzyme-works" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: How Enzyme works (#how-enzyme-works)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>How Enzyme works</span>
+				</h2><p>Enzyme uses the adapter library it has been configured with to render a
+component and its children. The adapter then converts the output to a
+standardized internal representation (a &quot;React Standard Tree&quot;). Enzyme then wraps
+this with an object that has methods to query the output and trigger updates.
+The wrapper object's API uses CSS-like
+<a href="https://airbnb.io/enzyme/docs/api/selector.html" target="_blank" rel="noopener noreferrer">selectors</a> to locate parts of
+the output.</p>
+
+				<h2 id="full-shallow-and-string-rendering">
+					<a href="#full-shallow-and-string-rendering" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Full, shallow and string rendering (#full-shallow-and-string-rendering)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Full, shallow and string rendering</span>
+				</h2><p>Enzyme has three rendering &quot;modes&quot;:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> mount<span class="token punctuation">,</span> shallow<span class="token punctuation">,</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'enzyme'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Render the full component tree:</span>
+<span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">mount</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>MyComponent prop<span class="token operator">=</span><span class="token string">&quot;value&quot;</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Render only `MyComponent`'s direct output (ie. &quot;mock&quot; child components</span>
+<span class="token comment">// to render only as placeholders):</span>
+<span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">shallow</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>MyComponent prop<span class="token operator">=</span><span class="token string">&quot;value&quot;</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Render the full component tree to an HTML string, and parse the result:</span>
+<span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>MyComponent prop<span class="token operator">=</span><span class="token string">&quot;value&quot;</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<ul>
+<li><p>The <code>mount</code> function renders the component and all of its descendants in the
+same way they would be rendered in the browser.</p>
+</li>
+<li><p>The <code>shallow</code> function renders only the DOM nodes that are directly output
+by the component. Any child components are replaced with placeholders that
+output just their children.</p>
+<p>The advantage of this mode is that you can write tests for components without
+depending on the details of child components and needing to construct all
+of their dependencies.</p>
+<p>The <code>shallow</code> rendering mode works differently internally with the Preact
+adapter compared to React. See the Differences section below for details.</p>
+</li>
+<li><p>The <code>render</code> function (not to be confused with Preact's <code>render</code> function!)
+renders a component to an HTML string. This is useful for testing the output
+of rendering on the server.</p>
+</li>
+</ul>
+
+				<h2 id="triggering-state-updates">
+					<a href="#triggering-state-updates" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Triggering state updates (#triggering-state-updates)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Triggering state updates</span>
+				</h2><p>In the previous example, <code>.simulate('click')</code> was used to click on a button.</p>
+<p>Enzyme knows that calls to <code>simulate</code> are likely to change the state of a
+component, so it will apply any state updates immediately before <code>simulate</code>
+returns.  Enzyme does the same when the component is rendered initially using
+<code>mount</code> or <code>shallow</code> and when a component is updated using <code>setProps</code>.</p>
+<p>If however an event happens outside of an Enzyme method call, such as directly
+calling an event handler (eg. the button's <code>onClick</code> prop), then Enzyme will not
+be aware of the change. In this case, your test will need to trigger execution
+of state updates and then ask Enzyme to refresh its view of the
+output.</p>
+<p>Calling an Enzyme wrapper's <code>.update()</code> method will apply any pending state
+updates to Preact components and refresh Enzyme's view of the rendered output.</p>
+<p>For example, here is a different version of the test for incrementing the
+counter, modified to call the button's <code>onClick</code> prop directly, instead of going
+through the <code>simulate</code> method:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should increment after &quot;Increment&quot; button is clicked'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">mount</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Counter initialCount<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> onClick <span class="token operator">=</span> wrapper<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">props</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onClick<span class="token punctuation">;</span>
+
+    <span class="token comment">// Invoke the button's click handler, but this time directly, instead of</span>
+    <span class="token comment">// via an Enzyme API</span>
+    <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Refresh Enzyme's view of the output</span>
+    wrapper<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span><span class="token function">include</span><span class="token punctuation">(</span><span class="token string">'Current value: 6'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			
+				<h2 id="differences-from-enzyme-with-react">
+					<a href="#differences-from-enzyme-with-react" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Differences from Enzyme with React (#differences-from-enzyme-with-react)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Differences from Enzyme with React</span>
+				</h2><p>The general intent is that tests written using Enzyme + React can be easily made
+to work with Enzyme + Preact or vice-versa. This avoids the need to rewrite all
+of your tests if you need to switch a component initially written for Preact
+to work with React or vice-versa.</p>
+<p>However there are some differences in behavior between this adapter and Enzyme's
+React adapters to be aware of:</p>
+<ul>
+<li>The &quot;shallow&quot; rendering mode works differently under the hood. It is
+consistent with React in only rendering a component &quot;one level deep&quot; but,
+unlike React, it creates real DOM nodes. It also runs all of the normal
+lifecycle hooks.</li>
+<li>The <code>simulate</code> method dispatches actual DOM events, whereas in the React
+adapters, <code>simulate</code> just calls the <code>on&lt;EventName></code> prop</li>
+<li>In Preact, state updates (eg. after a call to <code>setState</code>) are batched together
+and applied asynchronously. In React state updates can be applied immediately
+or batched depending on the context. To make writing tests easier, the
+Preact adapter flushes state updates after initial renders and
+updates triggered via <code>setProps</code> or <code>simulate</code> calls on an adapter. When
+state updates are triggered by other means, your test code may need to manually
+call <code>.update()</code> to flush pending state updates.</li>
+</ul>
+<p>For further details, see <a href="https://github.com/preactjs/enzyme-adapter-preact-pure#differences-compared-to-enzyme--react" target="_blank" rel="noopener noreferrer">the Preact adapter's
+README</a>.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/guybedford" target="_blank" rel="noopener noreferrer">@guybedford</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

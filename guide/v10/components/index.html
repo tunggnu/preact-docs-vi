@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Components – Preact Guide</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="Components are the heart of any Preact application. Learn how to create them and use them to compose UIs together">
+<meta property="og:url" content="https://preactjs.com/guide/v10/components">
+<meta property="og:title" content="Components – Preact Guide">
+<meta property="og:description" content="Components are the heart of any Preact application. Learn how to create them and use them to compose UIs together"></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_1a7q2_90">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div data-open="false" class="_wrapper_t9oa6_1"><button value="sidebar" class="_toggle_t9oa6_6">Guide</button><aside class="_sidebar_t9oa6_58"><div class="_sidebarInner_t9oa6_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/tutorial" class="_link_1ttwe_16  ">Tutorial</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">React compatibility</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a><a href="/guide/v10/switching-to-preact" class="_link_1ttwe_16  ">Switching to Preact</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/components.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><content-region name="/guide/v10/components" data-page-nav="false" can-edit><div class="markup"><h1>Components</h1><p>Components represent the basic building block in Preact. They are fundamental in making it easy to build complex UIs from little building blocks. They're also responsible for attaching state to our rendered output.</p>
+<p>There are two kinds of components in Preact, which we'll talk about in this guide.</p>
+<hr>
+<nav><ul><li><a href="#functional-components">Functional Components</a></li><li><a href="#class-components">Class Components</a><ul><li><a href="#lifecycle-methods">Lifecycle Methods</a></li><li><a href="#error-boundaries">Error Boundaries</a></li></ul></li><li><a href="#fragments">Fragments</a></li></ul></nav><hr>
+
+				<h2 id="functional-components">
+					<a href="#functional-components" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Functional Components (#functional-components)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Functional Components</span>
+				</h2><p>Functional components are plain functions that receive <code>props</code> as the first argument. The function name <strong>must</strong> start with an uppercase letter in order for them to work in JSX.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">My name is </span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token plain-text">.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Usage</span>
+<span class="token keyword">const</span> App <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyComponent</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>John Doe<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+
+<span class="token comment">// Renders: &lt;div>My name is John Doe.&lt;/div></span>
+<span class="token function">render</span><span class="token punctuation">(</span>App<span class="token punctuation">,</span> document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKCgpmdW5jdGlvbiBNeUNvbXBvbmVudChwcm9wcykgewogIHJldHVybiA8ZGl2Pk15IG5hbWUgaXMge3Byb3BzLm5hbWV9LjwvZGl2PjsKfQoKLy8gVXNhZ2UKY29uc3QgQXBwID0gPE15Q29tcG9uZW50IG5hbWU9IkpvaG4gRG9lIiAvPjsKCi8vIFJlbmRlcnM6IDxkaXY%2BTXkgbmFtZSBpcyBKb2huIERvZS48L2Rpdj4KcmVuZGVyKEFwcCwgZG9jdW1lbnQuYm9keSk7" class="repl-link">Run in REPL</a>
+				</div>
+			<blockquote>
+<p>Note in earlier versions they were known as <code>&quot;Stateless Components&quot;</code>. This doesn't hold true anymore with the <a href="/guide/v10/hooks">hooks-addon</a>.</p>
+</blockquote>
+
+				<h2 id="class-components">
+					<a href="#class-components" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Class Components (#class-components)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Class Components</span>
+				</h2><p>Class components can have state and lifecycle methods. The latter are special methods, that will be called when a component is attached to the DOM or destroyed for example.</p>
+<p>Here we have a simple class component called <code>&lt;Clock></code> that displays the current time:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">Clock</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">time</span><span class="token operator">:</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Lifecycle: Called whenever our component is created</span>
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// update time every second</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">time</span><span class="token operator">:</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Lifecycle: Called just before our component will be destroyed</span>
+  <span class="token function">componentWillUnmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// stop when not renderable</span>
+    <span class="token function">clearInterval</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>time<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>time<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgQ29tcG9uZW50LCByZW5kZXIgfSBmcm9tICdwcmVhY3QnOwoKCmNsYXNzIENsb2NrIGV4dGVuZHMgQ29tcG9uZW50IHsKCiAgY29uc3RydWN0b3IoKSB7CiAgICBzdXBlcigpOwogICAgdGhpcy5zdGF0ZSA9IHsgdGltZTogRGF0ZS5ub3coKSB9OwogIH0KCiAgLy8gTGlmZWN5Y2xlOiBDYWxsZWQgd2hlbmV2ZXIgb3VyIGNvbXBvbmVudCBpcyBjcmVhdGVkCiAgY29tcG9uZW50RGlkTW91bnQoKSB7CiAgICAvLyB1cGRhdGUgdGltZSBldmVyeSBzZWNvbmQKICAgIHRoaXMudGltZXIgPSBzZXRJbnRlcnZhbCgoKSA9PiB7CiAgICAgIHRoaXMuc2V0U3RhdGUoeyB0aW1lOiBEYXRlLm5vdygpIH0pOwogICAgfSwgMTAwMCk7CiAgfQoKICAvLyBMaWZlY3ljbGU6IENhbGxlZCBqdXN0IGJlZm9yZSBvdXIgY29tcG9uZW50IHdpbGwgYmUgZGVzdHJveWVkCiAgY29tcG9uZW50V2lsbFVubW91bnQoKSB7CiAgICAvLyBzdG9wIHdoZW4gbm90IHJlbmRlcmFibGUKICAgIGNsZWFySW50ZXJ2YWwodGhpcy50aW1lcik7CiAgfQoKICByZW5kZXIoKSB7CiAgICBsZXQgdGltZSA9IG5ldyBEYXRlKHRoaXMuc3RhdGUudGltZSkudG9Mb2NhbGVUaW1lU3RyaW5nKCk7CiAgICByZXR1cm4gPHNwYW4%2Be3RpbWV9PC9zcGFuPjsKICB9Cn0KCnJlbmRlcig8Q2xvY2sgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7Cg%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			
+				<h3 id="lifecycle-methods">
+					<a href="#lifecycle-methods" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Lifecycle Methods (#lifecycle-methods)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Lifecycle Methods</span>
+				</h3><p>In order to have the clock's time update every second, we need to know when <code>&lt;Clock></code> gets mounted to the DOM. <em>If you've used HTML5 Custom Elements, this is similar to the <code>attachedCallback</code> and <code>detachedCallback</code> lifecycle methods.</em> Preact invokes the following lifecycle methods if they are defined for a Component:</p>
+<table>
+<thead>
+<tr>
+<th>Lifecycle method</th>
+<th>When it gets called</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>componentWillMount()</code></td>
+<td>(deprecated) before the component gets mounted to the DOM</td>
+</tr>
+<tr>
+<td><code>componentDidMount()</code></td>
+<td>after the component gets mounted to the DOM</td>
+</tr>
+<tr>
+<td><code>componentWillUnmount()</code></td>
+<td>prior to removal from the DOM</td>
+</tr>
+<tr>
+<td><code>componentWillReceiveProps(nextProps, nextContext)</code></td>
+<td>before new props get accepted <em>(deprecated)</em></td>
+</tr>
+<tr>
+<td><code>getDerivedStateFromProps(nextProps, prevState)</code></td>
+<td>just before <code>shouldComponentUpdate</code>. Return object to update state or <code>null</code> to skip update. Use with care.</td>
+</tr>
+<tr>
+<td><code>shouldComponentUpdate(nextProps, nextState, nextContext)</code></td>
+<td>before <code>render()</code>. Return <code>false</code> to skip render</td>
+</tr>
+<tr>
+<td><code>componentWillUpdate(nextProps, nextState, nextContext)</code></td>
+<td>before <code>render()</code> <em>(deprecated)</em></td>
+</tr>
+<tr>
+<td><code>getSnapshotBeforeUpdate(prevProps, prevState)</code></td>
+<td>called just before <code>render()</code>. return value is passed to <code>componentDidUpdate</code>.</td>
+</tr>
+<tr>
+<td><code>componentDidUpdate(prevProps, prevState, snapshot)</code></td>
+<td>after <code>render()</code></td>
+</tr>
+</tbody></table>
+<p>Here's a visual overview of how they relate to each other (originally posted in <a href="https://web.archive.org/web/20191118010106/https://twitter.com/dan_abramov/status/981712092611989509" target="_blank" rel="noopener noreferrer">a tweet</a> by Dan Abramov):</p>
+<p><img decoding="async" src="/guide/components-lifecycle-diagram.png" alt="Diagram of component lifecycle methods"></p>
+
+				<h3 id="error-boundaries">
+					<a href="#error-boundaries" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Error Boundaries (#error-boundaries)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Error Boundaries</span>
+				</h3><p>An error boundary is a component that implements either <code>componentDidCatch()</code> or the static method <code>getDerivedStateFromError()</code> (or both). These are special methods that allow you to catch any errors that happen during rendering and are typically used to provide nicer error messages or other fallback content and save information for logging purposes. It's important to note that error boundaries cannot catch all errors and those thrown in event handlers or asynchronous code (like a <code>fetch()</code> call) need to be handled separately.</p>
+<p>When an error is caught, we can use these methods to react to any errors and display a nice error message or any other fallback content.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">ErrorBoundary</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">errored</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">static</span> <span class="token function">getDerivedStateFromError</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">errored</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">componentDidCatch</span><span class="token punctuation">(</span><span class="token parameter">error<span class="token punctuation">,</span> errorInfo</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">errorReportingService</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> errorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">props<span class="token punctuation">,</span> state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>errored<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Something went badly wrong</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> props<span class="token punctuation">.</span>children<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgQ29tcG9uZW50LCByZW5kZXIgfSBmcm9tICdwcmVhY3QnOwoKY2xhc3MgRXJyb3JCb3VuZGFyeSBleHRlbmRzIENvbXBvbmVudCB7CiAgY29uc3RydWN0b3IoKSB7CiAgICBzdXBlcigpOwogICAgdGhpcy5zdGF0ZSA9IHsgZXJyb3JlZDogZmFsc2UgfTsKICB9CgogIHN0YXRpYyBnZXREZXJpdmVkU3RhdGVGcm9tRXJyb3IoZXJyb3IpIHsKICAgIHJldHVybiB7IGVycm9yZWQ6IHRydWUgfTsKICB9CgogIGNvbXBvbmVudERpZENhdGNoKGVycm9yLCBlcnJvckluZm8pIHsKICAgIGVycm9yUmVwb3J0aW5nU2VydmljZShlcnJvciwgZXJyb3JJbmZvKTsKICB9CgogIHJlbmRlcihwcm9wcywgc3RhdGUpIHsKICAgIGlmIChzdGF0ZS5lcnJvcmVkKSB7CiAgICAgIHJldHVybiA8cD5Tb21ldGhpbmcgd2VudCBiYWRseSB3cm9uZzwvcD47CiAgICB9CiAgICByZXR1cm4gcHJvcHMuY2hpbGRyZW47CiAgfQp9CgpyZW5kZXIoPEVycm9yQm91bmRhcnkgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKSk7Cg%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			
+				<h2 id="fragments">
+					<a href="#fragments" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Fragments (#fragments)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Fragments</span>
+				</h2><p>A <code>Fragment</code> allows you to return multiple elements at once. They solve the limitation of JSX where every &quot;block&quot; must have a single root element. You'll often encounter them in combination with lists, tables or with CSS flexbox where any intermediate element would otherwise affect styling.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> Fragment<span class="token punctuation">,</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">TodoItems</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Fragment</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">A</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">B</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">C</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Fragment</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> App <span class="token operator">=</span> <span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TodoItems</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">D</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">render</span><span class="token punctuation">(</span>App<span class="token punctuation">,</span> container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Renders:</span>
+<span class="token comment">// &lt;ul></span>
+<span class="token comment">//   &lt;li>A&lt;/li></span>
+<span class="token comment">//   &lt;li>B&lt;/li></span>
+<span class="token comment">//   &lt;li>C&lt;/li></span>
+<span class="token comment">//   &lt;li>D&lt;/li></span>
+<span class="token comment">// &lt;/ul></span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgRnJhZ21lbnQsIHJlbmRlciB9IGZyb20gJ3ByZWFjdCc7CgpmdW5jdGlvbiBUb2RvSXRlbXMoKSB7CiAgcmV0dXJuICgKICAgIDxGcmFnbWVudD4KICAgICAgPGxpPkE8L2xpPgogICAgICA8bGk%2BQjwvbGk%2BCiAgICAgIDxsaT5DPC9saT4KICAgIDwvRnJhZ21lbnQ%2BCiAgKQp9Cgpjb25zdCBBcHAgPSAoCiAgPHVsPgogICAgPFRvZG9JdGVtcyAvPgogICAgPGxpPkQ8L2xpPgogIDwvdWw%2BCik7CgpyZW5kZXIoQXBwLCBjb250YWluZXIpOwovLyBSZW5kZXJzOgovLyA8dWw%2BCi8vICAgPGxpPkE8L2xpPgovLyAgIDxsaT5CPC9saT4KLy8gICA8bGk%2BQzwvbGk%2BCi8vICAgPGxpPkQ8L2xpPgovLyA8L3VsPg%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>Note that most modern transpilers allow you to use a shorter syntax for <code>Fragments</code>. The shorter one is a lot more common and is the one you'll typically encounter.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// This:</span>
+<span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Fragment</span></span><span class="token punctuation">></span></span><span class="token plain-text">foo</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Fragment</span></span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token comment">// ...is the same as this:</span>
+<span class="token keyword">const</span> Bar <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">foo</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>You can also return arrays from your components:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">Columns</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token plain-text">Hello</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token punctuation">,</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token plain-text">World</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>Don't forget to add keys to <code>Fragments</code> if you create them in a loop:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">Glossary</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+        <span class="token comment">// Without a key, Preact has to guess which elements have</span>
+        <span class="token comment">// changed when re-rendering.</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Fragment</span></span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>term<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>description<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Fragment</span></span><span class="token punctuation">></span></span>
+      <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/jamesb3ll" target="_blank" rel="noopener noreferrer">@jamesb3ll</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

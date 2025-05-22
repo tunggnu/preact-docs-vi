@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Signal Boosting – Preact</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="">
+<meta property="og:url" content="https://preactjs.com/blog/signal-boosting">
+<meta property="og:title" content="Signal Boosting – Preact">
+<meta property="og:description" content=""></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1"><div class="_outer_sqynl_111"><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/blog/signal-boosting.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><div class="_blogMeta_eutpc_1"><time datetime="2022-09-24T00:00:00.000Z" class="_time_5644u_1">9/24/2022</time>, written by <address class="_authors_eutpc_9"><span><a href="https://jviide.iki.fi" target="_blank" rel="noopener noreferrer">Joachim Viide</a></span></address></div><content-region name="/blog/signal-boosting" data-page-nav="false" can-edit><div class="markup"><h1>Signal Boosting</h1><p>The new release of Preact Signals brings significant performance updates to the foundations of the reactive system. Read on to learn what kinds of tricks we employed to make this happen.</p>
+<p>We recently <a href="https://twitter.com/jviide/status/1572570215350964224" target="_blank" rel="noopener noreferrer">announced</a> new versions of the Preact Signals packages:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/@preact/signals-core" target="_blank" rel="noopener noreferrer">@preact/signals-core</a> 1.2.0 for the shared core functionality</li>
+<li><a href="https://www.npmjs.com/package/@preact/signals" target="_blank" rel="noopener noreferrer">@preact/signals</a> 1.1.0 for the Preact bindings</li>
+<li><a href="https://www.npmjs.com/package/@preact/signals-react" target="_blank" rel="noopener noreferrer">@preact/signals-react</a> 1.1.0 for the React bindings</li>
+</ul>
+<p>This post will outline the steps that we took to optimize <strong>@preact/signals-core</strong>. It's the package that acts as a base for the framework specific bindings, but can also be used independently.</p>
+<p>Signals are the Preact team's take on reactive programming. If you want a gentle introduction on what Signals are all about and how they tie in with Preact, <a href="/blog/introducing-signals">the Signals announcement blog post</a> has got you covered. For a deeper dive check out the <a href="/guide/v10/signals">official documentation</a>.</p>
+<p>It should be noted that none of these concepts are invented by us. Reactive programming has quite a history, and has already been popularized widely in the JavaScript world by <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">Vue.js</a>, <a href="https://svelte.dev/" target="_blank" rel="noopener noreferrer">Svelte</a>, <a href="https://www.solidjs.com/" target="_blank" rel="noopener noreferrer">SolidJS</a>, <a href="https://rxjs.dev/" target="_blank" rel="noopener noreferrer">RxJS</a> and too many others to name. Kudos to all of them!</p>
+
+				<h2 id="a-whirlwind-tour-of-the-signals-core">
+					<a href="#a-whirlwind-tour-of-the-signals-core" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: A Whirlwind Tour of the Signals Core (#a-whirlwind-tour-of-the-signals-core)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>A Whirlwind Tour of the Signals Core</span>
+				</h2><p>Let's start with an overview of the fundamental features in the <strong>@preact/signals-core</strong> package.</p>
+<p>The code snippets below use functions imported from the package. The import statements are shown only when a new function is brought into the mix.</p>
+
+				<h3 id="signals">
+					<a href="#signals" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Signals (#signals)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Signals</span>
+				</h3><p>Plain <em>signals</em> are the fundamental root values which our reactive system is based on. Other libraries might call them, for example, &quot;observables&quot; (<a href="https://mobx.js.org/observable-state.html" target="_blank" rel="noopener noreferrer">MobX</a>, <a href="https://rxjs.dev/guide/observable" target="_blank" rel="noopener noreferrer">RxJS</a>) or &quot;refs&quot; (<a href="https://vuejs.org/guide/extras/reactivity-in-depth.html#how-reactivity-works-in-vue" target="_blank" rel="noopener noreferrer">Vue</a>). The Preact team adopted the term &quot;signal&quot; used by <a href="https://www.solidjs.com/tutorial/introduction_signals" target="_blank" rel="noopener noreferrer">SolidJS</a>.</p>
+<p>Signals represent arbitrary JavaScript values wrapped into a reactive shell. You provide a signal with an initial value, and can later read and update it as you go.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@preact/signals-core&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: 0</span>
+
+s<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: 1</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsIH0gZnJvbSAiQHByZWFjdC9zaWduYWxzLWNvcmUiOwoKY29uc3QgcyA9IHNpZ25hbCgwKTsKY29uc29sZS5sb2cocy52YWx1ZSk7IC8vIENvbnNvbGU6IDAKCnMudmFsdWUgPSAxOwpjb25zb2xlLmxvZyhzLnZhbHVlKTsgLy8gQ29uc29sZTogMQ%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>By themselves signals are not terribly interesting until combined with the two other primitives, <em>computed signals</em> and <em>effects</em>.</p>
+
+				<h3 id="computed-signals">
+					<a href="#computed-signals" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Computed Signals (#computed-signals)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Computed Signals</span>
+				</h3><p><em>Computed signals</em> derive new values from other signals using <em>compute functions</em>.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@preact/signals-core&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> s1 <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> s2 <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">&quot;World&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> s1<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token string">&quot; &quot;</span> <span class="token operator">+</span> s2<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCB9IGZyb20gIkBwcmVhY3Qvc2lnbmFscy1jb3JlIjsKCmNvbnN0IHMxID0gc2lnbmFsKCJIZWxsbyIpOwpjb25zdCBzMiA9IHNpZ25hbCgiV29ybGQiKTsKCmNvbnN0IGMgPSBjb21wdXRlZCgoKSA9PiB7CiAgcmV0dXJuIHMxLnZhbHVlICsgIiAiICsgczIudmFsdWU7Cn0pOw%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>The compute function given to <code>computed(...)</code> won't run immediately. That's because computed signals are evaluated <em>lazily</em>, i.e. when their values are read.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: Hello World</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCB9IGZyb20gIkBwcmVhY3Qvc2lnbmFscy1jb3JlIjsKCmNvbnN0IHMxID0gc2lnbmFsKCJIZWxsbyIpOwpjb25zdCBzMiA9IHNpZ25hbCgiV29ybGQiKTsKCmNvbnN0IGMgPSBjb21wdXRlZCgoKSA9PiB7CiAgcmV0dXJuIHMxLnZhbHVlICsgIiAiICsgczIudmFsdWU7Cn0pOwoKY29uc29sZS5sb2coYy52YWx1ZSk7IC8vIENvbnNvbGU6IEhlbGxvIFdvcmxk" class="repl-link">Run in REPL</a>
+				</div>
+			<p>Computed values are also <em>cached</em>. Their compute functions can potentially be very expensive, so we want to rerun them only when it matters. A running compute function tracks which signal values are actually read during its run. If none of the values have changed, then we can skip recomputation. In the above example, we can just reuse the previously calculated <code>c.value</code> indefinitely as long as both <code>a.value</code> and <code>b.value</code> stay the same. Facilitating this <em>dependency tracking</em> is the reason why we need to wrap the primitive values into signals in the first place.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// s1 and s2 haven't changed, no recomputation here</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: Hello World</span>
+
+s2<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;darkness my old friend&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// s2 has changed, so the computation function runs again</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: Hello darkness my old friend</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCB9IGZyb20gIkBwcmVhY3Qvc2lnbmFscy1jb3JlIjsKCmNvbnN0IHMxID0gc2lnbmFsKCJIZWxsbyIpOwpjb25zdCBzMiA9IHNpZ25hbCgiV29ybGQiKTsKCmNvbnN0IGMgPSBjb21wdXRlZCgoKSA9PiB7CiAgcmV0dXJuIHMxLnZhbHVlICsgIiAiICsgczIudmFsdWU7Cn0pOwoKY29uc29sZS5sb2coYy52YWx1ZSk7IC8vIENvbnNvbGU6IEhlbGxvIFdvcmxkCgovLyBzMSBhbmQgczIgaGF2ZW4ndCBjaGFuZ2VkLCBubyByZWNvbXB1dGF0aW9uIGhlcmUKY29uc29sZS5sb2coYy52YWx1ZSk7IC8vIENvbnNvbGU6IEhlbGxvIFdvcmxkCgpzMi52YWx1ZSA9ICJkYXJrbmVzcyBteSBvbGQgZnJpZW5kIjsKCi8vIHMyIGhhcyBjaGFuZ2VkLCBzbyB0aGUgY29tcHV0YXRpb24gZnVuY3Rpb24gcnVucyBhZ2Fpbgpjb25zb2xlLmxvZyhjLnZhbHVlKTsgLy8gQ29uc29sZTogSGVsbG8gZGFya25lc3MgbXkgb2xkIGZyaWVuZA%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>As it happens, computed signals are themselves signals. A computed signal can depend on other computed signals.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> double <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> quadruple <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> double<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>quadruple<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: 4</span>
+count<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>quadruple<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Console: 80</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCB9IGZyb20gIkBwcmVhY3Qvc2lnbmFscy1jb3JlIjsKCmNvbnN0IGNvdW50ID0gc2lnbmFsKDEpOwpjb25zdCBkb3VibGUgPSBjb21wdXRlZCgoKSA9PiBjb3VudC52YWx1ZSAqIDIpOwpjb25zdCBxdWFkcnVwbGUgPSBjb21wdXRlZCgoKSA9PiBkb3VibGUudmFsdWUgKiAyKTsKCmNvbnNvbGUubG9nKHF1YWRydXBsZS52YWx1ZSk7IC8vIENvbnNvbGU6IDQKY291bnQudmFsdWUgPSAyMDsKY29uc29sZS5sb2cocXVhZHJ1cGxlLnZhbHVlKTsgLy8gQ29uc29sZTogODA%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>The set of dependencies doesn't have to stay static. The computed signal will only react to changes in the latest set of dependencies.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">const</span> choice <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> funk <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">&quot;Uptown&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> purple <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">&quot;Haze&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>choice<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>funk<span class="token punctuation">.</span>value<span class="token punctuation">,</span> <span class="token string">&quot;Funk&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Purple&quot;</span><span class="token punctuation">,</span> purple<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+c<span class="token punctuation">.</span>value<span class="token punctuation">;</span>               <span class="token comment">// Console: Uptown Funk</span>
+
+purple<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;Rain&quot;</span><span class="token punctuation">;</span> <span class="token comment">// purple is not a dependency, so</span>
+c<span class="token punctuation">.</span>value<span class="token punctuation">;</span>               <span class="token comment">// effect doesn't run</span>
+
+choice<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+c<span class="token punctuation">.</span>value<span class="token punctuation">;</span>               <span class="token comment">// Console: Purple Rain</span>
+
+funk<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;Da&quot;</span><span class="token punctuation">;</span>     <span class="token comment">// funk not a dependency anymore, so</span>
+c<span class="token punctuation">.</span>value<span class="token punctuation">;</span>               <span class="token comment">// effect doesn't run</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCB9IGZyb20gIkBwcmVhY3Qvc2lnbmFscy1jb3JlIjsKCmNvbnN0IGNob2ljZSA9IHNpZ25hbCh0cnVlKTsKY29uc3QgZnVuayA9IHNpZ25hbCgiVXB0b3duIik7CmNvbnN0IHB1cnBsZSA9IHNpZ25hbCgiSGF6ZSIpOwoKY29uc3QgYyA9IGNvbXB1dGVkKCgpID0%2BIHsKICBpZiAoY2hvaWNlLnZhbHVlKSB7CiAgICBjb25zb2xlLmxvZyhmdW5rLnZhbHVlLCAiRnVuayIpOwogIH0gZWxzZSB7CiAgICBjb25zb2xlLmxvZygiUHVycGxlIiwgcHVycGxlLnZhbHVlKTsKICB9Cn0pOwpjLnZhbHVlOyAgICAgICAgICAgICAgIC8vIENvbnNvbGU6IFVwdG93biBGdW5rCgpwdXJwbGUudmFsdWUgPSAiUmFpbiI7IC8vIHB1cnBsZSBpcyBub3QgYSBkZXBlbmRlbmN5LCBzbwpjLnZhbHVlOyAgICAgICAgICAgICAgIC8vIGVmZmVjdCBkb2Vzbid0IHJ1bgoKY2hvaWNlLnZhbHVlID0gZmFsc2U7CmMudmFsdWU7ICAgICAgICAgICAgICAgLy8gQ29uc29sZTogUHVycGxlIFJhaW4KCmZ1bmsudmFsdWUgPSAiRGEiOyAgICAgLy8gZnVuayBub3QgYSBkZXBlbmRlbmN5IGFueW1vcmUsIHNvCmMudmFsdWU7ICAgICAgICAgICAgICAgLy8gZWZmZWN0IGRvZXNuJ3QgcnVu" class="repl-link">Run in REPL</a>
+				</div>
+			<p>These three things - dependency tracking, laziness and caching - are common features in reactivity libraries. Vue's <em>computed properties</em> are <a href="https://dev.to/linusborg/vue-when-a-computed-property-can-be-the-wrong-tool-195j" target="_blank" rel="noopener noreferrer">one prominent example</a>.</p>
+
+				<h3 id="effects">
+					<a href="#effects" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Effects (#effects)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Effects</span>
+				</h3><p>Computed signals lend themselves well to <a href="https://en.wikipedia.org/wiki/Pure_function" target="_blank" rel="noopener noreferrer">pure functions</a> without side-effects. They're also lazy. So what to do if we want to react to changes in signal values without constantly polling them? Effects to the rescue!</p>
+<p>Like computed signals, effects are also created with a function (<em>effect function</em>) and also track their dependencies. However, instead of being lazy, effects are <em>eager</em>. The effect function gets run immediately when the effect gets created, and then again and again whenever the dependency values change.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> computed<span class="token punctuation">,</span> effect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@preact/signals-core&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> double <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> quadruple <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> double<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;quadruple is now&quot;</span><span class="token punctuation">,</span> quadruple<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// Console: quadruple value is now 4</span>
+
+count<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment">// Console: quadruple value is now 80</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCwgZWZmZWN0IH0gZnJvbSAiQHByZWFjdC9zaWduYWxzLWNvcmUiOwoKY29uc3QgY291bnQgPSBzaWduYWwoMSk7CmNvbnN0IGRvdWJsZSA9IGNvbXB1dGVkKCgpID0%2BIGNvdW50LnZhbHVlICogMik7CmNvbnN0IHF1YWRydXBsZSA9IGNvbXB1dGVkKCgpID0%2BIGRvdWJsZS52YWx1ZSAqIDIpOwoKZWZmZWN0KCgpID0%2BIHsKICBjb25zb2xlLmxvZygicXVhZHJ1cGxlIGlzIG5vdyIsIHF1YWRydXBsZS52YWx1ZSk7Cn0pOyAgICAgICAgICAgICAgIC8vIENvbnNvbGU6IHF1YWRydXBsZSB2YWx1ZSBpcyBub3cgNAoKY291bnQudmFsdWUgPSAyMDsgLy8gQ29uc29sZTogcXVhZHJ1cGxlIHZhbHVlIGlzIG5vdyA4MA%3D%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>These reactions are triggered by <em>notifications</em>. When a plain signal changes, it notifies its immediate dependents. They in turn notify their own immediate dependents, and so on. As is <a href="https://mobx.js.org/computeds.html" target="_blank" rel="noopener noreferrer">common</a> in reactive systems, computed signals along the notification's path mark themselves to be outdated and ready be recomputed. If the notification trickles all the way down to an effect, then that effect schedules itself to be run as soon as all previously scheduled effects have finished.</p>
+<p>When you're done with an effect, call the <em>disposer</em> that got returned when the effect was first created:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> double <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> quadruple <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> double<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> dispose <span class="token operator">=</span> <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;quadruple is now&quot;</span><span class="token punctuation">,</span> quadruple<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// Console: quadruple value is now 4</span>
+
+<span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+count<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>  <span class="token comment">// nothing gets printed to the console</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCwgZWZmZWN0IH0gZnJvbSAiQHByZWFjdC9zaWduYWxzLWNvcmUiOwoKY29uc3QgY291bnQgPSBzaWduYWwoMSk7CmNvbnN0IGRvdWJsZSA9IGNvbXB1dGVkKCgpID0%2BIGNvdW50LnZhbHVlICogMik7CmNvbnN0IHF1YWRydXBsZSA9IGNvbXB1dGVkKCgpID0%2BIGRvdWJsZS52YWx1ZSAqIDIpOwoKY29uc3QgZGlzcG9zZSA9IGVmZmVjdCgoKSA9PiB7CiAgY29uc29sZS5sb2coInF1YWRydXBsZSBpcyBub3ciLCBxdWFkcnVwbGUudmFsdWUpOwp9KTsgICAgICAgICAgICAgICAgIC8vIENvbnNvbGU6IHF1YWRydXBsZSB2YWx1ZSBpcyBub3cgNAoKZGlzcG9zZSgpOwpjb3VudC52YWx1ZSA9IDIwOyAgLy8gbm90aGluZyBnZXRzIHByaW50ZWQgdG8gdGhlIGNvbnNvbGU%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>There are other functions, like <a href="/guide/v10/signals/#batchfn">`batch`</a>, but these three are the most relevant to the implementation notes that follow.</p>
+<h1>Implementation Notes</h1><p>When we set out to implement more performant versions of the above primitives, we had to find snappy ways to do all the following subtasks:</p>
+<ul>
+<li>Dependency tracking: Keep track of used signals (plain or computed). The dependencies may change dynamically.</li>
+<li>Laziness: Compute functions should only run on demand.</li>
+<li>Caching: A computed signal should recompute only when its dependencies may have changed.</li>
+<li>Eagerness: An effect should run ASAP when something in its dependency chain changes.</li>
+</ul>
+<p>A reactive system can be implemented in a bajillion different ways. The first released version of <strong>@preact/signals-core</strong> was based on Sets, so we'll keep using that approach to contrast and compare.</p>
+
+				<h3 id="dependency-tracking">
+					<a href="#dependency-tracking" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Dependency Tracking (#dependency-tracking)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Dependency Tracking</span>
+				</h3><p>Whenever a compute/effect function starts evaluating, it needs a way to capture signals that have been read during its run. For that the computed signal or effect sets itself as the current <em>evaluation context</em>. When a signal's <code>.value</code> property is read, it calls a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener noreferrer">getter</a>. The getter adds the signal as a dependency, <em>source</em>, of the evaluation context. The context also gets added as a dependent, <em>target</em>, of the signal.</p>
+<p>In the end signals and effects always have an up-to-date view of their dependencies and dependents. Each signal can then notify its dependents whenever its value has changed. Effects and computed signals can refer to their dependency sets to unsubscribe from those notifications when, say, an effect is disposed.</p>
+<p><img decoding="async" src="/signals/signal-boosting-01.png" alt="Signals and effects always have an up-to-date view of their dependencies (sources) and dependents (targets)"></p>
+<p>The same signal may get read multiple times inside the same evaluation context. In such cases it would be handy to do some sort of deduplication for dependency and dependent entries. We also need a way to handle changing sets of dependencies: to either rebuild the set of dependencies on every run or incrementally add/remove dependencies/dependents.</p>
+<p>JavaScript's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener noreferrer">Set</a> objects are a good fit for all that. Like many other implementations, the original version of Preact Signals used them. Sets allow adding <em>and</em> removing items in <a href="https://en.wikipedia.org/wiki/Time_complexity#Constant_time" target="_blank" rel="noopener noreferrer">constant O(1) time</a> (amortized), as well as iterating through the current items in <a href="https://en.wikipedia.org/wiki/Time_complexity#Linear_time" target="_blank" rel="noopener noreferrer">linear O(n) time</a>. Duplicates are also handled automatically! It's no wonder many reactivity systems take advantage of Sets (or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener noreferrer">Maps</a>). The right tool for the job and all that.</p>
+<p>However, we were wondering whether there are some alternative approaches. Sets can be relatively expensive to create, and at least computed signals may need two separate Sets: one for dependencies and one for dependents. Jason was being a <em>total Jason</em> again and <a href="https://esbench.com/bench/6317fc2a6c89f600a5701bc9" target="_blank" rel="noopener noreferrer">benchmarked</a> how Set iteration fares against Arrays. There will be lots of iterating so it all adds up.</p>
+<p><img decoding="async" src="/signals/signal-boosting-01b.png" alt="Set iteration is just a tad slower than Array iteration"></p>
+<p>Sets also have the property they're iterated in insertion order. Which is cool - that's just what we need later when we deal with caching. But there's the possibility that the order doesn't always stay the same. Observe the following scenario:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">const</span> s1 <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> s2 <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>s1<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s2<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+    s3<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    s3<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+    s2<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgc2lnbmFsLCBjb21wdXRlZCB9IGZyb20gIkBwcmVhY3Qvc2lnbmFscy1jb3JlIjsKCmNvbnN0IHMxID0gc2lnbmFsKDApOwpjb25zdCBzMiA9IHNpZ25hbCgwKTsKY29uc3QgczMgPSBzaWduYWwoMCk7Cgpjb25zdCBjID0gY29tcHV0ZWQoKCkgPT7CoHsKICBpZiAoczEudmFsdWUpIHsKICAgIHMyLnZhbHVlOwogICAgczMudmFsdWU7CiAgfSBlbHNlIHsKICAgIHMzLnZhbHVlOwogICAgczIudmFsdWU7CiAgfQp9KTs%3D" class="repl-link">Run in REPL</a>
+				</div>
+			<p>Depending on <code>s1</code> the order of dependencies is either <code>s1, s2, s3</code> or <code>s1, s3, s2</code>. Special steps have to be taken to keep Sets in order: either remove and then add back items, empty the set before a function run, or create a new set for each run. Each approach has the potential to cause memory churn. And all this just to account for the theoretical, but probably rare, case that the order of dependencies changes.</p>
+<p>There are multiple other ways to deal with this. For example numbering and then sorting the dependencies. We ended up exploring <a href="https://en.wikipedia.org/wiki/Linked_list" target="_blank" rel="noopener noreferrer">linked lists</a>.</p>
+
+				<h3 id="linked-lists">
+					<a href="#linked-lists" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Linked Lists (#linked-lists)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Linked Lists</span>
+				</h3><p>Linked lists are often considered quite primitive, but for our purposes they have some very nice properties. If you have a doubly-linked list nodes then the following operations can be extremely cheap:</p>
+<ul>
+<li>Insert an item to one end of the list in O(1) time.</li>
+<li>Remove a node (for which you already have a pointer) from anywhere in the list in O(1) time.</li>
+<li>Iterate through the list in O(n) time (O(1) per node)</li>
+</ul>
+<p>Turns out that these operations are all we need for managing dependency/dependent lists.</p>
+<p>Let's start by creating a &quot;source Node&quot; for each dependency relation. The Node's <code>source</code> attribute points to the signal that's being depended on. Each Node has <code>nextSource</code> and <code>prevSource</code> properties pointing to the next and previous source Nodes in the dependency list, respectively. Effects or a computed signals get a <code>sources</code> attribute pointing to the first Node of the list. Now we can iterate through the dependencies, insert a new dependency, and remove dependencies from the list for reordering.</p>
+<p><img decoding="async" src="/signals/signal-boosting-02.png" alt="Effects and computed signals keep their dependencies in a doubly-linked list"></p>
+<p>Now let's do the same the other way around: For each dependent create a &quot;target Node&quot;. The Node's <code>target</code> attribute points to the dependent effect or computed signal. <code>nextTarget</code> and <code>prevTarget</code> build a doubly linked list. Plain and computed signal get a <code>targets</code> attribute pointing to the first target Node in their dependent list.</p>
+<p><img decoding="async" src="/signals/signal-boosting-03.png" alt="Signals keep their dependents in a doubly-linked list"></p>
+<p>But hey, dependencies and dependents come in pairs. For every source Node there <strong>must</strong> be a corresponding target Node. We can exploit this fact and smush &quot;source Nodes&quot; and &quot;target Nodes&quot; into just &quot;Nodes&quot;. Each Node becomes a sort of quad-linked monstrosity that the dependent can use as a part of its dependency list, and vice versa.</p>
+<p><img decoding="async" src="/signals/signal-boosting-04.png" alt="Each Node becomes a sort of quad-linked monstrosity that the dependent can use as a part of its dependency list, and vice versa"></p>
+<p>Each Node can have additional stuff attached to it for bookkeeping purposes. Before each compute/effect function we iterate through the previous dependencies and set the &quot;unused&quot; flag of each Node. We also temporarily store the Node to its <code>.source.node</code> property for later. The function can then start its run.</p>
+<p>During the run, each time a dependency is read, the bookkeeping values can be used to discover whether that dependency has already been seen during this or the previous run. If the dependency is from the previous run, we can recycle its Node. For previously unseen dependencies we create new Nodes. The Nodes are then shuffled around to keep them in reverse order of use. At the end of the run we walk through the dependency list again, purging Nodes that are still hanging around with the &quot;unused&quot; flag set. Then we reverse the list of remaining nodes to keep it all neat for later consumption.</p>
+<p>This delicate dance of death allows us to allocate only one Node per each dependency-dependent pair and then use that Node indefinitely as long as the dependency relationship exists. If the dependency tree stays stable, memory consumption also stays effectively stable after the initial build phase. All the while dependency lists stay up to date and in order of use. With a constant O(1) amount of work per Node. Nice!</p>
+
+				<h3 id="eager-effects">
+					<a href="#eager-effects" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Eager Effects (#eager-effects)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Eager Effects</span>
+				</h3><p>With the dependency tracking taken care of, eager effects are relatively straightforward to implement via change-notifications. Signals notify their dependents about value changes. If the dependent itself is a computed signal that has dependents, then it passes the notification forward, and so on. Effects that get a notification schedule themselves to be run.</p>
+<p>We added a couple of optimizations here. If the receiving end of a notification has already been notified before, and it hasn't yet had a chance to run, then it won't pass the notification forward. This mitigates cascading notification stampedes when the dependency tree fans out or in. Plain signals also don't notify their dependents if the signal's value doesn't actually change (e.g. <code>s.value = s.value</code>). But that's just being polite.</p>
+<p>For effects to be able to schedule themselves there needs to be some sort of a list of scheduled effects. We added an dedicated attribute <code>.nextBatchedEffect</code> to each Effect instance, letting Effect instances do double duty as nodes in a singly-linked scheduling list. This reduces memory churn, because scheduling the same effect again and again requires no additional memory allocations or deallocations.</p>
+
+				<h3 id="interlude:-notification-subscriptions-vs-gc">
+					<a href="#interlude:-notification-subscriptions-vs-gc" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Interlude: Notification Subscriptions vs. GC (#interlude:-notification-subscriptions-vs-gc)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Interlude: Notification Subscriptions vs. GC</span>
+				</h3><p>We haven't been completely truthful. Computed signals don't actually <em>always</em> get notifications from their dependencies. A computed signal subscribes to dependency notifications only when there's something, like an effect, listening to the signal itself. This avoids problems in situations like this:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">{</span>
+  <span class="token keyword">const</span> c <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> s<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// c has gone out of scope</span></code></pre>
+					
+				</div>
+			<p>Were <code>c</code> to always subscribe to notifications from <code>s</code>, then <code>c</code> couldn't get garbage collected until <code>s</code> too falls out of scope. That's because <code>s</code> would keep hanging on to a reference to <code>c</code>.</p>
+<p>There are multiple solutions to this problem, like using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef" target="_blank" rel="noopener noreferrer">WeakRefs</a> or requiring computed signals to be manually disposed. In our case linked lists provide a very convenient way to dynamically subscribe and unsubscribe to dependency notifications on the fly, thanks to all that O(1) stuff. The end result is that you don't have to pay any special attention to dangling computed signal references. We felt this was the most ergonomic and performant approach.</p>
+<p>In those cases where a computed signal <strong>has</strong> subscribed to notifications we can use that knowledge for extra optimizations. This brings us to laziness &amp; caching.</p>
+
+				<h3 id="lazy--cached-computed-signals">
+					<a href="#lazy--cached-computed-signals" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Lazy &amp; Cached Computed Signals (#lazy--cached-computed-signals)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Lazy &amp; Cached Computed Signals</span>
+				</h3><p>The easiest way to implement a lazy computed signal would be to just recompute each time its value is read. It wouldn't be very efficient, though. That's where caching and dependency tracking help a bunch.</p>
+<p>Each plain and computed signal has their own <em>version number</em>. They increment their version numbers every time they've noticed their own value change. When a compute function is run, it stores in the Nodes the last seen version numbers of its dependencies. We could have chosen to store the previous dependency values in the nodes instead of version numbers. However, since computed signals are lazy, they could therefore hang on to outdated and potentially expensive values indefinitely. So we felt version numbering was a safe compromise.</p>
+<p>We ended up with the following algorithm for figuring out when a computed signal can take the day off and reuse its cached value:</p>
+<ol>
+<li>If the no signal anywhere has changed values since the last run, then bail out &amp; return the cached value.</li>
+</ol>
+<blockquote>
+<p>Each time a plain signal changes it also increments a <em>global version number</em>, shared between all plain signals. Each computed signal keeps track of the last global version number they've seen. If the global version hasn't changed since last computation, then recomputation can be skipped early. There couldn't be any changes to any computed value anyway in that case.</p>
+</blockquote>
+<ol>
+<li>If the computed signal is listening to notifications, and hasn't been notified since the last run, then bail out &amp; return the cached value.</li>
+</ol>
+<blockquote>
+<p>When a computed signal gets a notification from its dependencies, it flags the cached value as outdated. As described earlier, computed signals don't always get notifications. But when they do we can take advantage of it.</p>
+</blockquote>
+<ol>
+<li>Re-evaluate the dependencies in order. Check their version numbers. If no dependency has changed its version number, even after re-evaluation, then bail out &amp; return the cached value.</li>
+</ol>
+<blockquote>
+<p>This step is the reason why we gave special love and care to keeping dependencies in their order of use. If a dependency changes, then we don't want to re-evaluate dependencies coming later in the list because it might just be unnecessary work. Who knows, maybe the change in that first dependency causes the next compute function run to drop the latter dependencies.</p>
+</blockquote>
+<ol>
+<li>Run the compute function. If the returned value is different from the cached one, then increment the computed signal's version number. Cache and return the new value.</li>
+</ol>
+<blockquote>
+<p>This is the last resort! But at least if the new value is equal to the cached one, then the version number won't change, and the dependents down the line can use that to optimize their own caching.</p>
+</blockquote>
+<p>The last two steps often recurse into the dependencies. That's why the earlier steps are designed to try to short-circuit the recursion.</p>
+<h1>Endgame</h1><p>In typical Preact fashion there were multiple smaller optimizations thrown in along the way. <a href="https://github.com/preactjs/signals/tree/main/packages/core/src" target="_blank" rel="noopener noreferrer">The source code</a> contains some comments that may or may not be useful. Check out the <a href="https://github.com/preactjs/signals/tree/main/packages/core/test" target="_blank" rel="noopener noreferrer">tests</a> if you're curious about what kinds of corner cases we came up with to ensure our implementation is robust.</p>
+<p>This post was a brain dump of sorts. It outlined the main steps we took to make <strong>@preact/signals-core</strong> version 1.2.0 better - to some definition of &quot;better&quot;. Hopefully some of the ideas listed here will resonate, and get reused and remixed by others. At least that's the dream!</p>
+<p>Huge thanks to everyone who contributed. And thanks to you for reading this far! It's been a trip.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/siddharthkp" target="_blank" rel="noopener noreferrer">@siddharthkp</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

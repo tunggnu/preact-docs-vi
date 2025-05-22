@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Debugging Preact Apps – Preact Guide</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="How to debug Preact applications when something goes wrong.">
+<meta property="og:url" content="https://preactjs.com/guide/v10/debugging">
+<meta property="og:title" content="Debugging Preact Apps – Preact Guide">
+<meta property="og:description" content="How to debug Preact applications when something goes wrong."></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_1a7q2_90">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div data-open="false" class="_wrapper_t9oa6_1"><button value="sidebar" class="_toggle_t9oa6_6">Guide</button><aside class="_sidebar_t9oa6_58"><div class="_sidebarInner_t9oa6_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/tutorial" class="_link_1ttwe_16  ">Tutorial</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">React compatibility</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a><a href="/guide/v10/switching-to-preact" class="_link_1ttwe_16  ">Switching to Preact</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/debugging.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><content-region name="/guide/v10/debugging" data-page-nav="false" can-edit><div class="markup"><h1>Debugging Preact Apps</h1><p>Preact ships with a lot of tools to make debugging easier. They're packaged in a single import and can be included by importing <code>preact/debug</code>.</p>
+<p>These include integration with our own <a href="https://preactjs.github.io/preact-devtools/" target="_blank" rel="noopener noreferrer">Preact Devtools</a> Extension for Chrome and Firefox.</p>
+<p>We'll print a warning or an error whenever we detect something wrong like incorrect nesting in <code>&lt;table></code> elements.</p>
+<hr>
+<nav><ul><li><a href="#installation">Installation</a><ul><li><a href="#strip-devtools-from-production">Strip devtools from production</a></li></ul></li><li><a href="#debug-warnings-and-errors">Debug Warnings and Errors</a><ul><li><a href="#undefined-parent-passed-to-render">`undefined` parent passed to `render()`</a></li><li><a href="#undefined-component-passed-to-createelement">`undefined` component passed to `createElement()`</a></li><li><a href="#passed-a-jsx-literal-as-jsx-twice">Passed a JSX literal as JSX twice</a></li><li><a href="#improper-nesting-of-table-detected">Improper nesting of table detected</a></li><li><a href="#invalid-ref-property">Invalid `ref`-property</a></li><li><a href="#invalid-event-handler">Invalid event handler</a></li><li><a href="#hook-can-only-be-invoked-from-render-methods">Hook can only be invoked from render methods</a></li><li><a href="#getting-vnodeproperty-is-deprecated">Getting `vnode.[property]` is deprecated</a></li><li><a href="#found-children-with-the-same-key">Found children with the same key</a></li></ul></li></ul></nav><hr>
+
+				<h2 id="installation">
+					<a href="#installation" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Installation (#installation)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Installation</span>
+				</h2><p>The <a href="https://preactjs.github.io/preact-devtools/" target="_blank" rel="noopener noreferrer">Preact Devtools</a> can be installed in the extension store of your browser.</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/preact-developer-tools/ilcajpmogmhpliinlbcdebhbcanbghmd" target="_blank" rel="noopener noreferrer">For Chrome</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/preact-devtools/" target="_blank" rel="noopener noreferrer">For Firefox</a></li>
+<li><a href="https://microsoftedge.microsoft.com/addons/detail/hdkhobcafnfejjieimdkmjaiihkjpmhk" target="_blank" rel="noopener noreferrer">For Edge</a></li>
+</ul>
+<p>Once installed we need to import <code>preact/debug</code> somewhere to initialize the connection to the extension. Make sure that this import is <strong>the first</strong> import in your whole app.</p>
+<blockquote>
+<p><code>@preact/preset-vite</code> includes the <code>preact/debug</code> package automatically. You can safely skip the setup &amp; strip steps if you're using it!</p>
+</blockquote>
+<p>Here is an example of how your main entry file to your application may look like.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Must be the first import</span>
+<span class="token keyword">import</span> <span class="token string">&quot;preact/debug&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./components/App'</span><span class="token punctuation">;</span>
+
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			
+				<h3 id="strip-devtools-from-production">
+					<a href="#strip-devtools-from-production" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Strip devtools from production (#strip-devtools-from-production)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Strip devtools from production</span>
+				</h3><p>Most bundlers allow you strip out code when they detect that a branch inside an <code>if</code>-statement will never be hit. We can use this to only include <code>preact/debug</code> during development and save those precious bytes in a production build.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Must be the first import</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span><span class="token operator">===</span><span class="token string">'development'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Must use require here as import statements are only allowed</span>
+  <span class="token comment">// to exist at top-level.</span>
+  <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;preact/debug&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./components/App'</span><span class="token punctuation">;</span>
+
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>Make sure to set the <code>NODE_ENV</code> variable to the correct value in your build tool.</p>
+
+				<h2 id="debug-warnings-and-errors">
+					<a href="#debug-warnings-and-errors" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Debug Warnings and Errors (#debug-warnings-and-errors)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Debug Warnings and Errors</span>
+				</h2><p>Sometimes you may get warnings or errors when Preact detects invalid code. These should be fixed to ensure that your app works flawlessly.</p>
+
+				<h3 id="undefined-parent-passed-to-render">
+					<a href="#undefined-parent-passed-to-render" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `undefined` parent passed to `render()` (#undefined-parent-passed-to-render)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`undefined` parent passed to `render()`</span>
+				</h3><p>This means that the code is trying to render your app into nothing instead of a DOM node. It's the difference between:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// What Preact received</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// vs what it expected</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> actualDomNode<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>The main reason this error occurs is that the DOM node isn't present when the <code>render()</code> function is called. Make sure it exists.</p>
+
+				<h3 id="undefined-component-passed-to-createelement">
+					<a href="#undefined-component-passed-to-createelement" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `undefined` component passed to `createElement()` (#undefined-component-passed-to-createelement)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`undefined` component passed to `createElement()`</span>
+				</h3><p>Preact will throw this error whenever you pass <code>undefined</code> instead of a component. The common cause for this one is mixing up <code>default</code> and <code>named</code> exports.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// app.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Hello World</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// index.js: Wrong, because `app.js` doesn't have a named export</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> App <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app'</span><span class="token punctuation">;</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>The same error will be thrown when it's the other way around. When you declare a <code>named</code> export and are trying to use it as a <code>default</code> export. One quick way to check this (in case your editor won't do it already), is to just log out the import:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// app.js</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">Hello World</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// index.js</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./app'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Logs: { default: [Function] } instead of the component</span></code></pre>
+					
+				</div>
+			
+				<h3 id="passed-a-jsx-literal-as-jsx-twice">
+					<a href="#passed-a-jsx-literal-as-jsx-twice" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Passed a JSX literal as JSX twice (#passed-a-jsx-literal-as-jsx-twice)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Passed a JSX literal as JSX twice</span>
+				</h3><p>Passing a JSX-Literal or Component into JSX again is invalid and will trigger this error.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">foo</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token comment">// Invalid: Foo already contains a JSX-Element</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Foo</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>To fix this, we can just pass the variable directly:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> Foo <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">foo</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token function">render</span><span class="token punctuation">(</span>Foo<span class="token punctuation">,</span> dom<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			
+				<h3 id="improper-nesting-of-table-detected">
+					<a href="#improper-nesting-of-table-detected" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Improper nesting of table detected (#improper-nesting-of-table-detected)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Improper nesting of table detected</span>
+				</h3><p>HTML parsers have very strict rules on how tables should be structured, deviating from which will lead to rendering errors that can be hard to debug. To help with this, Preact can detect improper nesting in a number of situations and will print warnings to catch this early. To learn more about how tables should be structured we can highly recommend <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics" target="_blank" rel="noopener noreferrer">the MDN documentation</a>.</p>
+<blockquote>
+<p><strong>Note:</strong> In this context, &quot;strict&quot; is referring to the <em>output</em> of the HTML parser, not the <em>input</em>. Browsers are quite forgiving and try to correct invalid HTML where they can to ensure that pages can still be displayed. However, for VDOM libraries like Preact this can lead to issues as the input content might not match the output once the browser has corrected it which Preact will not be made aware of.</p>
+<p>For example, <code>&lt;tr></code> elements must always be a child of <code>&lt;tbody></code>, <code>&lt;thead></code>, or <code>&lt;tfoot></code> elements per the spec, but if you were to write a <code>&lt;tr></code> directly inside of a <code>&lt;table></code>, the browser will attempt to correct this by wrapping it in a <code>&lt;tbody></code> element for you. Preact will therefore expect the DOM structure to be <code>&lt;table>&lt;tr>&lt;/tr>&lt;/table></code> but the real DOM constructed by the browser would be <code>&lt;table>&lt;tbody>&lt;tr>&lt;/tr>&lt;/tbody>&lt;/table></code>.</p>
+</blockquote>
+
+				<h3 id="invalid-ref-property">
+					<a href="#invalid-ref-property" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Invalid `ref`-property (#invalid-ref-property)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Invalid `ref`-property</span>
+				</h3><p>When the <code>ref</code> property contains something unexpected we'll throw this error. This includes string-based <code>refs</code> that have been deprecated a while ago.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// valid</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token comment">// valid</span>
+<span class="token keyword">const</span> ref <span class="token operator">=</span> <span class="token function">createRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ref<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token comment">// Invalid</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ref<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span></code></pre>
+					
+				</div>
+			
+				<h3 id="invalid-event-handler">
+					<a href="#invalid-event-handler" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Invalid event handler (#invalid-event-handler)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Invalid event handler</span>
+				</h3><p>Sometimes you'll may accidentally pass a wrong value to an event handler. They must always be a <code>function</code> or <code>null</code> if you want to remove it. All other types are invalid.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// valid</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;click&quot;</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token comment">// invalid</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;click&quot;</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span></code></pre>
+					
+				</div>
+			
+				<h3 id="hook-can-only-be-invoked-from-render-methods">
+					<a href="#hook-can-only-be-invoked-from-render-methods" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Hook can only be invoked from render methods (#hook-can-only-be-invoked-from-render-methods)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Hook can only be invoked from render methods</span>
+				</h3><p>This error occurs when you try to use a hook outside of a component. They are only supported inside a function component.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Invalid, must be used inside a component</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>value<span class="token punctuation">,</span> setValue<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// valid</span>
+<span class="token keyword">function</span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>value<span class="token punctuation">,</span> setValue<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setValue</span><span class="token punctuation">(</span>value <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>value<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h3 id="getting-vnodeproperty-is-deprecated">
+					<a href="#getting-vnodeproperty-is-deprecated" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Getting `vnode.[property]` is deprecated (#getting-vnodeproperty-is-deprecated)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Getting `vnode.[property]` is deprecated</span>
+				</h3><p>With Preact X we did some breaking changes to our internal <code>vnode</code> shape.</p>
+<table>
+<thead>
+<tr>
+<th>Preact 8.x</th>
+<th>Preact 10.x</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vnode.nodeName</code></td>
+<td><code>vnode.type</code></td>
+</tr>
+<tr>
+<td><code>vnode.attributes</code></td>
+<td><code>vnode.props</code></td>
+</tr>
+<tr>
+<td><code>vnode.children</code></td>
+<td><code>vnode.props.children</code></td>
+</tr>
+</tbody></table>
+
+				<h3 id="found-children-with-the-same-key">
+					<a href="#found-children-with-the-same-key" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Found children with the same key (#found-children-with-the-same-key)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Found children with the same key</span>
+				</h3><p>One unique aspect about virtual-dom based libraries is that they have to detect when a children is moved around. However to know which child is which, we need to flag them somehow. <em>This is only necessary when you're creating children dynamically.</em></p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Both children will have the same key &quot;A&quot;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">char</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>char<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>char<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+					
+				</div>
+			<p>The correct way to do it is to give them unique keys. In most cases the data you're iterating over will have some form of <code>id</code>.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> persons <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">22</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Sarah'</span><span class="token punctuation">,</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">24</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Somewhere later in your component</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token punctuation">{</span>persons<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> name<span class="token punctuation">,</span> age <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token plain-text">, Age: </span><span class="token punctuation">{</span>age<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+					
+				</div>
+			</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/yuqianma" target="_blank" rel="noopener noreferrer">@yuqianma</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Prerendering with `@preact/preset-vite` – Preact</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="">
+<meta property="og:url" content="https://preactjs.com/blog/prerendering-preset-vite">
+<meta property="og:title" content="Prerendering with `@preact/preset-vite` – Preact">
+<meta property="og:description" content=""></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1"><div class="_outer_sqynl_111"><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/blog/prerendering-preset-vite.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><div class="_blogMeta_eutpc_1"><time datetime="2024-08-06T00:00:00.000Z" class="_time_5644u_1">8/6/2024</time>, written by <address class="_authors_eutpc_9"><span><a href="https://bsky.app/profile/rschristian.dev" target="_blank" rel="noopener noreferrer">Ryan Christian</a></span></address></div><content-region name="/blog/prerendering-preset-vite" data-page-nav="false" can-edit><div class="markup"><h1>Prerendering with Preset Vite</h1><p>It's been a half-year since our prerendering plugin has somewhat quietly become available in <code>@preact/preset-vite</code>, so let's talk about it, a little of our history, and the ecosystem at large.</p>
+<p>Those who have been in our community for a while know how much we like prerendering; it was a first-class feature in Preact-CLI, then WMR, and now our Vite preset. When it's done right, it's a pain-free addition to the typical SPA that improves the user experience greatly and our prerender-plugin aims to facilitate just that.</p>
+
+				<h2 id="what-is-prerendering?">
+					<a href="#what-is-prerendering?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: What is Prerendering? (#what-is-prerendering?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>What is Prerendering?</span>
+				</h2><p>&quot;Prerendering&quot;, for the context of this post, is the act of generating HTML from your app at build time using server-side rendering (SSR); sometimes this may also be referred to as static site generation (SSG).</p>
+<p>While we won't dive deep into the virtues of SSR here, or even argue that you should use it, it's generally advantageous to send a fully populated HTML document to the user on initial navigation (and perhaps upon subsequent navigations too, depending on routing strategy) rather than an empty shell that the client-side JS will eventually render into. Users will get access to the document quicker and can begin to use the page (albeit, often with reduced functionality) while the JS is still downloading in the background.</p>
+
+				<h2 id="our-history-in-the-space">
+					<a href="#our-history-in-the-space" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Our History in the Space (#our-history-in-the-space)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Our History in the Space</span>
+				</h2><p>Since Preact-CLI first hit public release back in May of 2017, built-in prerendering has been a mainstay in our build tooling; we happily carried it forward into WMR in 2020 and it was something that was sorely missed by us and members of the community when we switched to suggesting Vite.</p>
+<p>While each iteration has been a little different, all have been built around the same core idea: users will more readily adopt prerendering the simpler it is to set up, including limited changes to their existing codebase. In Preact-CLI, this meant providing a default export of the root component with some JSON data to populate it; in WMR and now Vite, it means exporting a simple <code>prerender()</code> function that returns the HTML for the route, with the prerenderer walking through the app itself, replacing the need for JSON up-front.</p>
+<p>Anyone who has worked extensively with SSR at scale knows that there is a mountain of complexity that cannot ever be fully abstracted away and we wouldn't argue otherwise. However, nearly every SPA provides a better experience if prerendered and so we want to get as many users as possible on board -- reducing the barrier to entry has shown itself to be wildly successful in our community so it's been a key part of our design philosophy to aim for as &quot;drop-in&quot; as possible.</p>
+
+				<h2 id="existing-vite-ecosystem">
+					<a href="#existing-vite-ecosystem" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Existing Vite Ecosystem (#existing-vite-ecosystem)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Existing Vite Ecosystem</span>
+				</h2><p>Before we created our own prerendering implementation for our Vite preset, we had a look at the existing Vite ecosystem to see what was being offered but didn't quite find what we were after with the options. Prerendering is at its best when it is as near to &quot;drop-in&quot; as possible, taking your existing app, with minimal modification, and generating HTML from it, but existing solutions were a further step away from &quot;drop-in&quot; than we would've liked and fell into two main categories:</p>
+<ol>
+<li>Multiple Builds<ul>
+<li>Separate client/server builds, often separate entry points too</li>
+<li>Less isomorphic, different branches in your app for different environments</li>
+</ul>
+</li>
+<li>Frameworks / Vite Wrappers<ul>
+<li>No longer using Vite directly but an abstraction</li>
+<li>Some amount of buy-in/lock-in</li>
+<li>Support matrix for different Vite config options, plugins, etc. can be complicated and less than clear</li>
+</ul>
+</li>
+</ol>
+<p>While these solutions absolutely have their merits and places in the ecosystem, neither felt as great as they could be for our ecosystem, given our historic offerings in this area. The &quot;best case scenario&quot; DX was often sacrificed for more complex or specific needs -- which is a completely valid trade off.</p>
+<p>For drop-in prerendering, however, we thought we could provide something a bit different to the existing options, or at least something a bit more familiar to our users.</p>
+
+				<h2 id="implementation-in-@preactpreset-vite">
+					<a href="#implementation-in-@preactpreset-vite" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Implementation in `@preact/preset-vite` (#implementation-in-@preactpreset-vite)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Implementation in `@preact/preset-vite`</span>
+				</h2><p>Years later, we were still quite in love with the simplicity and extensibility of WMR's prerendering and felt it was sorely missing from our Vite preset, so we looked to port it over with a few minor adjustment to fix the qualms we had. A little bit of work later and voila, prerendering via a plugin!</p>
+<p>To get started with, here's an example of prerendering a &quot;Hello World&quot; app.</p>
+<blockquote>
+<p>Hint: Our Vite initializer, (<code>$ npm create preact</code>) can set this up for you along with a few other complimentary options, like routing, TypeScript, etc. If you're interested in trying out our prerendering, it's the fastest way to get up-to-speed.</p>
+</blockquote>
+<p>Firstly, enable prerendering by setting <code>prerender: { enabled: true }</code> in <code>@preact/preset-vite</code>'s plugin options:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-diff">// vite.config.js
+import { defineConfig } from 'vite';
+import preact from '@preact/preset-vite';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [
+		preact({
+<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">			prerender: { enabled: true }
+</span></span>		}),
+	],
+});</code></pre>
+					
+				</div>
+			<p>...then add a <code>prerender</code> attribute to the script containing our <code>prerender()</code> function -- this lets the plugin know where to find it. While you can set this to any script you'd like, for our examples here, it'll always be in our app root.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-diff">// index.html
+<span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">&lt;script type=&quot;module&quot; src=&quot;/src/index.jsx&quot;>&lt;/script>
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">&lt;script prerender type=&quot;module&quot; src=&quot;/src/index.jsx&quot;>&lt;/script></span></span></code></pre>
+					
+				</div>
+			<p>...finally, make a couple adjustments to our app root:</p>
+<ol>
+<li><p>Switch <code>render</code> to <code>hydrate</code></p>
+<ul>
+<li><code>hydrate</code> from <code>preact-iso</code> is a very small utility which decides whether to render the app or hydrate depending on if it can find existing markup on the document. In dev it'll use <code>render</code>, but in production, with prerendered HTML, it'll use <code>hydrate</code>.</li>
+<li>We do need to add a window check (<code>typeof window !== undefined</code>) to ensure we're not trying to access <code>document</code>, a browser global, in Node during SSR.</li>
+</ul>
+</li>
+<li><p>Add our <code>prerender()</code> export</p>
+<ul>
+<li>This is the facilitator of prerendering, and it's entirely user controlled. You decide how your app should be rendered, which props to pass in to your root component, make any adjustments to the HTML, run any post-processing you'd like, etc. All that the plugin needs is for an object to be returned containing an <code>html</code> property with your HTML string.</li>
+<li>For our examples here we'll use <code>prerender</code> from <code>preact-iso</code> which is a thin wrapper around <code>renderToStringAsync</code> from <code>preact-render-to-string</code> with one main advantage: it automatically collects and returns the relative links it finds in the pages you prerender. The prerender plugin can then use these links to &quot;walk&quot; your app, discovering pages itself. We'll show this off further later.</li>
+</ul>
+</li>
+</ol>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-diff">// src/index.jsx
+<span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">import { render } from 'preact';
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">import { hydrate, prerender as ssr } from 'preact-iso';
+</span></span>
+function App() {
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   return &lt;h1>Hello World!&lt;/h1>
+</span></span>}
+
+<span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">render(&lt;App />, document.getElementById('app'));
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">if (typeof window !== 'undefined') {
+</span><span class="token prefix inserted">+</span><span class="token line">	hydrate(&lt;App />, document.getElementById('app'));
+</span><span class="token prefix inserted">+</span><span class="token line">}
+</span></span>
+<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">export async function prerender(data) {
+</span><span class="token prefix inserted">+</span><span class="token line">    return await ssr(&lt;App {...data} />)
+</span><span class="token prefix inserted">+</span><span class="token line">}</span></span></code></pre>
+					
+				</div>
+			<p>With this set up, you will have an app that prerenders. However, no app is really this simple, so let's look at a couple more complex examples.</p>
+
+				<h3 id="full-api-example">
+					<a href="#full-api-example" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Full API Example (#full-api-example)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Full API Example</span>
+				</h3>
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// src/index.jsx</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">prerender</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">{</span> html<span class="token punctuation">,</span> <span class="token literal-property property">links</span><span class="token operator">:</span> discoveredLinks <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">ssr</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">{</span>
+		html<span class="token punctuation">,</span>
+		<span class="token comment">// Optionally add additional links that should be</span>
+		<span class="token comment">// prerendered (if they haven't already been -- these will be deduped)</span>
+		<span class="token literal-property property">links</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>discoveredLinks<span class="token punctuation">,</span> <span class="token string">'/foo'</span><span class="token punctuation">,</span> <span class="token string">'/bar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token comment">// Optionally configure and add elements to the `&lt;head>` of</span>
+		<span class="token comment">// the prerendered HTML document</span>
+		<span class="token literal-property property">head</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token comment">// Sets the &quot;lang&quot; attribute: `&lt;html lang=&quot;en&quot;>`</span>
+			<span class="token literal-property property">lang</span><span class="token operator">:</span> <span class="token string">'en'</span><span class="token punctuation">,</span>
+			<span class="token comment">// Sets the title for the current page: `&lt;title>My cool page&lt;/title>`</span>
+			<span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'My cool page'</span><span class="token punctuation">,</span>
+			<span class="token comment">// Sets any additional elements you want injected into the `&lt;head>`:</span>
+			<span class="token comment">//   &lt;link rel=&quot;stylesheet&quot; href=&quot;foo.css&quot;></span>
+			<span class="token comment">//   &lt;meta property=&quot;og:title&quot; content=&quot;Social media title&quot;></span>
+			<span class="token literal-property property">elements</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+				<span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'link'</span><span class="token punctuation">,</span> <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">rel</span><span class="token operator">:</span> <span class="token string">'stylesheet'</span><span class="token punctuation">,</span> <span class="token literal-property property">href</span><span class="token operator">:</span> <span class="token string">'foo.css'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+				<span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'meta'</span><span class="token punctuation">,</span> <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">property</span><span class="token operator">:</span> <span class="token string">'og:title'</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token string">'Social media title'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+			<span class="token punctuation">]</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h3 id="fetch-content-isomorphically-with-suspense-based-fetching">
+					<a href="#fetch-content-isomorphically-with-suspense-based-fetching" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Fetch Content Isomorphically with Suspense-based Fetching (#fetch-content-isomorphically-with-suspense-based-fetching)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Fetch Content Isomorphically with Suspense-based Fetching</span>
+				</h3>
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// src/use-fetch.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;preact/hooks&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">load</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">await</span> res<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Failed to fetch </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Simple suspense-based fetch mechanism with caching</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">useFetch</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>_<span class="token punctuation">,</span> update<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">let</span> data <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		data <span class="token operator">=</span> <span class="token function">load</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		cache<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		data<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+			<span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>res <span class="token operator">=</span> res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			<span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>err <span class="token operator">=</span> err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>res<span class="token punctuation">)</span> <span class="token keyword">return</span> data<span class="token punctuation">.</span>res<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> data<span class="token punctuation">.</span>err<span class="token punctuation">;</span>
+	<span class="token keyword">throw</span> data<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// src/index.jsx</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> hydrate<span class="token punctuation">,</span> prerender <span class="token keyword">as</span> ssr <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact-iso'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useFetch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./use-fetch.js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Suspense</span></span> <span class="token attr-name">fallback</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Loading...</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Article</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Suspense</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Article</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token function">useFetch</span><span class="token punctuation">(</span><span class="token string">&quot;/my-local-article.txt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>data<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">hydrate</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">prerender</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">ssr</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>data<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h3 id="using-globalthis-to-pass-data-around">
+					<a href="#using-globalthis-to-pass-data-around" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Using `globalThis` to pass data around (#using-globalthis-to-pass-data-around)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Using `globalThis` to pass data around</span>
+				</h3>
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// src/title-util.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact/hooks'</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Set `document.title` or `globalThis.title`
+ * @param {string} title
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">useTitle</span><span class="token punctuation">(</span><span class="token parameter">title</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> window <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		globalThis<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token function">createTitle</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>title<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			document<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token function">createTitle</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>title<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// src/index.jsx</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> LocationProvider<span class="token punctuation">,</span> Router<span class="token punctuation">,</span> hydrate<span class="token punctuation">,</span> prerender <span class="token keyword">as</span> ssr <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact-iso'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useTitle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./title-util.js'</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LocationProvider</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Home</span></span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NotFound</span></span> <span class="token attr-name">default</span> <span class="token punctuation">/></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">LocationProvider</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Home</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">useTitle</span><span class="token punctuation">(</span><span class="token string">'Preact - Home'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Hello World!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">NotFound</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">useTitle</span><span class="token punctuation">(</span><span class="token string">'Preact - 404'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Page Not Found</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> window <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">hydrate</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">prerender</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> html<span class="token punctuation">,</span> links <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">ssr</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>data<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        html<span class="token punctuation">,</span>
+        links<span class="token punctuation">,</span>
+        <span class="token literal-property property">head</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">title</span><span class="token operator">:</span> globalThis<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+            <span class="token literal-property property">elements</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+                <span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'meta'</span><span class="token punctuation">,</span> <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">property</span><span class="token operator">:</span> <span class="token string">'og:title'</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> globalThis<span class="token punctuation">.</span>title <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>While less common of a need, you can also use a variation of this pattern to initialize and pass prerender data deep into your app, skipping the need for a global store/context.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// src/some/deep/Component.jsx</span>
+<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> myFetchData <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>myData<span class="token punctuation">,</span> setMyData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>myFetchData <span class="token operator">||</span> <span class="token string">'some-fallback'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token operator">...</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">let</span> initialized <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">prerender</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">init</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> globalThis<span class="token punctuation">.</span>myFetchData <span class="token operator">=</span> <span class="token keyword">await</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        initialized <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>initialized<span class="token punctuation">)</span> <span class="token keyword">await</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> html<span class="token punctuation">,</span> links <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">ssr</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token punctuation">{</span><span class="token operator">...</span>data<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<hr>
+<p>For the curious asking &quot;How does this all work?&quot;, it can be broken into three simple steps:</p>
+<ol>
+<li><p>Setup</p>
+<p> We set the script with your exported <code>prerender()</code> function as an additional input and tell Rollup to preserve entry signatures, allowing us to access and call that function post-build.</p>
+</li>
+<li><p>Build</p>
+<p> We let Vite build your app as usual: compiling JSX, running plugins, optimizing assets, etc.</p>
+</li>
+<li><p>Prerender</p>
+</li>
+</ol>
+<p>  During the <code>generateBundle</code> plugin stage, we begin to generate the HTML. Starting with <code>/</code>, we begin executing the built JS bundles in Node, calling your <code>prerender()</code> function and inserting the HTML it returns into your <code>index.html</code> document, finally writing the result to the specified output directory. Any new links your <code>prerender()</code> function returns are then queued up to be processed next.</p>
+<p>  Prerendering completes when we run out of URLs to feed back into your app.</p>
+<p>Following this, Vite will continue to finish up the build process, running any other plugins you may have. Your prerendered app will then be available immediately, with no subsequent builds or scripts required.</p>
+
+				<h3 id="some-neat-features">
+					<a href="#some-neat-features" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Some Neat Features (#some-neat-features)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Some Neat Features</span>
+				</h3><ul>
+<li>File system-based <code>fetch()</code> implementation (as shown in the &quot;Isomorphic Fetching&quot; example)<ul>
+<li>Before you run to get your pitchfork, hear us out! During prerendering (and only during prerendering) we patch <code>fetch()</code> to allow reading files directly from the file system. This allows you to consume static files (text, JSON, Markdown, etc.) during prerendering without having to start up a server to consume it. You can use the same file paths during prerendering as you will in the browser.</li>
+<li>In fact, that's how we build the very page you're reading! <code>fetch('/content/blog/preact-prerender.json')</code>, which is what triggers when you navigate to this page, roughly translates to <code>new Response(await fs.readFile('/content/blog/preact-prerender.json'))</code> during prerendering. We read the file, wrap it in a <code>Response</code> to mimic a network request, and supply it back to your app -- your app can use the same <code>fetch()</code> request during prerendering and on the client.</li>
+<li>Pairing this with suspense and an async SSR implementation provides a really great DX.</li>
+</ul>
+</li>
+<li>Crawling Links<ul>
+<li>Partly supported by the user-provided <code>prerender()</code> function export, partly by the plugin, you can return a set of links upon prerendering the page (<code>preact-iso</code> makes this wonderfully simple) which will be added to the plugin's list of URLs to prerender. This will allow the plugin to crawl your site at build time, finding more and more pages to prerender naturally.</li>
+<li>You can also provide links manually via the plugin options or by appending some to those that <code>preact-iso</code> returns, as we show above in the Full API Example. This is especially useful for error pages, like a <code>/404</code>, that might not be linked to but you still want to have it prerendered.</li>
+</ul>
+</li>
+</ul>
+<p>...and perhaps the biggest advantage:</p>
+<ul>
+<li>Toggle it by flipping a Boolean in your config file<ul>
+<li>Because we're not a wrapper, and because you don't need to alter your source code in order to support it (beyond some window checks), there's no lock-in whatsoever. If you decide to move away, or you want to do some testing on your output, all you need to do is flip a Boolean and you're back to a plain SPA with Vite.</li>
+<li>As we've mentioned a few times, prerendering is at its best when it is as near to &quot;drop-in&quot; as possible and that includes being able to drop back out on a whim. It's important to us that you can go from an SPA to prerendering and back again with minimal effort.</li>
+</ul>
+</li>
+</ul>
+
+				<h2 id="final-notes">
+					<a href="#final-notes" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Final Notes (#final-notes)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Final Notes</span>
+				</h2><p>The Vite team would probably like us to mention that this plugin does introduce a tiny patch to the generated client code, and that they (the Vite team) don't necessarily endorse running the browser bundles in Node.</p>
+<p>The patch in question is as follows:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-diff">// src/node/plugins/importAnalysisBuild.ts
+<span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">if (__VITE_IS_MODERN__ &amp;&amp; deps &amp;&amp; deps.length > 0) {,
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">if (__VITE_IS_MODERN__ &amp;&amp; deps &amp;&amp; deps.length > 0 &amp;&amp; typeof window !== 'undefined') {,
+</span></span>	 const links = document.getElementsByTagName('link')
+	 ...</code></pre>
+					
+				</div>
+			<p>As attempting to execute <code>document.getElementsByTagName</code> will error in Node where there is no <code>document</code>, we simply add an additional condition to the preloader so that it makes no attempt to run in Node, and that's it. Just the partial change of this one line that would little purpose during prerendering anyways.</p>
+<p>We are very, very happy with this level of risk and have been using it heavily for some time now without any issue, but, this is somewhat using the tool beyond what it was intended for and it's something we want to disclose.</p>
+<p>For any non-Preact users, good news: our plugin is entirely framework agnostic! To make it slightly easier to use in any other framework, this is alternatively offered as <a href="https://npm.im/vite-prerender-plugin" target="_blank" rel="noopener noreferrer">`vite-prerender-plugin`</a>. Same functionality, and kept in-sync with <code>@preact/preset-vite</code>, but drops the other Preact-specific utilities that ship in the Preact preset plugin.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/wojtczal" target="_blank" rel="noopener noreferrer">@wojtczal</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

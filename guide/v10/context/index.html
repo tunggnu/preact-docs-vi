@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Context – Preact Guide</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="Context allows you to pass props through intermediate components. This documents describes both the new and the old API">
+<meta property="og:url" content="https://preactjs.com/guide/v10/context">
+<meta property="og:title" content="Context – Preact Guide">
+<meta property="og:description" content="Context allows you to pass props through intermediate components. This documents describes both the new and the old API"></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_1a7q2_90">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div data-open="false" class="_wrapper_t9oa6_1"><button value="sidebar" class="_toggle_t9oa6_6">Guide</button><aside class="_sidebar_t9oa6_58"><div class="_sidebarInner_t9oa6_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/tutorial" class="_link_1ttwe_16  ">Tutorial</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">React compatibility</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a><a href="/guide/v10/switching-to-preact" class="_link_1ttwe_16  ">Switching to Preact</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/context.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><content-region name="/guide/v10/context" data-page-nav="false" can-edit><div class="markup"><h1>Context</h1><p>Context is a way to pass data through the component tree without having to pass it through every component in-between via props. In a nutshell, it allows components anywhere in the hierarchy to subscribe to a value and get notified when it changes, bringing pub-sub-style updates to Preact.</p>
+<p>It's not uncommon to run into situations in which a value from a grandparent component (or higher) needs to be passed down to a child, often without the intermediate component needing it. This process of passing down props is often referred to as &quot;prop drilling&quot; and can be cumbersome, error-prone, and just plain repetitive, especially as the application grows and more values have to be passed through more layers. This is one of the key issues Context aims to address by providing a way for a child to subscribe to a value higher up in the component tree, accessing the value without it being passed down as a prop.</p>
+<p>There are two ways to use context in Preact: via the newer <code>createContext</code> API and the legacy context API. These days there's very few reasons to ever reach for the legacy API but it's documented here for completeness.</p>
+<hr>
+<nav><ul><li><a href="#modern-context-api">Modern Context API</a><ul><li><a href="#creating-a-context">Creating a Context</a></li><li><a href="#setting-up-a-provider">Setting up a Provider</a></li><li><a href="#using-the-context">Using the Context</a></li><li><a href="#updating-the-context">Updating the Context</a></li></ul></li><li><a href="#legacy-context-api">Legacy Context API</a></li></ul></nav><hr>
+
+				<h2 id="modern-context-api">
+					<a href="#modern-context-api" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Modern Context API (#modern-context-api)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Modern Context API</span>
+				</h2>
+				<h3 id="creating-a-context">
+					<a href="#creating-a-context" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Creating a Context (#creating-a-context)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Creating a Context</span>
+				</h3><p>To create a new context, we use the <code>createContext</code> function. This function takes an initial state as an argument and returns an object with two component properties: <code>Provider</code>, to make the context available to descendants, and <code>Consumer</code>, to access the context value (primarily in class components).</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> createContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;preact&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> Theme <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token string">&quot;light&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> User <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;Guest&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> Locale <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			
+				<h3 id="setting-up-a-provider">
+					<a href="#setting-up-a-provider" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Setting up a Provider (#setting-up-a-provider)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Setting up a Provider</span>
+				</h3><p>Once we've created a context, we must make it available to descendants using the <code>Provider</code> component. The <code>Provider</code> must be given a <code>value</code> prop, representing the initial value of the context.</p>
+<blockquote>
+<p>The initial value set from <code>createContext</code> is only used in the absence of a <code>Provider</code> above the consumer in the tree. This may be helpful for testing components in isolation, as it avoids the need for creating a wrapping <code>Provider</code> around your component.</p>
+</blockquote>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> createContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;preact&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> Theme <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token string">&quot;light&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Theme.Provider</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>dark<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SomeComponent</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Theme.Provider</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<blockquote>
+<p><strong>Tip:</strong> You can have multiple providers of the same context throughout your app but only the closest one to the consumer will be used.</p>
+</blockquote>
+
+				<h3 id="using-the-context">
+					<a href="#using-the-context" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Using the Context (#using-the-context)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Using the Context</span>
+				</h3><p>There are two ways to consume a context, largely depending on your preferred component style: <code>Consumer</code> (class components) and the <code>useContext</code> hook (function components/hooks).</p>
+<div><div role="tablist" aria-label="API Styles" aria-orientation="horizontal" class="_tabs_1dgk4_1"><button role="tab" id="tab-P0-0-Consumer" aria-controls="panel-P0-0-Consumer" aria-selected="true" tabindex="0" class="_tab_1dgk4_1">Consumer</button><button role="tab" id="tab-P0-0-useContext" aria-controls="panel-P0-0-useContext" aria-selected="false" tabindex="-1" class="_tab_1dgk4_1">useContext</button></div><div role="tabpanel" id="panel-P0-0-Consumer" aria-labelledby="tab-P0-0-Consumer" tabindex="0"><div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> ThemePrimary <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token string">&quot;#673ab8&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">ThemedButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemePrimary.Consumer</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span><span class="token parameter">theme</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">background</span><span class="token operator">:</span> theme <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Themed Button</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">ThemePrimary.Consumer</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemePrimary.Provider</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>#8f61e1<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SomeComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemedButton</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">SomeComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">ThemePrimary.Provider</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyLCBjcmVhdGVDb250ZXh0IH0gZnJvbSAicHJlYWN0IjsKCmNvbnN0IFNvbWVDb21wb25lbnQgPSBwcm9wcyA9PiBwcm9wcy5jaGlsZHJlbjsKCmNvbnN0IFRoZW1lUHJpbWFyeSA9IGNyZWF0ZUNvbnRleHQoIiM2NzNhYjgiKTsKCmZ1bmN0aW9uIFRoZW1lZEJ1dHRvbigpIHsKICByZXR1cm4gKAogICAgPFRoZW1lUHJpbWFyeS5Db25zdW1lcj4KICAgICAge3RoZW1lID0%2BIDxidXR0b24gc3R5bGU9e3sgYmFja2dyb3VuZDogdGhlbWUgfX0%2BVGhlbWVkIEJ1dHRvbjwvYnV0dG9uPn0KICAgIDwvVGhlbWVQcmltYXJ5LkNvbnN1bWVyPgogICk7Cn0KCmZ1bmN0aW9uIEFwcCgpIHsKICByZXR1cm4gKAogICAgPFRoZW1lUHJpbWFyeS5Qcm92aWRlciB2YWx1ZT0iIzhmNjFlMSI%2BCiAgICAgIDxTb21lQ29tcG9uZW50PgogICAgICAgIDxUaGVtZWRCdXR0b24gLz4KICAgICAgPC9Tb21lQ29tcG9uZW50PgogICAgPC9UaGVtZVByaW1hcnkuUHJvdmlkZXI%2BCiAgKTsKfQoKcmVuZGVyKDxBcHAgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJhcHAiKSk7Cg%3D%3D" class="repl-link">Run in REPL</a>
+				</div></div><div role="tabpanel" id="panel-P0-0-useContext" aria-labelledby="tab-P0-0-useContext" tabindex="0" hidden><div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> ThemePrimary <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token string">&quot;#673ab8&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">ThemedButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> theme <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>ThemePrimary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">background</span><span class="token operator">:</span> theme <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Themed Button</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemePrimary.Provider</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>#8f61e1<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SomeComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemedButton</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">SomeComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">ThemePrimary.Provider</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyLCBjcmVhdGVDb250ZXh0IH0gZnJvbSAicHJlYWN0IjsKaW1wb3J0IHsgdXNlQ29udGV4dCB9IGZyb20gInByZWFjdC9ob29rcyI7Cgpjb25zdCBTb21lQ29tcG9uZW50ID0gcHJvcHMgPT4gcHJvcHMuY2hpbGRyZW47Cgpjb25zdCBUaGVtZVByaW1hcnkgPSBjcmVhdGVDb250ZXh0KCIjNjczYWI4Iik7CgpmdW5jdGlvbiBUaGVtZWRCdXR0b24oKSB7CiAgY29uc3QgdGhlbWUgPSB1c2VDb250ZXh0KFRoZW1lUHJpbWFyeSk7CiAgcmV0dXJuIDxidXR0b24gc3R5bGU9e3sgYmFja2dyb3VuZDogdGhlbWUgfX0%2BVGhlbWVkIEJ1dHRvbjwvYnV0dG9uPjsKfQoKZnVuY3Rpb24gQXBwKCkgewogIHJldHVybiAoCiAgICA8VGhlbWVQcmltYXJ5LlByb3ZpZGVyIHZhbHVlPSIjOGY2MWUxIj4KICAgICAgPFNvbWVDb21wb25lbnQ%2BCiAgICAgICAgPFRoZW1lZEJ1dHRvbiAvPgogICAgICA8L1NvbWVDb21wb25lbnQ%2BCiAgICA8L1RoZW1lUHJpbWFyeS5Qcm92aWRlcj4KICApOwp9CgpyZW5kZXIoPEFwcCAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImFwcCIpKTsK" class="repl-link">Run in REPL</a>
+				</div></div></div>
+
+
+				<h3 id="updating-the-context">
+					<a href="#updating-the-context" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Updating the Context (#updating-the-context)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Updating the Context</span>
+				</h3><p>Static values can be useful, but more often than not, we want to be able to update the context value dynamically. To do so, we leverage standard component state mechanisms:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> ThemePrimary <span class="token operator">=</span> <span class="token function">createContext</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">ThemedButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> theme <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>ThemePrimary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">background</span><span class="token operator">:</span> theme <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Themed Button</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">ThemePicker</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> theme<span class="token punctuation">,</span> setTheme <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>ThemePrimary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+      <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>color<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>theme<span class="token punctuation">}</span></span>
+      <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">e</span> <span class="token operator">=></span> <span class="token function">setTheme</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+    <span class="token punctuation">/></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>theme<span class="token punctuation">,</span> setTheme<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">&quot;#673ab8&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemePrimary.Provider</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> theme<span class="token punctuation">,</span> setTheme <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SomeComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemedButton</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token punctuation">{</span><span class="token string">&quot; - &quot;</span><span class="token punctuation">}</span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemePicker</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">SomeComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">ThemePrimary.Provider</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyLCBjcmVhdGVDb250ZXh0IH0gZnJvbSAicHJlYWN0IjsKaW1wb3J0IHsgdXNlQ29udGV4dCwgdXNlU3RhdGUgfSBmcm9tICJwcmVhY3QvaG9va3MiOwoKY29uc3QgU29tZUNvbXBvbmVudCA9IHByb3BzID0%2BIHByb3BzLmNoaWxkcmVuOwoKY29uc3QgVGhlbWVQcmltYXJ5ID0gY3JlYXRlQ29udGV4dChudWxsKTsKCmZ1bmN0aW9uIFRoZW1lZEJ1dHRvbigpIHsKICBjb25zdCB7IHRoZW1lIH0gPSB1c2VDb250ZXh0KFRoZW1lUHJpbWFyeSk7CiAgcmV0dXJuIDxidXR0b24gc3R5bGU9e3sgYmFja2dyb3VuZDogdGhlbWUgfX0%2BVGhlbWVkIEJ1dHRvbjwvYnV0dG9uPjsKfQoKZnVuY3Rpb24gVGhlbWVQaWNrZXIoKSB7CiAgY29uc3QgeyB0aGVtZSwgc2V0VGhlbWUgfSA9IHVzZUNvbnRleHQoVGhlbWVQcmltYXJ5KTsKICByZXR1cm4gKAogICAgPGlucHV0CiAgICAgIHR5cGU9ImNvbG9yIgogICAgICB2YWx1ZT17dGhlbWV9CiAgICAgIG9uQ2hhbmdlPXtlID0%2BIHNldFRoZW1lKGUuY3VycmVudFRhcmdldC52YWx1ZSl9CiAgICAvPgogICk7Cn0KCmZ1bmN0aW9uIEFwcCgpIHsKICBjb25zdCBbdGhlbWUsIHNldFRoZW1lXSA9IHVzZVN0YXRlKCIjNjczYWI4Iik7CiAgcmV0dXJuICgKICAgIDxUaGVtZVByaW1hcnkuUHJvdmlkZXIgdmFsdWU9e3sgdGhlbWUsIHNldFRoZW1lIH19PgogICAgICA8U29tZUNvbXBvbmVudD4KICAgICAgICA8VGhlbWVkQnV0dG9uIC8%2BCiAgICAgICAgeyIgLSAifQogICAgICAgIDxUaGVtZVBpY2tlciAvPgogICAgICA8L1NvbWVDb21wb25lbnQ%2BCiAgICA8L1RoZW1lUHJpbWFyeS5Qcm92aWRlcj4KICApOwp9CgpyZW5kZXIoPEFwcCAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImFwcCIpKTsK" class="repl-link">Run in REPL</a>
+				</div>
+			
+				<h2 id="legacy-context-api">
+					<a href="#legacy-context-api" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Legacy Context API (#legacy-context-api)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Legacy Context API</span>
+				</h2><p>This API is considered legacy and should be avoided in new code, it has known issues and only exists for backwards-compatibility reasons.</p>
+<p>One of the key differences between this API and the new one is that this API cannot update a child when a component in-between the child and the provider aborts rendering via <code>shouldComponentUpdate</code>. When this happens, the child <strong>will not</strong> received the updated context value, often resulting in tearing (part of the UI using the new value, part using the old).</p>
+<p>To pass down a value through the context, a component needs to have the <code>getChildContext</code> method, returning the intended context value. Descendants can then access the context via the second argument in function components or <code>this.context</code> in class-based components.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">ThemedButton</span><span class="token punctuation">(</span><span class="token parameter">_props<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">background</span><span class="token operator">:</span> context<span class="token punctuation">.</span>theme <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      Themed Button
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">getChildContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token string">&quot;#673ab8&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SomeOtherComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ThemedButton</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">SomeOtherComponent</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAicHJlYWN0IjsKCmNvbnN0IFNvbWVPdGhlckNvbXBvbmVudCA9IHByb3BzID0%2BIHByb3BzLmNoaWxkcmVuOwoKZnVuY3Rpb24gVGhlbWVkQnV0dG9uKF9wcm9wcywgY29udGV4dCkgewogIHJldHVybiAoCiAgICA8YnV0dG9uIHN0eWxlPXt7IGJhY2tncm91bmQ6IGNvbnRleHQudGhlbWUgfX0%2BCiAgICAgIFRoZW1lZCBCdXR0b24KICAgIDwvYnV0dG9uPgogICk7Cn0KCmNsYXNzIEFwcCBleHRlbmRzIENvbXBvbmVudCB7CiAgZ2V0Q2hpbGRDb250ZXh0KCkgewogICAgcmV0dXJuIHsKICAgICAgdGhlbWU6ICIjNjczYWI4IgogICAgfQogIH0KCiAgcmVuZGVyKCkgewogICAgcmV0dXJuICgKICAgICAgPGRpdj4KICAgICAgICA8U29tZU90aGVyQ29tcG9uZW50PgogICAgICAgICAgPFRoZW1lZEJ1dHRvbiAvPgogICAgICAgIDwvU29tZU90aGVyQ29tcG9uZW50PgogICAgICA8L2Rpdj4KICAgICk7CiAgfQp9CgpyZW5kZXIoPEFwcCAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImFwcCIpKTsK" class="repl-link">Run in REPL</a>
+				</div>
+			</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/harshitkumar31" target="_blank" rel="noopener noreferrer">@harshitkumar31</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

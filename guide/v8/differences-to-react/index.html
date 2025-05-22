@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Differences to React – Preact Version 8</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="">
+<meta property="og:url" content="https://preactjs.com/guide/v8/differences-to-react">
+<meta property="og:title" content="Differences to React – Preact Version 8">
+<meta property="og:description" content="">
+<meta name="robots" content="noindex"></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_1a7q2_90">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div data-open="false" class="_wrapper_t9oa6_1"><button value="sidebar" class="_toggle_t9oa6_6">Guide</button><aside class="_sidebar_t9oa6_58"><div class="_sidebarInner_t9oa6_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v10">10.x (current)</option><option selected value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><a href="/guide/v8/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v8/differences-to-react" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Differences to React</a><a href="/guide/v8/switching-to-preact" class="_link_1ttwe_16  ">Switching to Preact</a><a href="/guide/v8/types-of-components" class="_link_1ttwe_16  ">Types of Components</a><a href="/guide/v8/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v8/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v8/linked-state" class="_link_1ttwe_16  ">Linked State</a><a href="/guide/v8/external-dom-mutations" class="_link_1ttwe_16  ">External DOM Mutations</a><a href="/guide/v8/extending-component" class="_link_1ttwe_16  ">Extending Component</a><a href="/guide/v8/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a><a href="/guide/v8/progressive-web-apps" class="_link_1ttwe_16  ">Progressive Web Apps</a></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_stickyWarning_sqynl_71">You are viewing the documentation for an older version of Preact. Switch to the <a href="/guide/v10/differences-to-react">current version</a>.</div><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v8/differences-to-react.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><content-region name="/guide/v8/differences-to-react" data-page-nav="false" can-edit><div class="markup"><h1>Differences to React</h1><p>Preact itself is not intended to be a reimplementation of React.  There are differences.  Many of these differences are trivial, or can be completely removed by using <a href="https://github.com/preactjs/preact-compat" target="_blank" rel="noopener noreferrer">preact-compat</a>, which is a thin layer over Preact that attempts to achieve 100% compatibility with React.</p>
+<p>The reason Preact does not attempt to include every single feature of React is in order to remain <strong>small</strong> and <strong>focused</strong> - otherwise it would make more sense to simply submit optimizations to the React project, which is already a very complex and well-architected codebase.</p>
+<hr>
+<nav><ul><li><a href="#version-compatibility">Version Compatibility</a></li><li><a href="#whats-included?">What's Included?</a></li><li><a href="#whats-added?">What's Added?</a></li><li><a href="#whats-missing?">What's Missing?</a></li><li><a href="#whats-different?">What's Different?</a></li></ul></nav><hr>
+
+				<h2 id="version-compatibility">
+					<a href="#version-compatibility" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Version Compatibility (#version-compatibility)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Version Compatibility</span>
+				</h2><p>For both Preact and <a href="https://github.com/preactjs/preact-compat" target="_blank" rel="noopener noreferrer">preact-compat</a>, version compatibility is measured against the <em>current</em> and <em>previous</em> major releases of React. When new features are announced by the React team, they may be added to Preact's core if it makes sense given the <a href="/about/project-goals">Project Goals</a>.  This is a fairly democratic process, constantly evolving through discussion and decisions made in the open, using issues and pull requests.</p>
+<blockquote>
+<p>Thus, the website and documentation reflect React <code>0.14.x</code> and <code>15.x</code> when discussing compatibility or making comparisons.</p>
+</blockquote>
+
+				<h2 id="whats-included?">
+					<a href="#whats-included?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: What's Included? (#whats-included?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>What's Included?</span>
+				</h2><ul>
+<li><a href="https://facebook.github.io/react/docs/reusable-components.html#es6-classes" target="_blank" rel="noopener noreferrer">ES6 Class Components</a><ul>
+<li><em>classes provide an expressive way to define stateful components</em></li>
+</ul>
+</li>
+<li><a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank" rel="noopener noreferrer">Higher-Order Components</a>  <ul>
+<li><em>components that return other components from <code>render()</code>, effectively wrappers</em></li>
+</ul>
+</li>
+<li><a href="https://facebook.github.io/react/docs/reusable-components.html#stateless-functions" target="_blank" rel="noopener noreferrer">Stateless Pure Functional Components</a>  <ul>
+<li><em>functions that receive <code>props</code> as arguments and return JSX/VDOM</em></li>
+</ul>
+</li>
+<li><a href="https://reactjs.org/docs/legacy-context.html" target="_blank" rel="noopener noreferrer">Contexts</a>: Support for the legacy <code>context API</code> was added in Preact <a href="https://github.com/preactjs/preact/milestones/3.0" target="_blank" rel="noopener noreferrer">3.0</a>.<ul>
+<li><em>Support for the <a href="https://reactjs.org/docs/context.html" target="_blank" rel="noopener noreferrer">new api</a> is discussed <a href="https://github.com/preactjs/preact/pull/963" target="_blank" rel="noopener noreferrer">as PR #963</a>.</em></li>
+</ul>
+</li>
+<li><a href="https://facebook.github.io/react/docs/more-about-refs.html" target="_blank" rel="noopener noreferrer">Refs</a>: Support for function refs was added in Preact in <a href="https://github.com/preactjs/preact/milestones/4.0" target="_blank" rel="noopener noreferrer">4.0</a>. String refs are supported in <code>preact-compat</code>.<ul>
+<li><em>Refs provide a way to refer to rendered elements and child components.</em></li>
+</ul>
+</li>
+<li>Virtual DOM Diffing<ul>
+<li><em>This is a given - Preact's diff is simple but effective, and <strong><a href="http://developit.github.io/js-repaint-perfs/" target="_blank" rel="noopener noreferrer">extremely</a> <a href="https://localvoid.github.io/uibench/" target="_blank" rel="noopener noreferrer">fast</a></strong>.</em></li>
+</ul>
+</li>
+<li><code>h()</code>, a more generalized version of <code>React.createElement</code><ul>
+<li><em>This idea was originally called <a href="https://github.com/dominictarr/hyperscript" target="_blank" rel="noopener noreferrer">hyperscript</a> and has value well beyond the React ecosystem, so Preact promotes the original standard. (<a href="http://jasonformat.com/wtf-is-jsx" target="_blank" rel="noopener noreferrer">Read: why `h()`?</a>)</em></li>
+<li><em>It's also a little more readable: <code>h('a', { href:'/' }, h('span', null, 'Home'))</code></em></li>
+</ul>
+</li>
+</ul>
+
+				<h2 id="whats-added?">
+					<a href="#whats-added?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: What's Added? (#whats-added?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>What's Added?</span>
+				</h2><p>Preact actually adds a few convenient features inspired by work in the React community:</p>
+<ul>
+<li><code>this.props</code> and <code>this.state</code> are passed to <code>render()</code> for you  <ul>
+<li><em>You can still reference them manually. This is just cleaner, particularly when <a href="http://www.2ality.com/2015/01/es6-destructuring.html" target="_blank" rel="noopener noreferrer">destructuring</a></em></li>
+</ul>
+</li>
+<li>Batching of DOM updates, debounced/collated using <code>setTimeout(1)</code> <em>(can also use requestAnimationFrame)</em></li>
+<li>You can just use <code>class</code> for CSS classes. <code>className</code> is still supported, but <code>class</code> is preferred.</li>
+<li>Component and element recycling/pooling.</li>
+</ul>
+
+				<h2 id="whats-missing?">
+					<a href="#whats-missing?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: What's Missing? (#whats-missing?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>What's Missing?</span>
+				</h2><ul>
+<li><a href="https://github.com/developit/proptypes" target="_blank" rel="noopener noreferrer">PropType</a> Validation: Not everyone uses PropTypes, so they aren't part of Preact's core.<ul>
+<li><em><strong>PropTypes are fully supported</strong> in <a href="https://github.com/preactjs/preact-compat" target="_blank" rel="noopener noreferrer">preact-compat</a>, or you can use them manually.</em></li>
+</ul>
+</li>
+<li><a href="https://facebook.github.io/react/docs/top-level-api.html#reactchildren" target="_blank" rel="noopener noreferrer">Children</a>: Not necessary in Preact, because <code>props.children</code> is <em>always an Array</em>.<ul>
+<li><em><code>React.Children</code> is fully supported in <a href="https://github.com/preactjs/preact-compat" target="_blank" rel="noopener noreferrer">preact-compat</a>.</em></li>
+</ul>
+</li>
+<li>Synthetic Events: Preact's browser support target does not require this extra overhead.<ul>
+<li><em>Preact uses the browser's native <code>addEventListener</code> for event handling. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers" target="_blank" rel="noopener noreferrer">GlobalEventHandlers</a> for a full list of DOM event handlers.</em></li>
+<li><em>A full events implementation would mean more maintenance and performance concerns, and a larger API.</em></li>
+</ul>
+</li>
+</ul>
+
+				<h2 id="whats-different?">
+					<a href="#whats-different?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: What's Different? (#whats-different?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>What's Different?</span>
+				</h2><p>Preact and React have some more subtle differences:</p>
+<ul>
+<li><code>render()</code> accepts a third argument, which is the root node to <em>replace</em>, otherwise it appends. This may change slightly in a future version, perhaps auto-detecting that a replacement render is appropriate by inspecting the root node.</li>
+<li>Components do not implement <code>contextTypes</code> or <code>childContextTypes</code>. Children receive all <code>context</code> entries drawn from <code>getChildContext()</code>.</li>
+</ul>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/ryuyz" target="_blank" rel="noopener noreferrer">@ryuyz</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Preact X, a story of stability – Preact</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="">
+<meta property="og:url" content="https://preactjs.com/blog/preact-x">
+<meta property="og:title" content="Preact X, a story of stability – Preact">
+<meta property="og:description" content=""></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1"><div class="_outer_sqynl_111"><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/blog/preact-x.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><div class="_blogMeta_eutpc_1"><time datetime="2024-05-24T00:00:00.000Z" class="_time_5644u_1">5/24/2024</time>, written by <address class="_authors_eutpc_9"><span><a href="https://bsky.app/profile/jovidecroock.com" target="_blank" rel="noopener noreferrer">Jovi De Croock</a></span></address></div><content-region name="/blog/preact-x" data-page-nav="false" can-edit><div class="markup"><h1>Preact X, a story of stability</h1><p>A lot of you have been waiting for <a href="https://github.com/preactjs/preact/issues/2621" target="_blank" rel="noopener noreferrer">Preact 11</a>, announced in an issue opened
+way back in July 2020, and to be clear I was one of the most excited people for v11.
+When we started thinking about Preact 11 we believed that there was no way to introduce the changes we had in mind
+in Preact X without breaking changes, some of the things we had in mind:</p>
+<ul>
+<li>Using a backing VNode structure to reduce GC, by doing this we'd only use the result of <code>h()</code> to update our backing-node.</li>
+<li>Reconciler performance, to allow optimized paths for mounting/unmounting/etc</li>
+<li>Some changes like removing <code>px</code> suffixing, <code>forwardRef</code> and breaking IE11 support.</li>
+<li>Keeping ref in props.</li>
+<li>Addressing event/child diffing bugs.</li>
+</ul>
+<p>These were our initial goals for v11, but upon going down this path, we realised that many of those changes weren't actually breaking changes and could be released directly in v10 in a non-breaking way. Only the third point, removing the <code>px</code> suffix and passing <code>ref</code> directly in props as well as dropping IE11, fall into the breaking changes category. We went with releasing the other features in the stable v10 release line, which allows any Preact user to benefit from them immediately without having to change their code.</p>
+<p>Preact has a much bigger userbase today compared to when we made the original plans for v11. It enjoys wide usage in many small to big companies for mission critical software. We really want to be sure that any breaking changes we may introduce are absolutely worth the cost of moving the whole ecosystem over to it.</p>
+<p>As we were <a href="https://github.com/preactjs/preact/tree/v11" target="_blank" rel="noopener noreferrer">experimenting</a> we went a new type of diffing, named
+<a href="https://github.com/preactjs/preact/pull/3388" target="_blank" rel="noopener noreferrer">skew based diffing</a>, we saw real performance
+improvements as well as it fixing a bunch of long-running bugs. As time went on and we invested more time in
+these experiments for Preact 11, we started noticing that the improvements we were landing didn't need to be exclusive to Preact 11.</p>
+
+				<h2 id="releases">
+					<a href="#releases" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Releases (#releases)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Releases</span>
+				</h2><p>Since the aforementioned Preact 11 issue there have been 18 (!!) minor versions of Preact X.
+Many of them have been directly inspired by work done on Preact 11. Let's go over a few and look at the impact.</p>
+
+				<h3 id="1050">
+					<a href="#1050" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.5.0 (#1050)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.5.0</span>
+				</h3><p>The introduction of <a href="https://github.com/preactjs/preact/pull/2754" target="_blank" rel="noopener noreferrer">resumed hydration</a> -- this functionality basically allows suspending during
+the re-hydration of your component tree. This means that for instance in the following component tree we'll re-hydrate and make the <code>Header</code>
+interactive while the <code>LazyArticleHeader</code> suspends, in the meanwhile the server-rendered DOM will stay on screeen. When the lazy-load finishes
+we'll continue re-hydrating, our <code>Header</code> and <code>LazyArticleHeader</code> can be interacted with while our <code>LazyContents</code> resolve. This is a pretty
+powerful feature to make your most important stuff interactive while not overloading the bundle-size/download-size of your initial bundle.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Header</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Suspense</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LazyArticleHeader</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Suspense</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span><span class="token punctuation">></span></span><span class="token plain-text">
+              </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LazyContents</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Suspense</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Suspense</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+  )
+}</span></code></pre>
+					
+				</div>
+			
+				<h3 id="1080">
+					<a href="#1080" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.8.0 (#1080)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.8.0</span>
+				</h3><p>In 10.8.0 we introduced <a href="https://github.com/preactjs/preact/pull/3553" target="_blank" rel="noopener noreferrer">state settling</a>, this would ensure that if a component updates hook-state
+during render that we'd pick this up, cancel prior effects and render on. We'd of course have to ensure that this didn't loop but this feature
+reduces the amount of renders that are queued up because of in-render state invocations, this feature also increased our compatibility with the
+React ecosystem as a lot of libraries relied on effects not being called multiple times due to in-render state updates.</p>
+
+				<h3 id="10110">
+					<a href="#10110" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.11.0 (#10110)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.11.0</span>
+				</h3><p>After a lot of research we found a way to introduce <a href="https://github.com/preactjs/preact/pull/3583" target="_blank" rel="noopener noreferrer">useId</a> into Preact, this required a ton of research
+of how we could go about adding unique values for a given tree-structure. One of our maintainers wrote about
+<a href="https://www.jovidecroock.com/blog/preact-use-id" target="_blank" rel="noopener noreferrer">our research at the time</a> and we've iterated on it ever since trying to make it as collision free as possible...</p>
+
+				<h3 id="10150">
+					<a href="#10150" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.15.0 (#10150)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.15.0</span>
+				</h3><p>We found that a pass through re-render resulting in multiple new components re-rendering could result in our <code>rerenderQueue</code> being out of order, this could
+result in our (context) updates propagating to components that would afterwards render <em>again</em> with stale values, you can check out
+<a href="https://github.com/preactjs/preact/commit/672782adbf9ccefa7a4d7c175f0adf8580f73c92" target="_blank" rel="noopener noreferrer">the commit message</a> for a really detailed explanation! Doing so both
+batches these updates up as well as increased our alignment for React libraries.</p>
+
+				<h3 id="10160">
+					<a href="#10160" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.16.0 (#10160)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.16.0</span>
+				</h3><p>In our research for v11 we went deep on child diffing as we were aware that there were a few cases where our current algorithm would fall short, just listing a few
+of these issues:</p>
+<ul>
+<li><a href="https://github.com/preactjs/preact/issues/3973" target="_blank" rel="noopener noreferrer">removing an element before another would cause re-insertion</a></li>
+<li><a href="https://github.com/preactjs/preact/issues/2622" target="_blank" rel="noopener noreferrer">re-insertiosn when removing more than 1 child</a></li>
+<li><a href="https://github.com/preactjs/preact/issues/2783" target="_blank" rel="noopener noreferrer">unnecessary unmounting of keyed nodes</a></li>
+</ul>
+<p>Not all of these resulted in a bad state, some just meant decreased performance... When we found out that we could port skew-based diffing to Preact X we
+were thrilled, not only would we fix a lot of cases we could see how this algorithm behaves in the wild! Which in retrospect, it did great, at times I would
+have wished we had good testbeds to run these on first rather than our community having to report issues. I do want to use this opportunity to thank you all
+for helping us out by always filing considerate issues with reproductions, you all are the absolute best!</p>
+
+				<h3 id="10190">
+					<a href="#10190" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.19.0 (#10190)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.19.0</span>
+				</h3><p>In 10.19.0 Marvin applied his research from <a href="https://fresh.deno.dev/" target="_blank" rel="noopener noreferrer">fresh</a> to add <a href="https://github.com/preactjs/preact/pull/4177" target="_blank" rel="noopener noreferrer">pre-compiled JSX functions</a>,
+this basically allows you to pre-compile your components during transpilation, when render-to-string is running we just have to concatenate the strings rather
+than allocating memory for the whole VNode tree. The transform for this is exclusive to Deno at the moment but the general concept is present in Preact!</p>
+
+				<h3 id="10202">
+					<a href="#10202" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: 10.20.2 (#10202)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>10.20.2</span>
+				</h3><p>We have faced a number of issues where an event could bubble up to a newly inserted VNode which would result in undesired behaviour, this was fixed
+<a href="https://github.com/preactjs/preact/pull/4322" target="_blank" rel="noopener noreferrer">by adding an event-clock</a>. In the following scenario, you would click the button which sets state, the browser
+interleaves event bubbling with micro-ticks, which is also what Preact uses to schedule updates. This combination means that Preact will update the UI, meaning
+that the <code>&lt;div></code> will get that <code>onClick</code> handler which we'll bubble up to and invoke the <code>click</code> again toggling this state immediately off again.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>toggled<span class="token punctuation">,</span> setToggled<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> toggled <span class="token operator">?</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setToggled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">clear</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span> 
+  <span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+        <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setToggled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">></span></span><span class="token plain-text">toggle on</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h2 id="stability">
+					<a href="#stability" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Stability (#stability)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Stability</span>
+				</h2><p>The above are some cherry-picked releases of things that our community received <em>without</em> breaking changes, but there is so much more... Adding a new major
+version always leaves a part of the community behind and we don't want to do that. If we look at the Preact 8 release line we can see that there's still 100.000
+downloads in the past week, the last 8.x release was 5 years ago, just to show that a part of the community gets left behind.</p>
+<p>Stability is great, we as the Preact team love stability. We actually released multiple major features on other ecosystem projects:</p>
+<ul>
+<li><a href="https://github.com/preactjs/signals" target="_blank" rel="noopener noreferrer">Signals</a></li>
+<li><a href="https://github.com/preactjs/preact-render-to-string/pull/333" target="_blank" rel="noopener noreferrer">Async rendering</a></li>
+<li><a href="https://github.com/preactjs/preact-render-to-string/pull/354" target="_blank" rel="noopener noreferrer">Streaming rendering</a></li>
+<li><a href="https://github.com/preactjs/prefresh" target="_blank" rel="noopener noreferrer">Prefresh</a></li>
+<li><a href="https://github.com/preactjs/preset-vite#prerendering-configuration" target="_blank" rel="noopener noreferrer">The vite preset with pre-rendering</a></li>
+<li><a href="https://github.com/preactjs/preact-iso" target="_blank" rel="noopener noreferrer">A new async router</a></li>
+<li><a href="https://github.com/preactjs/create-preact" target="_blank" rel="noopener noreferrer">Create Preact</a></li>
+</ul>
+<p>We value our ecosystem and we value the extensions being built through our <a href="https://marvinh.dev/blog/preact-options/" target="_blank" rel="noopener noreferrer">`options API`</a>,
+this is one of the main drivers behind not wanting to introduce these breaking changes but instead, allow you all to benefit
+from our research without a painful migration path.</p>
+<p>This doesn't mean that Preact 11 won't happen but it might not be the thing that we initially thought it would be. Instead, we might just drop IE11 support and give you
+those performance improvements, all while giving you the stability of Preact X. There are many more ideas floating around and we're very interested in the wider Preact experience in the context of meta-frameworks that provide things like routing out of the box. We're exploring this angle in our vite preset as well as <a href="https://fresh.deno.dev/" target="_blank" rel="noopener noreferrer">Fresh</a> to get a good feel what a Preact first meta framework should look like.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/developit" target="_blank" rel="noopener noreferrer">@developit</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

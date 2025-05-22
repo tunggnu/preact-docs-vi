@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Simplifying Islands Architecture – Preact</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="">
+<meta property="og:url" content="https://preactjs.com/blog/simplifying-islands-arch">
+<meta property="og:title" content="Simplifying Islands Architecture – Preact">
+<meta property="og:description" content=""></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1"><div class="_outer_sqynl_111"><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/blog/simplifying-islands-arch.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><div class="_blogMeta_eutpc_1"><time datetime="2024-10-27T00:00:00.000Z" class="_time_5644u_1">10/27/2024</time>, written by <address class="_authors_eutpc_9"><span><a href="https://twitter.com/barelyreaper" target="_blank" rel="noopener noreferrer">reaper</a></span></address></div><content-region name="/blog/simplifying-islands-arch" data-page-nav="false" can-edit><div class="markup"><blockquote>
+<p>This is a slightly modified version of the original write up at <a href="https://barelyhuman.github.io/preact-islands-diy" target="_blank" rel="noopener noreferrer">https://barelyhuman.github.io/preact-islands-diy</a></p>
+</blockquote>
+<h1>Islands</h1>
+				<h2 id="intro">
+					<a href="#intro" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Intro (#intro)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Intro</span>
+				</h2><p>This guide is a simple walkthrough to understand how island architecture works
+and being able to setup your own using tools you already have around you.</p>
+<p>First off, what are islands ? You can read more about it's origin from </p>
+<p><a href="https://jasonformat.com/islands-architecture/" target="_blank" rel="noopener noreferrer">Islands Architecture - Jason Miller →</a></p>
+
+				<h2 id="why-?">
+					<a href="#why-?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Why ? (#why-?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Why ?</span>
+				</h2><p>For a lot of devs who've worked with server rendering for a while, we kinda
+expected frontend tech to take a turn towards server rendering at some point in
+time since data fetching and processing is almost always faster on the server
+where you are closer to the data.</p>
+<p>Which is one of many reasons but then there's others that the entire web is
+debating over, so we'll leave it to the smart people.</p>
+<p>Let's move on to implementing the concept</p>
+<h1>Getting Started</h1>
+				<h2 id="basic-implementation">
+					<a href="#basic-implementation" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Basic Implementation (#basic-implementation)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Basic Implementation</span>
+				</h2><p>The basic implementation can be generalized for most SSR + Client Hydration
+apps.</p>
+<p>Here's an overview</p>
+<ol>
+<li>Initially render the view on the server as a static page.</li>
+<li>Hydrate the app on client</li>
+</ol>
+<p>To go into the details of each.</p>
+
+				<h3 id="initial-server-render">
+					<a href="#initial-server-render" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Initial Server Render (#initial-server-render)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Initial Server Render</span>
+				</h3><p>In this step, you still build the component tree with whatever UI library you're
+using, Vue, React, Preact, Solid, etc. And then flatten the component tree to
+only have the static and immediately computable data. In this case, no
+side-effects and state management based code is run.</p>
+<p>The output is a static html document that you can send to the client.</p>
+<p>Since this guide is tied to <a href="https://preactjs.com/" target="_blank" rel="noopener noreferrer">preact</a>, we're going to use
+a library from the preact team that helps us achieve this.</p>
+<p>Here's what a very rudimentary implementation of rendering a component on the
+server would look like.</p>
+<p>We're using <code>express.js</code> here as an example due to it being the first choice of
+most beginners, the process is mostly same for any other web server engine you
+pick up. Hapi, Koa, Fastify, etc.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// server.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> h <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span>
+<span class="token keyword">import</span> preactRenderToString <span class="token keyword">from</span> <span class="token string">'preact-render-to-string'</span>
+
+<span class="token comment">// ...remaining express.js setup</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">HomePage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'hello'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token function">preactRenderToString</span><span class="token punctuation">(</span><span class="token function">h</span><span class="token punctuation">(</span>HomePage<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+					
+				</div>
+			<p>Here most work is done by <code>preactRenderToString</code> , and all we are doing is
+writing components. With a little bit of bundling magic, we should be able to
+write in JSX to make it a little more friendly to work with.</p>
+
+				<h3 id="hydrate">
+					<a href="#hydrate" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Hydrate (#hydrate)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Hydrate</span>
+				</h3><p>Okay, so a term you'll see smart people use around a lot online.</p>
+<ul>
+<li>Partial Hydration</li>
+<li>Progressive Hydration</li>
+<li>add more as they find more such ways etc</li>
+</ul>
+<p>To be put simply, it's to bind the interactivity to a DOM element with
+<em>existing</em> state/effects/events</p>
+<p>This <em>existing</em> state/effects/events might be sent from the server, but if
+working with a component that can handle it's own and the logic is well
+contained in it, you just mount the component on the DOM with the necessary
+bindings.</p>
+<p>As an example, this might looks a little something like this</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// client.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> hydrate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span>
+<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">'./Counter'</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">main</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// assuming the server rendered the component with the following ID as well.</span>
+  <span class="token keyword">const</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'counter'</span><span class="token punctuation">)</span>
+  <span class="token function">hydrate</span><span class="token punctuation">(</span><span class="token function">h</span><span class="token punctuation">(</span>Counter<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> container<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+					
+				</div>
+			<p>Similar to the server render phase, we use a helper from <code>preact</code> to help
+hydrate a component. You could use <code>render</code> but then the actual element is
+already something that was rendered by the server, rendering it again would make
+no sense and so we just ask preact to try to add in the needed event and state
+data instead</p>
+<p>What I've explained above is called Partial Hydration, since you don't hydrate
+the entire app and just hydrate certain parts of it.</p>
+
+				<h2 id="into-the-deep">
+					<a href="#into-the-deep" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Into the Deep (#into-the-deep)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Into the Deep</span>
+				</h2><p>There's nothing more that you need to know to understand how to make an island
+arch based app but, let's now get into implementing this.</p>
+<h1>The Code</h1><p>The code level architecture for this is very similar to most SSR models and Vite
+has a good explanation for how to write your own ssr with vite</p>
+<p><a href="https://vitejs.dev/guide/ssr.html" target="_blank" rel="noopener noreferrer">→ Vite Guides - Server-Side Rendering</a></p>
+<p>We used webpack instead, to make it a little more verbose which is easier to explain.</p>
+<blockquote>
+<p>Note: You can get the referenced code from <a href="http://github.com/barelyhuman/preact-islands-diy/" target="_blank" rel="noopener noreferrer">barelyhuman/preact-islands-diy</a></p>
+</blockquote>
+
+				<h2 id="serverappjs">
+					<a href="#serverappjs" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `server/app.js` (#serverappjs)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`server/app.js`</span>
+				</h2><p>Starting with <code>server/app.js</code> file. If you have the codebase open locally it
+would be helpful while reading this.</p>
+<p>The below code snippet only highlights the needed areas</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> preactRenderToString <span class="token keyword">from</span> <span class="token string">'preact-render-to-string'</span>
+<span class="token keyword">import</span> HomePage <span class="token keyword">from</span> <span class="token string">'../pages/HomePage.js'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> h <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> withManifestBundles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../lib/html.js'</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>
+    <span class="token function">withManifestBundles</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token function">preactRenderToString</span><span class="token punctuation">(</span><span class="token function">h</span><span class="token punctuation">(</span>HomePage<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+					
+				</div>
+			<p>Looking at the imports, we have the same imports as mentioned in the
+<a href="#getting-started">Getting Started</a> section and not much has changed.</p>
+<p>The only addition here is the <code>withManifestBundles</code> helper which is what we'll
+talk about next.</p>
+
+				<h2 id="libhtmljs">
+					<a href="#libhtmljs" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `lib/html.js` (#libhtmljs)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`lib/html.js`</span>
+				</h2><p>The HTML helper is different in different variants of the template but we'll be
+only going through <code>webpack</code> version which is on the <code>main</code> branch.</p>
+<p>The base usecase of the helper is to be able to go through a manifest json that
+lists what files are being bundled by webpack and their hashed paths when being
+used in production.</p>
+<p>This is required since we will not know the hash and we need a programmatic way
+to find it out.</p>
+<p>This manifest is generated by webpack's client configuration which we'll take a
+look at in a minute.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// fetch the manifest from the client output</span>
+<span class="token keyword">import</span> manifest <span class="token keyword">from</span> <span class="token string">'../../dist/js/manifest.json'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">withManifestBundles</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> styles<span class="token punctuation">,</span> body <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// go through each key in the manifest and construct</span>
+  <span class="token comment">// a script tag for each.</span>
+  <span class="token keyword">const</span> bundledScripts <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>manifest<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> scriptPath <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/public/js/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>manifest<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;script src=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>scriptPath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>&lt;/script></span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;html lang=&quot;en&quot;>
+    &lt;head>
+      &lt;meta charset=&quot;UTF-8&quot; />
+      &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; />
+      &lt;style id=&quot;_goober&quot;>
+        </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>styles<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+      &lt;/style>
+    &lt;/head>
+
+    &lt;body>
+      </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>body<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+    &lt;/body>
+    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>bundledScripts<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+  &lt;/html></span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>As explained in the comments, we just grab all the files we need from the
+manifest and inject them as script tags into the final HTML that is sent from
+the server.</p>
+<p>Moving onto the configuration that makes it possible to build this.</p>
+
+				<h2 id="webpackconfig*js">
+					<a href="#webpackconfig*js" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `webpack.config.*.js` (#webpackconfig*js)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`webpack.config.*.js`</span>
+				</h2><p>I tried to keep the webpack configuration as minimal as possible to avoid
+scaring people away from the whole idea so let's go through the configuration.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// webpack.config.server.js</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> nodeExternals <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack-node-externals'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!=</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'development'</span> <span class="token operator">:</span> <span class="token string">'production'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">'node'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">entry</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/server/app.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'server.js'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">stats</span><span class="token operator">:</span> <span class="token string">'errors-warnings'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.jsx'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.jsx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'babel-loader'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">externals</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token function">nodeExternals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>Most of them need no explanation, and the only loader we have in place is the
+<code>babel-loader</code> since we are using a CSS-IN-JS solution for styling.</p>
+<p>There's nothing magical going on here, we just give it the entry point of
+<code>server/app.js</code> and let it build itself to the same folder as the client's
+output.</p>
+<p>moving on to the client side config, which does add a few more things than
+simply providing an entry and getting an output.</p>
+<p>This is shortened out to explain the relevant bits</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// webpack.config.client.js</span>
+
+<span class="token keyword">const</span> entryPoints <span class="token operator">=</span> glob
+  <span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/client'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'/**/*.js'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">absolute</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">acc<span class="token punctuation">,</span> path</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> entry <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[^\/]+\.jsx?$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gm</span></span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.jsx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+    acc<span class="token punctuation">[</span>entry<span class="token punctuation">]</span> <span class="token operator">=</span> path
+    <span class="token keyword">return</span> acc
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+					
+				</div>
+			<p>So the first section is basically finding all files in <code>src/client</code> and creating
+an object of entries for webpack.</p>
+<p>Example: if <code>src/client/app.client.js</code> is a file then the output of the above
+would be</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;app.client&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./src/client/app.client.js&quot;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>this is nothing special, it's just how webpack expects entries to be defined.</p>
+<p>Everything else is generic configuration that's also present on the server side</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token punctuation">{</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">WebpackManifestPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">basePath</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">filter</span><span class="token operator">:</span> <span class="token parameter">file</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.mount\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>Then we have the manifest plugin, which checks for files that have the string
+<code>mount</code> in their name, this is done to make sure that only the entry files are
+loaded and not random files and we do this by specifying a specific extension
+type for the file.</p>
+<p>Some frameworks use a <code>islands</code> folder to separate islands from entry files. We
+instead separate the entry files from islands and have the user decide what
+mounts as an island and what doesn't.</p>
+<p>The above <code>WebpackManifestPlugin</code> generates a <code>manifest.json</code> file in
+<code>dist/public/js</code> which has the bundled file names which we were using in the
+<code>lib/html.js</code> file.</p>
+
+				<h2 id="babelrc">
+					<a href="#babelrc" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `.babelrc` (#babelrc)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`.babelrc`</span>
+				</h2><p>This is the last part of the configuration, where you ask babel to make sure
+that the JSX runtime it uses is from preact and not react.</p>
+<p>Pretty self explanatory, but if you need details about the option, please go
+through the docs of <a href="https://babeljs.io/" target="_blank" rel="noopener noreferrer">babel</a> and
+<a href="https://babeljs.io/docs/en/babel-plugin-transform-react-jsx" target="_blank" rel="noopener noreferrer">@babel/plugin-transform-react-jsx</a></p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token comment">// .babelrc</span>
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span>
+      <span class="token string">&quot;@babel/plugin-transform-react-jsx&quot;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token property">&quot;runtime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;automatic&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;importSource&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact&quot;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h2 id="folders">
+					<a href="#folders" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Folders (#folders)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Folders</span>
+				</h2><p>We can now move on to each folders' significance here.</p>
+<blockquote>
+<p><strong>Note</strong>: Please know that you can mix and match the folders if needed, just
+make sure the configurations are edited to handle the changes you do. If not,
+the current structure is good enough for most applications</p>
+</blockquote>
+
+				<h2 id="client">
+					<a href="#client" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: `client` (#client)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>`client`</span>
+				</h2><p>The <code>src/client</code> in this <code>main</code> branch is used to write the <code>mount</code> point code
+that gets sent with the rendered html.</p>
+<p>You add selective mounting based on pages and selectors that you wish to use,
+even though it would fetch multiple JS files, these files are never to have
+anything more than the mounting code , your islands should be self serving and
+self reliant. You can however send an initial dataset from the server as a
+<code>data-*</code> attribute but this has to be serializable data or will be lost.</p>
+<p>You can also add a wrapper around to create a island manually, but
+web-components are not widely supported so if using for a legacy level support
+system, you are better off manually mounting like mentioned above.</p>
+<p>example:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// src/client/index.mount.js</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> hydrate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span>
+
+<span class="token comment">// setup goober</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> setup <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'goober'</span>
+<span class="token function">setup</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span>
+
+<span class="token comment">// can be moved to a util file and used from there,</span>
+<span class="token comment">// in this file as an example for now.</span>
+<span class="token keyword">const</span> <span class="token function-variable function">mount</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">Component<span class="token punctuation">,</span> elm</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>elm<span class="token operator">?.</span>dataset<span class="token operator">?.</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>elm<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>props<span class="token punctuation">)</span>
+    <span class="token keyword">delete</span> elm<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>props
+    <span class="token function">hydrate</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span> elm<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">main</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// lazy load and re-mount counter as a client side component if needed</span>
+  <span class="token comment">// A better way would be to check if the `counter` element exists on</span>
+  <span class="token comment">// the DOM before even importing the component to avoid un-needed</span>
+  <span class="token comment">// JS downloads.</span>
+
+  <span class="token keyword">const</span> Counter <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'../components/Counter.js'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>default
+  <span class="token function">mount</span><span class="token punctuation">(</span>Counter<span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'counter'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+					
+				</div>
+			
+				<h2 id="components">
+					<a href="#components" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: components (#components)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>components</span>
+				</h2><p>The name is pretty self explanatory, since we aren't doing any segregation here
+as to what is and what isn't an island, you can shove all your components here
+like you normally would.</p>
+
+				<h2 id="layouts">
+					<a href="#layouts" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: layouts (#layouts)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>layouts</span>
+				</h2><p>These are separated since I like to keep the layouts far away from components
+since sometimes they have more than just rendering conditions. It's not needed
+in this specific case because in most cases you'd be running your layouts on the
+server and not on the client.</p>
+
+				<h2 id="lib">
+					<a href="#lib" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: lib (#lib)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>lib</span>
+				</h2><p>Contains common helper funcs for both client and server, since both are bundled
+separately and dependencies will be inlined as needed.</p>
+
+				<h2 id="pages">
+					<a href="#pages" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: pages (#pages)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>pages</span>
+				</h2><p>This folder acts as the storage for templates. So anything that the server will
+be rendering as a page would be put in here. The ability to use layouts and
+other components like a normal preact app helps with building composable
+templates but still it's easier to just have them separate from the actual
+component code.</p>
+
+				<h2 id="public">
+					<a href="#public" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: public (#public)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>public</span>
+				</h2><p>Stuff that needs to be delivered statically by express is put here, webpack
+takes care of copying the whole thing to the final folder.</p>
+
+				<h2 id="server">
+					<a href="#server" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: server (#server)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>server</span>
+				</h2><p>Self explanatory, server sided files, in most cases you'd like to move routes to
+a separate file and maybe add in middlewares to add a helper function to render
+preact components for you.</p>
+<p>Something like this is definitely a part of the server and not going to be
+client sided so just keep it in this folder.</p>
+<p>Example</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">comp<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token function">preactRenderToString</span><span class="token punctuation">(</span><span class="token function">h</span><span class="token punctuation">(</span>comp<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token operator">...</span>data <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// and somewhere else in the app</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>Homepage<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">'reaper'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>That's actually all the code that contributes to setting up your own partial
+hydration / island styled hydration with nodejs.</p>
+<p>Most of this can be achieved with almost all bundlers and a little more
+modification to how the configurations are generated, can help you achieve a
+similar DX to astro though you are better off using astro if you aren't a fan of
+maintaining configs.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/ooade" target="_blank" rel="noopener noreferrer">@ooade</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

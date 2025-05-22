@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://preactjs.com</id>
+    <title>Preact Blog</title>
+    <updated>2025-05-22T17:09:55.437Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://preactjs.com"/>
+    <link rel="self" href="https://preactjs.com/atom"/>
+    <subtitle>Preact news and articles</subtitle>
+    <logo>https://preactjs.com/assets/branding/symbol.png</logo>
+    <icon>https://preactjs.com/favicon.ico</icon>
+    <rights>All rights reserved 2022, the Preact team</rights>
+    <entry>
+        <title type="html"><![CDATA[Build your own Island Components]]></title>
+        <id>https://preactjs.com/blog/simplifying-islands-arch</id>
+        <link href="https://preactjs.com/blog/simplifying-islands-arch"/>
+        <updated>2024-08-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Demystifying how island architechture works and being able to setup your own, using tools you already have around you.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Prerendering with Preset Vite]]></title>
+        <id>https://preactjs.com/blog/prerendering-preset-vite</id>
+        <link href="https://preactjs.com/blog/prerendering-preset-vite"/>
+        <updated>2024-08-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[It's been a half-year since our prerendering plugin has somewhat quietly become available in `@preact/preset-vite`, so let's talk about it, our history, and the ecosystem at large]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Preact X, a story of stability]]></title>
+        <id>https://preactjs.com/blog/preact-x</id>
+        <link href="https://preactjs.com/blog/preact-x"/>
+        <updated>2024-05-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Preact X has been released for five years, let's go over all the exciting things that have happened.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Signal Boosting]]></title>
+        <id>https://preactjs.com/blog/signal-boosting</id>
+        <link href="https://preactjs.com/blog/signal-boosting"/>
+        <updated>2022-09-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The new release of Preact Signals brings significant performance updates to the foundations of the reactive system. Read on to learn what kinds of tricks we employed to make this happen.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Introducing Signals]]></title>
+        <id>https://preactjs.com/blog/introducing-signals</id>
+        <link href="https://preactjs.com/blog/introducing-signals"/>
+        <updated>2022-09-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Signals are an easier way to manage your application's state compared to hooks. A signal is a container object with a special "value" property that holds some value. Reading a signal's value property from within a component or computed function automatically subscribes to updates, and writing to the value property triggers subscriptions.]]></summary>
+    </entry>
+</feed>

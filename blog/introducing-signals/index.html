@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Introducing Signals – Preact</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="">
+<meta property="og:url" content="https://preactjs.com/blog/introducing-signals">
+<meta property="og:title" content="Introducing Signals – Preact">
+<meta property="og:description" content=""></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1"><div class="_outer_sqynl_111"><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/blog/introducing-signals.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><div class="_blogMeta_eutpc_1"><time datetime="2022-09-06T00:00:00.000Z" class="_time_5644u_1">9/6/2022</time>, written by <address class="_authors_eutpc_9"><span><a href="https://bsky.app/profile/marvinh.dev" target="_blank" rel="noopener noreferrer">Marvin Hagemeister</a> and </span><span><a href="https://bsky.app/profile/developit.dev" target="_blank" rel="noopener noreferrer">Jason Miller</a></span></address></div><content-region name="/blog/introducing-signals" data-page-nav="false" can-edit><div class="markup"><h1>Introducing Signals</h1><p>Signals are a way of expressing state that ensure apps stay fast regardless of how complex they get. Signals are based on reactive principles and provide excellent developer ergonomics, with a unique implementation optimized for Virtual DOM.</p>
+<p>At its core, a signal is an object with a <code>.value</code> property that holds some value. Accessing a signal's value property from within a component automatically updates that component when the value of that signal changes.</p>
+<p>In addition to being straightforward and easy to write, this also ensures state updates stay fast regardless of how many components your app has. Signals are fast by default, automatically optimizing updates behind the scenes for you.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@preact/signals&quot;</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> double <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token punctuation">.</span>value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token punctuation">.</span>value<span class="token operator">++</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text"> x 2 = </span><span class="token punctuation">{</span>double<span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAicHJlYWN0IjsKCmltcG9ydCB7IHNpZ25hbCwgY29tcHV0ZWQgfSBmcm9tICJAcHJlYWN0L3NpZ25hbHMiOwogCmNvbnN0IGNvdW50ID0gc2lnbmFsKDApOwpjb25zdCBkb3VibGUgPSBjb21wdXRlZCgoKSA9PiBjb3VudC52YWx1ZSAqIDIpOwogCmZ1bmN0aW9uIENvdW50ZXIoKSB7CiAgcmV0dXJuICgKICAgIDxidXR0b24gb25DbGljaz17KCkgPT4gY291bnQudmFsdWUrK30%2BCiAgICAgIHtjb3VudH0geCAyID0ge2RvdWJsZX0KICAgIDwvYnV0dG9uPgogICk7Cn0KCnJlbmRlcig8Q291bnRlciAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImFwcCIpKTsK" class="repl-link">Run in REPL</a>
+				</div>
+			<p>Signals can be used inside or outside of components, unlike hooks. Signals also work great alongside both hooks <strong><em>and</em></strong> class components, so you can introduce them at your own pace and bring your existing knowledge with you. Try them out in a few components and gradually adopt them over time.</p>
+<p>Oh and by the way, we are staying true to our roots of bringing you the smallest libraries possible. Using signals in Preact adds just <strong>1.6kB</strong> to your bundle size.</p>
+<p>If you want to jump right in, head over to our <a href="/guide/v10/signals">documentation</a> to learn more in depth about signals.</p>
+
+				<h2 id="which-problems-are-solved-by-signals?">
+					<a href="#which-problems-are-solved-by-signals?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Which problems are solved by signals? (#which-problems-are-solved-by-signals?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Which problems are solved by signals?</span>
+				</h2><p>Over the past years we’ve worked on a wide spectrum of apps and teams, ranging from small startups to monoliths with hundreds of developers committing at the same time. During this time everyone on the core team has noticed recurring problems with the way application state is managed.</p>
+<p>Fantastic solutions have been created that work to address these problems, but even the best solutions still require manual integration into the framework. As a result we’ve seen hesitance from developers in adopting these solutions, instead preferring to build using framework-provided state primitives.</p>
+<p>We built Signals to be a compelling solution that combines optimal performance and developer ergonomics with seamless framework integration.</p>
+
+				<h2 id="the-global-state-struggle">
+					<a href="#the-global-state-struggle" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: The global state struggle (#the-global-state-struggle)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>The global state struggle</span>
+				</h2><p>Application state usually starts out small and simple, perhaps a few simple <code>useState</code> hooks. As an app grows and more components need to access the same piece of state, that state is eventually lifted up to a common ancestor component. This pattern repeats multiple times until the majority of state ends up living close to the root of the component tree.</p>
+<p><img decoding="async" src="/signals/state-updates.png" alt="Image showing how the depth of the component tree directly affects rendering performance when using standard state updates."></p>
+<p>This scenario poses a challenge for traditional Virtual DOM based frameworks, which must update the entire tree affected by a state invalidation. In essence, rendering performance is a function of the number of components in that tree. We can work around this by memoizing parts of the component tree using <code>memo</code> or <code>useMemo</code> so that the framework receives the same objects. When nothing has changed, this lets the framework skip rendering some parts of the tree.</p>
+<p>Whilst this sounds reasonable in theory, the reality is often a lot messier. In practice, as codebases grow it becomes difficult to determine where these optimizations should be placed. Frequently, even well-intentioned memoization is rendered ineffective by unstable dependency values. Since hooks have no explicit dependency tree that can be analyzed, tooling can't help developers diagnose <strong><em>why</em></strong> dependencies are unstable.</p>
+
+				<h2 id="context-chaos">
+					<a href="#context-chaos" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Context chaos (#context-chaos)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Context chaos</span>
+				</h2><p>Another common workaround teams reach for state sharing is to place state into context. This allows short-circuiting rendering by potentially skipping render for components between the context provider and consumers. There is a catch though: only the value passed to the context provider can be updated, and only as a whole. Updating a property on an object exposed via context does not update consumers of that context - granular updates aren’t possible. The available options for dealing with this are to split state into multiple contexts, or over invalidate the context object by cloning it when any of its properties change.</p>
+<p><img decoding="async" src="/signals/context-chaos.png" alt="Context can skip updating components until you read the value out of it. Then it's back to memoization."></p>
+<p>Moving values into context seems like a worthwhile tradeoff at first, but the downsides of increasing component tree size just to share values eventually become a problem. Business logic inevitably ends up depending on multiple context values, which can force it to be implemented at a specific location in the tree. Adding a component that subscribes to context in the middle of the tree is costly, as it reduces the number of components that can be skipped when updating context. What’s more, any components beneath the subscriber must now be rendered again. The only solution to this problem is heavy use of memoization, which brings us back to the problems inherent to memoization.</p>
+
+				<h2 id="in-search-of-a-better-way-to-manage-state">
+					<a href="#in-search-of-a-better-way-to-manage-state" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: In search of a better way to manage state (#in-search-of-a-better-way-to-manage-state)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>In search of a better way to manage state</span>
+				</h2><p>We went back to the drawing board in search of a next generation state primitive. We wanted to create something that simultaneously addressed the problems in current solutions. Manual framework integration, over-reliance on memoization, suboptimal use of context, and lack of programmatic observability felt backwards.</p>
+<p>Developers need to &quot;opt in&quot; to performance with these strategies. What if we could reverse that and provide a system that was <strong>fast by default</strong>, making best-case performance something you have to work to opt out of?</p>
+<p>Our answer to these questions is Signals. It’s a system that is fast by default without requiring memoization or tricks throughout your app. Signals provide the benefits of fine-grained state updates regardless of whether that state is global, passed via props or context, or local to a component.</p>
+
+				<h2 id="signals-to-the-future">
+					<a href="#signals-to-the-future" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Signals to the future (#signals-to-the-future)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Signals to the future</span>
+				</h2><p>The main idea behind signals is that instead of passing a value directly through the component tree, we pass a signal object containing the value (similar to a <code>ref</code>). When a signal's value changes, the signal itself stays the same. As a result, signals can be updated without re-rendering the components they've been passed through, since components see the signal and not its value. This lets us skip all of the expensive work of rendering components and jump immediately to the specific components in the tree that actually access the signal's value.</p>
+<p><img decoding="async" src="/signals/signals-update.png" alt="Signals can continue to skip Virtual DOM diffing, regardless of where in the tree they are accessed."></p>
+<p>We’re exploiting the fact that an application's state graph is generally much shallower than its component tree. This leads to faster rendering, because far less work is required to update the state graph compared to the component tree. This difference is most apparent when measured in the browser - the screenshot below shows a DevTools Profiler trace for the same app measured twice: once using hooks as the state primitive and a second time using signals:</p>
+<p><img decoding="async" src="/signals/virtual-dom-vs-signals-update.png" alt="Showing a comparison of profiling Virtual DOM updates vs updates through signals which bypasses nearly all of the Virtual DOM diffing."></p>
+<p>The signals version vastly outperforms the update mechanism of any traditional Virtual DOM based framework. In some apps we've tested, signals are so much faster that it becomes difficult to find them in the flamegraph at all.</p>
+<p>Signals flip the performance pitch around: instead of opting-in to performance via memoization or selectors, signals are fast by default. With signals, performance is opt-out (by not using signals).</p>
+<p>To achieve this level of performance, signals were built on these key principles:</p>
+<ul>
+<li><strong>Lazy by default:</strong> Only signals that are currently used somewhere are observed and updated - disconnected signals don't affect performance.</li>
+<li><strong>Optimal updates:</strong> If a signal's value hasn't changed, components and effects that use that signal's value won't be updated, even if the signal's dependencies have changed.</li>
+<li><strong>Optimal dependency tracking:</strong> The framework tracks which signals everything depends on for you - no dependency arrays like with hooks.</li>
+<li><strong>Direct access:</strong> Accessing a signal's value in a component automatically subscribes to updates, without the need for selectors or hooks.</li>
+</ul>
+<p>These principles make signals well-suited to a broad range of use cases, even scenarios that have nothing to do with rendering user interfaces.</p>
+
+				<h2 id="bringing-signals-to-preact">
+					<a href="#bringing-signals-to-preact" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Bringing signals to Preact (#bringing-signals-to-preact)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Bringing signals to Preact</span>
+				</h2><p>Having identified the right state primitive, we set about wiring it up to Preact. The thing we've always loved about hooks is that they can be used directly inside components. This is an ergonomic advantage compared to third-party state management solutions, which usually rely on &quot;selector&quot; functions or wrapping components in a special function to subscribe to state updates.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token comment">// Selector based subscription :(</span>
+<span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token function">useSelector</span><span class="token punctuation">(</span><span class="token parameter">state</span> <span class="token operator">=></span> state<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token comment">// Wrapper function based subscription :(</span>
+<span class="token keyword">const</span> counterState <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">const</span> Counter <span class="token operator">=</span> <span class="token function">observe</span><span class="token punctuation">(</span><span class="token parameter">props</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> value <span class="token operator">=</span> counterState<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			<p>Neither approach felt satisfactory to us. The selector approach requires wrapping all state access in a selector, which becomes tedious for complex or nested state. The approach of wrapping components in a function requires manual effort to wrap components, which brings with it a host of issues like missing component names and static properties.</p>
+<p>We've had the opportunity to work closely with many developers over the past few years. One common struggle, particularly for those new to (p)react, is that concepts like selectors and wrappers are additional paradigms that must be learned before feeling productive with each state management solution.</p>
+<p>Ideally, we wouldn't need to know about selectors or wrapper functions and could simply access state directly within components:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Imagine this is some global state and the whole app needs access to:</span>
+<span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> <span class="token punctuation">(</span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token operator">++</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+     value: </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text">
+   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+ <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>The code is clear and it's easy to understand what is going on, but unfortunately it doesn't work. The component doesn't update when clicking the button because there is no way to know that <code>count</code> has changed.</p>
+<p>We couldn’t get this scenario out of our heads though. What could we do to make a model this clear into a reality? We began to prototype various ideas and implementations using Preact's <a href="/guide/v10/options">pluggable renderer</a>. It took time, but we eventually landed on a way to make it happen:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Imagine this is some global state that the whole app needs access to:</span>
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> <span class="token punctuation">(</span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> count<span class="token punctuation">.</span>value<span class="token operator">++</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+     Value: </span><span class="token punctuation">{</span>count<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token plain-text">
+   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+ <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<a href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAicHJlYWN0IjsKaW1wb3J0IHsgc2lnbmFsIH0gZnJvbSAiQHByZWFjdC9zaWduYWxzIjsKCi8vIEltYWdpbmUgdGhpcyBpcyBzb21lIGdsb2JhbCBzdGF0ZSB0aGF0IHRoZSB3aG9sZSBhcHAgbmVlZHMgYWNjZXNzIHRvOgpjb25zdCBjb3VudCA9IHNpZ25hbCgwKTsKIApmdW5jdGlvbiBDb3VudGVyKCkgewogcmV0dXJuICgKICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiBjb3VudC52YWx1ZSsrfT4KICAgICBWYWx1ZToge2NvdW50LnZhbHVlfQogICA8L2J1dHRvbj4KICk7Cn0KCnJlbmRlcig8Q291bnRlciAvPiwgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImFwcCIpKTsK" class="repl-link">Run in REPL</a>
+				</div>
+			<p>There are no selectors, no wrapper functions, nothing. Accessing the signal's value is enough for the component to know that it needs to update when that signal’s value changes. After testing out the prototype in a few apps, it was clear we were onto something. Writing code this way felt intuitive and didn't require any mental gymnastics to keep things working optimally.</p>
+
+				<h2 id="can-we-go-even-faster?">
+					<a href="#can-we-go-even-faster?" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Can we go even faster? (#can-we-go-even-faster?)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Can we go even faster?</span>
+				</h2><p>We could have stopped here and released signals as is, but this is the Preact team: we were needed to see how far we could push the Preact integration. In the Counter example above, the value of <code>count</code> is only used to display text, which really shouldn't require re-rendering a whole component. Instead of automatically re-rendering the component when the signal's value changes, what if we only re-rendered the text? Better still, what if we bypassed the Virtual DOM entirely and updated the text directly in the DOM?</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token comment">// Instead of this:</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Value: </span><span class="token punctuation">{</span>count<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+ 
+<span class="token comment">// … we can pass the signal directly into JSX:</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Value: </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+ 
+<span class="token comment">// … or even passing them as DOM properties:</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>count<span class="token punctuation">}</span></span> <span class="token attr-name">onInput</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span></code></pre>
+					
+				</div>
+			<p>So yeah, we did that too. You can pass a signal directly into the JSX anywhere you'd normally use a string. The signal's value will be rendered as text, and it will automatically update itself when the signal changes. This also works for props.</p>
+
+				<h2 id="next-steps">
+					<a href="#next-steps" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Next Steps (#next-steps)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Next Steps</span>
+				</h2><p>If you’re curious and want to jump right in, head over to our <a href="/guide/v10/signals">documentation</a> for signals. We’d love to hear how you're going to use them.</p>
+<p>Remember that there is no rush to switch to signals. Hooks will continue to be supported, and they work great with signals too! We recommend gradually trying out signals, starting with a few components to get used to the concepts.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/robertknight" target="_blank" rel="noopener noreferrer">@robertknight</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>

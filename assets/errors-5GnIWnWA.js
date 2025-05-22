@@ -1,0 +1,2 @@
+function a(t){let l=!0;return t.stack.split(`
+`).slice(1).filter(n=>l&&!/node_modules/.test(n)||(l=!1)).map(n=>n.replace(/\(.*:(\d+):(\d+)\)/,"($1:$2)")).map(n=>{const c=n.match(/at\s+(.*)\s\((\d+):(\d+)\)/);return{functionName:c!=null?c[1]:"unknown",line:c!=null?parseInt(c[2],10):0,column:c!=null?parseInt(c[3],10):0}})}function e(t){const l=t.stack.match(/\(.*:(\d+):(\d+)\)/);if(!l||t.loc)return;t.loc={line:0,column:0};let n=+l[1];t.name==="SyntaxError"?n-=1:n-=2,t.loc.line=n,t.loc.column=+l[2]}export{e as a,a as p};

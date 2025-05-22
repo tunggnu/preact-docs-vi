@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/favicon.ico">
+		<title>Getting Started – Preact Guide</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+		<meta name="color-scheme" content="dark light">
+		<meta name="theme-color" content="#673AB8">
+		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
+		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
+		<meta property="og:image" content="https://preactjs.com/app-icon.png">
+		<meta name="twitter:card" content="summary">
+		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
+		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
+		<script type="module" crossorigin src="/assets/index-CLtuOrgi.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BQWfkFBE.css">
+	<meta name="description" content="How to get started with Preact. We'll learn how to setup the tooling (if any) and get going with writing an application.">
+<meta property="og:url" content="https://preactjs.com/guide/v10/getting-started">
+<meta property="og:title" content="Getting Started – Preact Guide">
+<meta property="og:description" content="How to get started with Preact. We'll learn how to setup the tooling (if any) and get going with writing an application."></head>
+	<body class="banner">
+		<div id="app"><header class="_header_1a7q2_36 "><div class="_banner_1a7q2_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_1a7q2_22"><div class="_inner_1a7q2_308"><nav><a href="/" aria-label="Home" class="home "><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_1a7q2_90">Guide</a><div data-route="about" data-open="false" class="_navGroup_1a7q2_76"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_1a7q2_468"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div><div class="_social_1a7q2_326"><a href="https://github.com/preactjs/preact/releases/tag/10.26.6" class="_socialItem_1a7q2_345 _release_1a7q2_384">v10.26.6</a><a aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer" class="_socialItem_1a7q2_345"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_1a7q2_327"><div data-open="false" class="_navGroup_1a7q2_76"><button aria-label="Select your language" aria-haspopup="true" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_1a7q2_390"><div class="_hb1_1a7q2_433"></div><div class="_hb2_1a7q2_434"></div><div class="_hb3_1a7q2_435"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div data-open="false" class="_wrapper_t9oa6_1"><button value="sidebar" class="_toggle_t9oa6_6">Guide</button><aside class="_sidebar_t9oa6_58"><div class="_sidebarInner_t9oa6_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/tutorial" class="_link_1ttwe_16  ">Tutorial</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">React compatibility</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a><a href="/guide/v10/switching-to-preact" class="_link_1ttwe_16  ">Switching to Preact</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/getting-started.md" target="_blank" rel="noopener noreferrer" class="_edit_1gw8e_13">Edit this Page</a></div><content-region name="/guide/v10/getting-started" data-page-nav="false" can-edit><div class="markup"><h1>Getting Started</h1><p>New to Preact? New to Virtual DOM? Check out the <a href="/tutorial">tutorial</a>.</p>
+<p>This guide helps you get up and running to start developing Preact apps, using 3 popular options.
+If you're new to Preact, we recommend starting with <a href="#create-a-vite-powered-preact-app">Vite</a>.</p>
+<hr>
+<nav><ul><li><a href="#no-build-tools-route">No build tools route</a><ul><li><a href="#alternatives-to-jsx">Alternatives to JSX</a></li></ul></li><li><a href="#create-a-vite-powered-preact-app">Create a Vite-Powered Preact App</a><ul><li><a href="#getting-ready-for-development">Getting ready for development</a></li><li><a href="#making-a-production-build">Making a production build</a></li></ul></li><li><a href="#integrating-into-an-existing-pipeline">Integrating Into An Existing Pipeline</a><ul><li><a href="#setting-up-jsx">Setting up JSX</a></li><li><a href="#aliasing-react-to-preact">Aliasing React to Preact</a><ul><li><a href="#aliasing-in-webpack">Aliasing in Webpack</a></li><li><a href="#aliasing-in-node">Aliasing in Node</a></li><li><a href="#aliasing-in-parcel">Aliasing in Parcel</a></li><li><a href="#aliasing-in-rollup">Aliasing in Rollup</a></li><li><a href="#aliasing-in-jest">Aliasing in Jest</a></li><li><a href="#aliasing-in-typescript">Aliasing in TypeScript</a></li><li><a href="#aliasing-with-import-maps">Aliasing with Import Maps</a></li></ul></li></ul></li></ul></nav><hr>
+
+				<h2 id="no-build-tools-route">
+					<a href="#no-build-tools-route" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: No build tools route (#no-build-tools-route)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>No build tools route</span>
+				</h2><p>Preact is packaged to be used directly in the browser, and doesn't require any build or tools:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>module<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://esm.sh/preact'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Create your app</span>
+  <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+					
+				</div>
+			<p><a href="https://glitch.com/~preact-no-build-tools" target="_blank" rel="noopener noreferrer">🔨 Edit on Glitch</a></p>
+<p>The primary drawback of developing this way is the lack of JSX, which requires a build step. An ergonomic and performant alternative to JSX is documented in the next section.</p>
+
+				<h3 id="alternatives-to-jsx">
+					<a href="#alternatives-to-jsx" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Alternatives to JSX (#alternatives-to-jsx)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Alternatives to JSX</span>
+				</h3><p>Writing raw <code>h</code> or <code>createElement</code> calls can be tedious. JSX has the advantage of looking similar to HTML, which makes it easier to understand for many developers in our experience. JSX requires a build step though, so we highly recommend an alternative called <a href="https://github.com/developit/htm" target="_blank" rel="noopener noreferrer">HTM</a>.</p>
+<p><a href="https://github.com/developit/htm" target="_blank" rel="noopener noreferrer">HTM</a> is a JSX-like syntax that works in standard JavaScript. Instead of requiring a build step, it uses JavaScript's own <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates" target="_blank" rel="noopener noreferrer">Tagged Templates</a> syntax, which was added in 2015 and is supported in <a href="https://caniuse.com/#feat=template-literals" target="_blank" rel="noopener noreferrer">all modern browsers</a>. This is an increasingly popular way to write Preact apps, since there are fewer moving parts to understand than a traditional front-end build tooling setup.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>module<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://esm.sh/preact'</span><span class="token punctuation">;</span>
+  <span class="token keyword">import</span> htm <span class="token keyword">from</span> <span class="token string">'https://esm.sh/htm'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Initialize htm with Preact</span>
+  <span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token function">htm</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">App</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h1>Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!&lt;/h1></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span>html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>App<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> name=&quot;World&quot; /></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+					
+				</div>
+			<p><a href="https://glitch.com/~preact-with-htm" target="_blank" rel="noopener noreferrer">🔨 Edit on Glitch</a></p>
+<blockquote>
+<p><strong>Tip:</strong> HTM also provides a convenient single-import Preact version:</p>
+<p><code>import { html, render } from 'https://esm.sh/htm/preact/standalone'</code></p>
+</blockquote>
+<p>For a more scalable solution, see <a href="/guide/v10/no-build-workflows#basic-usage">Import Maps -- Basic Usage</a>, and for more information on HTM, check out its <a href="https://github.com/developit/htm" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
+
+				<h2 id="create-a-vite-powered-preact-app">
+					<a href="#create-a-vite-powered-preact-app" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Create a Vite-Powered Preact App (#create-a-vite-powered-preact-app)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Create a Vite-Powered Preact App</span>
+				</h2><p><a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a> has become an incredibly popular tool for building applications across many frameworks in the past couple of years, and Preact is no exception. It's built upon popular tooling like ES modules, Rollup, and ESBuild. Vite, through our initializer or their Preact template, requires no configuration or prior knowledge to get started and this simplicity makes it a very popular way to use Preact.</p>
+<p>To get up and running with Vite quickly, you can use our initializer <code>create-preact</code>. This is an interactive command-line interface (CLI) app that can be run in the terminal on your machine. Using it, you can create a new application by running the following:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-bash"><span class="token function">npm</span> init preact</code></pre>
+					
+				</div>
+			<p>This will walk you through creating a new Preact app and gives you some options such as TypeScript, routing (via <code>preact-iso</code>), and ESLint support.</p>
+<blockquote>
+<p><strong>Tip:</strong> None of these decisions need to be final, you can always add or remove them from your project later if you change your mind.</p>
+</blockquote>
+
+				<h3 id="getting-ready-for-development">
+					<a href="#getting-ready-for-development" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Getting ready for development (#getting-ready-for-development)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Getting ready for development</span>
+				</h3><p>Now we're ready to start our application. To start a development server, run the following command inside your newly generated project folder:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-bash"><span class="token comment"># Go into the generated project folder</span>
+<span class="token builtin class-name">cd</span> my-preact-app
+
+<span class="token comment"># Start a development server</span>
+<span class="token function">npm</span> run dev</code></pre>
+					
+				</div>
+			<p>Once the server has started, it will print a local development URL to open in your browser.
+Now you're ready to start coding your app!</p>
+
+				<h3 id="making-a-production-build">
+					<a href="#making-a-production-build" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Making a production build (#making-a-production-build)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Making a production build</span>
+				</h3><p>There comes a time when you need to deploy your app somewhere. Vite ships with a handy <code>build</code> command which will generate a highly-optimized production build.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-bash"><span class="token function">npm</span> run build</code></pre>
+					
+				</div>
+			<p>Upon completion, you'll have a new <code>dist/</code> folder which can be deployed directly to a server.</p>
+<blockquote>
+<p>For a full list of all available commands and their options, check out the <a href="https://vitejs.dev/guide/cli.html" target="_blank" rel="noopener noreferrer">Vite CLI Documentation</a>.</p>
+</blockquote>
+
+				<h2 id="integrating-into-an-existing-pipeline">
+					<a href="#integrating-into-an-existing-pipeline" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Integrating Into An Existing Pipeline (#integrating-into-an-existing-pipeline)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Integrating Into An Existing Pipeline</span>
+				</h2><p>If you already have an existing tooling pipeline set up, it's very likely that this includes a bundler. The most popular choices are <a href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">webpack</a>, <a href="https://rollupjs.org" target="_blank" rel="noopener noreferrer">rollup</a> or <a href="https://parceljs.org/" target="_blank" rel="noopener noreferrer">parcel</a>. Preact works out of the box with all of them, no major changes needed!</p>
+
+				<h3 id="setting-up-jsx">
+					<a href="#setting-up-jsx" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Setting up JSX (#setting-up-jsx)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Setting up JSX</span>
+				</h3><p>To transpile JSX, you need a Babel plugin that converts it to valid JavaScript code. The one we all use is <a href="https://babeljs.io/docs/en/babel-plugin-transform-react-jsx" target="_blank" rel="noopener noreferrer">@babel/plugin-transform-react-jsx</a>. Once installed, you need to specify the function for JSX that should be used:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">&quot;@babel/plugin-transform-react-jsx&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;pragma&quot;</span><span class="token operator">:</span> <span class="token string">&quot;h&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;pragmaFrag&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Fragment&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<blockquote>
+<p><a href="https://babeljs.io/" target="_blank" rel="noopener noreferrer">Babel</a> has some of the best documentation out there. We highly recommend checking it out for questions surrounding Babel and how to set it up.</p>
+</blockquote>
+
+				<h3 id="aliasing-react-to-preact">
+					<a href="#aliasing-react-to-preact" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing React to Preact (#aliasing-react-to-preact)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing React to Preact</span>
+				</h3><p>At some point, you'll probably want to make use of the vast React ecosystem. Libraries and Components originally written for React work seamlessly with our compatibility layer. To make use of it, we need to point all <code>react</code> and <code>react-dom</code> imports to Preact. This step is called <em>aliasing.</em></p>
+<blockquote>
+<p><strong>Note:</strong> If you're using Vite (via <code>@preact/preset-vite</code>), Preact CLI, or WMR, these aliases are automatically handled for you by default.</p>
+</blockquote>
+
+				<h4 id="aliasing-in-webpack">
+					<a href="#aliasing-in-webpack" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing in Webpack (#aliasing-in-webpack)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing in Webpack</span>
+				</h4><p>To alias any package in Webpack, you need to add the <code>resolve.alias</code> section
+to your config. Depending on the configuration you're using, this section may
+already be present, but missing the aliases for Preact.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+   <span class="token comment">//...snip</span>
+  <span class="token string-property property">&quot;resolve&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">&quot;alias&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/compat&quot;</span><span class="token punctuation">,</span>
+      <span class="token string-property property">&quot;react-dom/test-utils&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/test-utils&quot;</span><span class="token punctuation">,</span>
+      <span class="token string-property property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/compat&quot;</span><span class="token punctuation">,</span>     <span class="token comment">// Must be below test-utils</span>
+      <span class="token string-property property">&quot;react/jsx-runtime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/jsx-runtime&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h4 id="aliasing-in-node">
+					<a href="#aliasing-in-node" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing in Node (#aliasing-in-node)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing in Node</span>
+				</h4><p>When running in Node, bundler aliases (Webpack, Rollup, etc.) will not work, as can
+be seen in NextJS. To fix this, we can use aliases directly in our <code>package.json</code>:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;dependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm:@preact/compat&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm:@preact/compat&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h4 id="aliasing-in-parcel">
+					<a href="#aliasing-in-parcel" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing in Parcel (#aliasing-in-parcel)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing in Parcel</span>
+				</h4><p>Parcel uses the standard <code>package.json</code> file to read configuration options under
+an <code>alias</code> key.</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;alias&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/compat&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;react-dom/test-utils&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/test-utils&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/compat&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;react/jsx-runtime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/jsx-runtime&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h4 id="aliasing-in-rollup">
+					<a href="#aliasing-in-rollup" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing in Rollup (#aliasing-in-rollup)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing in Rollup</span>
+				</h4><p>To alias within Rollup, you'll need to install <a href="https://github.com/rollup/plugins/tree/master/packages/alias" target="_blank" rel="noopener noreferrer">@rollup/plugin-alias</a>.
+The plugin will need to be placed before your <a href="https://github.com/rollup/plugins/tree/master/packages/node-resolve" target="_blank" rel="noopener noreferrer">@rollup/plugin-node-resolve</a></p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> alias <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-alias'</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token function">alias</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">entries</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> <span class="token literal-property property">find</span><span class="token operator">:</span> <span class="token string">'react'</span><span class="token punctuation">,</span> <span class="token literal-property property">replacement</span><span class="token operator">:</span> <span class="token string">'preact/compat'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token literal-property property">find</span><span class="token operator">:</span> <span class="token string">'react-dom/test-utils'</span><span class="token punctuation">,</span> <span class="token literal-property property">replacement</span><span class="token operator">:</span> <span class="token string">'preact/test-utils'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token literal-property property">find</span><span class="token operator">:</span> <span class="token string">'react-dom'</span><span class="token punctuation">,</span> <span class="token literal-property property">replacement</span><span class="token operator">:</span> <span class="token string">'preact/compat'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token literal-property property">find</span><span class="token operator">:</span> <span class="token string">'react/jsx-runtime'</span><span class="token punctuation">,</span> <span class="token literal-property property">replacement</span><span class="token operator">:</span> <span class="token string">'preact/jsx-runtime'</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+					
+				</div>
+			
+				<h4 id="aliasing-in-jest">
+					<a href="#aliasing-in-jest" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing in Jest (#aliasing-in-jest)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing in Jest</span>
+				</h4><p><a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer">Jest</a> allows the rewriting of module paths similar to bundlers.
+These rewrites are configured using regular expressions in your Jest configuration:</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;moduleNameMapper&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;^react$&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/compat&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;^react-dom/test-utils$&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/test-utils&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;^react-dom$&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/compat&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;^react/jsx-runtime$&quot;</span><span class="token operator">:</span> <span class="token string">&quot;preact/jsx-runtime&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			
+				<h4 id="aliasing-in-typescript">
+					<a href="#aliasing-in-typescript" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing in TypeScript (#aliasing-in-typescript)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing in TypeScript</span>
+				</h4><p>TypeScript, even when used alongside a bundler, has its own process of resolving types.
+In order to ensure Preact's types are used in place of React's, you will want to add the
+following configuration to your <code>tsconfig.json</code> (or <code>jsconfig.json</code>):</p>
+
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;compilerOptions&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    ...
+    <span class="token property">&quot;skipLibCheck&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;baseUrl&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;paths&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;./node_modules/preact/compat/&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;react/jsx-runtime&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;./node_modules/preact/jsx-runtime&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;./node_modules/preact/compat/&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;react-dom/*&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;./node_modules/preact/compat/*&quot;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+					
+				</div>
+			<p>Additionally, you may want to enable <code>skipLibCheck</code> as we do in the example above. Some
+React libraries make use of types that may not be provided by <code>preact/compat</code> (though we do
+our best to fix these), and as such, these libraries could be the source of TypeScript compilation
+errors. By setting <code>skipLibCheck</code>, you can tell TS that it doesn't need to do a full check of all
+<code>.d.ts</code> files (usually these are limited to your libraries in <code>node_modules</code>) which will fix these errors.</p>
+
+				<h4 id="aliasing-with-import-maps">
+					<a href="#aliasing-with-import-maps" class="fragment-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing with Import Maps (#aliasing-with-import-maps)">
+							<use href="/icons.svg#link"></use>
+						</svg>
+					</a>
+					<span>Aliasing with Import Maps</span>
+				</h4>
+				<div class="highlight-container">
+					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>importmap<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token punctuation">{</span>
+    <span class="token string-property property">&quot;imports&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;preact&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1&quot;</span><span class="token punctuation">,</span>
+      <span class="token string-property property">&quot;preact/&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/&quot;</span><span class="token punctuation">,</span>
+      <span class="token string-property property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/compat&quot;</span><span class="token punctuation">,</span>
+      <span class="token string-property property">&quot;react/&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/compat/&quot;</span><span class="token punctuation">,</span>
+      <span class="token string-property property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/compat&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+					
+				</div>
+			<p>See also <a href="/guide/v10/no-build-workflows#recipes-and-common-patterns">Import Maps -- Recipes and Common Patterns</a> for more examples.</p>
+</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="vi">Tiếng Việt</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/framp" target="_blank" rel="noopener noreferrer">@framp</a>.</p></div></footer></div></div></div></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"10.26.6","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/10.26.6","preactStargazers":37495}</script></div>
+	</body>
+</html>
