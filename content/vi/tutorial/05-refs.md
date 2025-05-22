@@ -1,73 +1,54 @@
 ---
-title: Refs
+title: Tham chiếu (Refs)
 prev: /tutorial/04-state
 next: /tutorial/06-context
 solvable: true
 ---
 
-# Refs
+# Tham chiếu (Refs)
 
-As we learned in the first chapter, the DOM provides an imperative API,
-which lets us make changes by calling functions on elements. One example
-where we might need to access the imperative DOM API from a Preact
-component would be to automatically move focus to an input element.
+Như chúng ta đã học ở chương đầu tiên, DOM cung cấp một API kiểu mệnh lệnh, cho phép chúng ta thay đổi bằng cách gọi các hàm trên các phần tử. Một ví dụ mà chúng ta có thể cần truy cập API DOM kiểu mệnh lệnh từ một component Preact là tự động chuyển focus vào một trường nhập liệu.
 
-The `autoFocus` prop (or `autofocus` attribute) can be used to focus an
-input the first time it is rendered, however there are situations where
-we want to move focus to an input at a specific time, or in response to
-a specific event.
+Prop `autoFocus` (hoặc thuộc tính `autofocus`) có thể được dùng để focus vào một input ngay lần đầu nó được render, tuy nhiên có những tình huống chúng ta muốn chuyển focus vào input tại một thời điểm cụ thể, hoặc khi có một sự kiện cụ thể xảy ra.
 
-For these cases where we need to interact directly with DOM elements,
-we can use a feature called "refs". A ref is a plain JavaScript object
-with a `current` property that point to any value. JavaScript objects are
-passed by reference, which means that any function with access to a ref
-object can get or set its value using the `current` property. Preact does
-not track changes to ref objects, so they can be used to store information
-during rendering, which can then be accessed later by any function with
-access to the ref object.
+Trong các trường hợp cần tương tác trực tiếp với phần tử DOM, chúng ta có thể sử dụng một tính năng gọi là "ref" (tham chiếu). Một ref là một đối tượng JavaScript thông thường với thuộc tính `current` trỏ đến bất kỳ giá trị nào. Đối tượng JavaScript được truyền theo tham chiếu, nghĩa là bất kỳ hàm nào có quyền truy cập vào đối tượng ref đều có thể lấy hoặc gán giá trị của nó thông qua thuộc tính `current`. Preact không theo dõi các thay đổi của đối tượng ref, vì vậy chúng có thể được dùng để lưu trữ thông tin trong quá trình render, và sau đó có thể được truy cập bởi bất kỳ hàm nào có quyền truy cập vào đối tượng ref đó.
 
-We can see what direct usage of the ref feature looks like without rendering
-anything:
+Chúng ta có thể xem cách sử dụng trực tiếp tính năng ref mà không cần render gì cả:
 
 ```js
 import { createRef } from 'preact'
 
-// create a ref:
-const ref = createRef('initial value')
-// { current: 'initial value' }
+// tạo một ref:
+const ref = createRef('giá trị ban đầu')
+// { current: 'giá trị ban đầu' }
 
-// read a ref's current value:
-ref.current === 'initial value'
+// đọc giá trị hiện tại của ref:
+ref.current === 'giá trị ban đầu'
 
-// update a ref's current value:
-ref.current = 'new value'
+// cập nhật giá trị hiện tại của ref:
+ref.current = 'giá trị mới'
 
-// pass refs around:
-console.log(ref) // { current: 'new value' }
+// truyền ref đi nơi khác:
+console.log(ref) // { current: 'giá trị mới' }
 ```
 
-What makes refs useful in Preact is that a ref object can be passed to a
-Virtual DOM element during rendering, and Preact will set the ref's value
-(its `current` property) to the corresponding HTML element. Once set,
-we can use the ref's current value to access and modify the HTML element:
+Điều làm cho ref hữu ích trong Preact là một đối tượng ref có thể được truyền vào một phần tử Virtual DOM trong quá trình render, và Preact sẽ gán giá trị của ref (thuộc tính `current`) thành phần tử HTML tương ứng. Khi đã được gán, chúng ta có thể sử dụng giá trị hiện tại của ref để truy cập và thay đổi phần tử HTML:
 
 ```jsx
 import { createRef } from 'preact';
 
-// create a ref:
+// tạo một ref:
 const input = createRef()
 
-// pass the ref as a prop on a Virtual DOM element:
+// truyền ref như một prop cho phần tử Virtual DOM:
 render(<input ref={input} />, document.body)
 
-// access the associated DOM element:
-input.current // an HTML <input> element
-input.current.focus() // focus the input!
+// truy cập phần tử DOM liên kết:
+input.current // một phần tử <input> HTML
+input.current.focus() // focus vào input!
 ```
 
-Using `createRef()` globally isn't recommended, since multiple renders
-will overwrite the ref's current value. Instead, it's best to store
-refs as class properties:
+Không nên sử dụng `createRef()` ở phạm vi toàn cục, vì nhiều lần render sẽ ghi đè giá trị hiện tại của ref. Thay vào đó, tốt nhất nên lưu ref dưới dạng thuộc tính của class:
 
 ```jsx
 import { createRef, Component } from 'preact';
@@ -75,9 +56,9 @@ import { createRef, Component } from 'preact';
 export default class App extends Component {
   input = createRef()
 
-  // this function runs after <App> is rendered
+  // hàm này chạy sau khi <App> được render
   componentDidMount() {
-    // access the associated DOM element:
+    // truy cập phần tử DOM liên kết:
     this.input.current.focus();
   }
 
@@ -87,22 +68,18 @@ export default class App extends Component {
 }
 ```
 
-For function components, a `useRef()` hook provides a convenient way
-to create a ref and access that same ref on subsequent renders. The
-following example also shows how to use the `useEffect()` hook to
-invoke a callback after our component is rendered, in which our
-ref's current value will then be set to the HTML input element:
+Đối với thành phần hàm, hook `useRef()` cung cấp một cách tiện lợi để tạo ref và truy cập cùng ref đó ở các lần render tiếp theo. Ví dụ sau cũng cho thấy cách sử dụng hook `useEffect()` để gọi một hàm sau khi component được render, khi đó giá trị hiện tại của ref sẽ được gán thành phần tử input HTML:
 
 ```jsx
 import { useRef, useEffect } from 'preact/hooks';
 
 export default function App() {
-  // create or retrieve our ref:  (hook slot 0)
+  // tạo hoặc lấy lại ref của chúng ta:  (hook slot 0)
   const input = useRef()
 
-  // the callback here will run after <App> is rendered:
+  // hàm callback này sẽ chạy sau khi <App> được render:
   useEffect(() => {
-    // access the associated DOM element:
+    // truy cập phần tử DOM liên kết:
     input.current.focus()
   }, [])
 
@@ -110,21 +87,17 @@ export default function App() {
 }
 ```
 
-Remember, refs aren't limited to storing only DOM elements. They can be used
-to store information between renders of a component without setting state
-that would cause additional rendering. We'll see some uses for that in a
-later chapter.
+Hãy nhớ rằng, ref không chỉ giới hạn ở việc lưu trữ phần tử DOM. Chúng có thể được dùng để lưu thông tin giữa các lần render của một component mà không cần set state (vốn sẽ gây render lại). Chúng ta sẽ thấy một số ứng dụng của điều này ở các chương sau.
 
+---
 
-## Try it!
+## Thực hành!
 
-Now let's put this to practice by creating a button that, when clicked, focuses
-an input field by accessing it using a ref.
-
+Bây giờ hãy thực hành bằng cách tạo một nút, khi nhấn vào sẽ focus vào trường nhập liệu bằng cách truy cập nó thông qua ref.
 
 <solution>
-  <h4>🎉 Congratulations!</h4>
-  <p><code>pro = createRef()</code> → <code>pro.current = 'you'</code></p>
+  <h4>🎉 Chúc mừng!</h4>
+  <p><code>pro = createRef()</code> → <code>pro.current = 'bạn'</code></p>
 </solution>
 
 
