@@ -26,11 +26,11 @@ let vdom = {
 
 Các thư viện như Preact cung cấp một cách để xây dựng các mô tả này, sau đó có thể được so sánh với cây DOM của trình duyệt. Khi từng phần của cây được so sánh, cây DOM của trình duyệt sẽ được cập nhật để khớp với cấu trúc được mô tả bởi cây Virtual DOM.
 
-Đây là một công cụ hữu ích, vì nó cho phép chúng ta xây dựng giao diện người dùng một cách _khai báo_ thay vì _tường minh_. Thay vì mô tả _cách_ cập nhật DOM khi có các sự kiện như bàn phím hoặc chuột, chúng ta chỉ cần mô tả _DOM nên trông như thế nào_ sau khi nhận được đầu vào đó. Điều này có nghĩa là chúng ta có thể liên tục cung cấp cho Preact các mô tả về cấu trúc cây, và nó sẽ cập nhật cây DOM của trình duyệt để khớp với mỗi mô tả mới – bất kể cấu trúc hiện tại là gì.
+Đây là một công cụ hữu ích, vì nó cho phép chúng ta xây dựng giao diện người dùng một cách _khai báo_ thay vì _tường minh_. Thay vì mô tả _cách_ cập nhật DOM khi xảy ra các sự kiện đến từ bàn phím hoặc chuột, chúng ta chỉ cần mô tả _DOM nên trông như thế nào_ sau khi xảy ra các sự kiện đó. Điều này có nghĩa là chúng ta có thể liên tục cung cấp cho Preact các mô tả về cấu trúc cây, và nó sẽ cập nhật cây DOM của trình duyệt để khớp với mỗi mô tả mới – bất kể cây DOM hiện tại là gì.
 
 Trong chương này, chúng ta sẽ học cách tạo cây Virtual DOM, và cách yêu cầu Preact cập nhật DOM để khớp với các cây đó.
 
-### Tạo cây Virtual DOM
+## Tạo cây Virtual DOM
 
 Có một vài cách để tạo cây Virtual DOM:
 
@@ -61,7 +61,7 @@ Bất kỳ tham số bổ sung nào là con của phần tử, có thể là chu
 
 Dòng cuối cùng yêu cầu Preact xây dựng một cây DOM thật khớp với "mô tả" Virtual DOM của chúng ta, và chèn cây DOM đó vào `<body>` của trang web.
 
-### JSX tuyệt vời hơn!
+## JSX tuyệt vời hơn!
 
 Chúng ta có thể viết lại ví dụ trước bằng [JSX] mà không thay đổi chức năng.
 JSX cho phép chúng ta mô tả phần tử đoạn văn bằng cú pháp giống HTML, giúp
@@ -90,7 +90,7 @@ let vdom = <p class={maybeBig}>Hello {40 + 2}!</p>;
 
 Nếu chúng ta `render(vdom, document.body)`, văn bản "Hello 42!" sẽ được hiển thị.
 
-### Thêm một lần nữa với HTM
+## Thêm một lần nữa với HTM
 
 [HTM] là một lựa chọn thay thế cho JSX sử dụng template string chuẩn của JavaScript,
 loại bỏ nhu cầu về trình biên dịch. Nếu bạn chưa từng gặp template string,
@@ -117,7 +117,7 @@ Tất cả các ví dụ trên đều cho ra kết quả giống nhau: một câ
 
 ---
 
-### Ngoại truyện: Component
+## Ngoại truyện: Component
 
 Chúng ta sẽ tìm hiểu chi tiết hơn về Component ở các chương sau, nhưng
 hiện tại điều quan trọng là biết rằng các phần tử HTML như `<p>` chỉ là một trong
@@ -171,7 +171,6 @@ một hoặc nhiều thuộc tính CSS để gán cho phần tử. Để truyề
   <p>Chúng ta đã làm cho mọi thứ xuất hiện trên màn hình. Tiếp theo chúng ta sẽ làm cho chúng tương tác.</p>
 </solution>
 
-
 ```js:setup
 useResult(function(result) {
   var hasEm = result.output.innerHTML.match(/<em>World\!?<\/em>/gi);
@@ -182,7 +181,6 @@ useResult(function(result) {
   }
 }, []);
 ```
-
 
 ```jsx:repl-initial
 import { createElement, render } from 'preact';
