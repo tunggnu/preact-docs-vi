@@ -1,28 +1,19 @@
 ---
-title: Side Effects
+title: Tác động phụ (Side Effects)
 prev: /tutorial/06-context
 next: /tutorial/08-keys
 solvable: true
 ---
 
-# Side Effects
+# Tác động phụ (Side Effects)
 
-Side effects are bits of code that run when changes happen in the Virtual
-DOM tree. They don't follow the standard approach of accepting `props`
-and returning a new Virtual DOM tree, and often reach out of the tree
-to mutate state or invoke imperative code, like calling into DOM APIs.
-Side effects are also often used as a way to trigger data fetching.
+Tác động phụ là những đoạn mã được chạy khi có sự thay đổi trong cây Virtual DOM. Chúng không tuân theo cách tiếp cận tiêu chuẩn là nhận `props` và trả về một cây Virtual DOM mới, và thường "vươn ra ngoài" cây để thay đổi trạng thái hoặc gọi mã kiểu mệnh lệnh, như gọi các API của DOM. Tác động phụ cũng thường được dùng để kích hoạt việc lấy dữ liệu.
 
-### Effects: side effects in function components
+### Effects: tác động phụ trong thành phần hàm
 
-We've already seen one example of side effects in action in a previous
-chapter, when learning about refs and the `useRef()` hook. Once our
-ref was populated with a `current` property pointing to a DOM element,
-we needed a way to "trigger" code that would then interact with that
-element.
+Chúng ta đã từng thấy một ví dụ về tác động phụ trong một chương trước, khi học về refs và hook `useRef()`. Khi ref của chúng ta đã được gán thuộc tính `current` trỏ đến một phần tử DOM, chúng ta cần một cách để "kích hoạt" mã sẽ tương tác với phần tử đó.
 
-In order to trigger code after rendering, we used a `useEffect()` hook, which is the most common way to create a side effect from a function
-component:
+Để kích hoạt mã sau khi render, chúng ta dùng hook `useEffect()`, đây là cách phổ biến nhất để tạo tác động phụ từ một thành phần hàm:
 
 ```jsx
 import { useRef, useEffect } from 'preact/hooks';
@@ -30,9 +21,9 @@ import { useRef, useEffect } from 'preact/hooks';
 export default function App() {
   const input = useRef()
 
-  // the callback here will run after <App> is rendered:
+  // hàm callback này sẽ chạy sau khi <App> được render:
   useEffect(() => {
-    // access the associated DOM element:
+    // truy cập phần tử DOM liên kết:
     input.current.focus()
   }, [])
 
@@ -40,18 +31,11 @@ export default function App() {
 }
 ```
 
-Notice the empty array being passed as a second argument to `useEffect()`.
-Effect callbacks run when any value in that "dependencies" array changes
-from one render to the next. For example, the first time a component is
-rendered, all effect callbacks run because there are no previous
-"dependencies" array values to compare to.
+Lưu ý mảng rỗng được truyền làm đối số thứ hai cho `useEffect()`. Các hàm callback effect sẽ chạy khi bất kỳ giá trị nào trong mảng "phụ thuộc" đó thay đổi giữa các lần render. Ví dụ, lần đầu tiên một thành phần được render, tất cả các callback effect sẽ chạy vì không có giá trị "phụ thuộc" trước đó để so sánh.
 
-We can add values to the "dependencies" array to trigger an effect
-callback based on conditions, rather than just when a component is first
-rendered. This is typically used to run code in response to data changes,
-or when a component is removed from the page ("unmounted").
+Chúng ta có thể thêm giá trị vào mảng "phụ thuộc" để kích hoạt callback effect dựa trên điều kiện, thay vì chỉ khi thành phần được render lần đầu. Điều này thường được dùng để chạy mã khi dữ liệu thay đổi, hoặc khi một thành phần bị loại khỏi trang ("unmounted").
 
-Let's see an example:
+Hãy xem một ví dụ:
 
 ```js
 import { useEffect, useState } from 'preact/hooks';
@@ -60,44 +44,38 @@ export default function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log('<App> was just rendered for the first time')
+    console.log('<App> vừa được render lần đầu')
   }, [])
 
   useEffect(() => {
-    console.log('count value was changed to: ', count)
+    console.log('giá trị count đã thay đổi thành: ', count)
   }, [count])
-  //  ^ run this any time `count` changes, and on the first render
+  //  ^ chạy đoạn này mỗi khi `count` thay đổi, và cả lần render đầu tiên
 
   return <button onClick={() => setCount(count+1)}>{count}</button>
 }
 ```
 
-### Lifecycle methods: class component side effects
+### Phương thức vòng đời: tác động phụ trong thành phần lớp
 
-Class components can also define side effects, by implementing any of
-the available [lifecycle methods] provided by Preact. Here are a
-few of the most commonly used lifecycle methods:
+Thành phần lớp cũng có thể định nghĩa các tác động phụ, bằng cách triển khai bất kỳ [phương thức vòng đời] nào mà Preact cung cấp. Dưới đây là một số phương thức vòng đời thường dùng nhất:
 
-| Lifecycle method | When it runs: |
-|:-----------------|:--------------|
-| `componentWillMount` | just before a component is first rendered
-| `componentDidMount` | after a component is first rendered
-| `componentWillReceiveProps` | before a component is re-rendered
-| `componentDidUpdate` | after a component is re-rendered
+| Phương thức vòng đời         | Khi nào nó chạy:                        |
+|:----------------------------|:----------------------------------------|
+| `componentWillMount`        | ngay trước khi một component được render lần đầu
+| `componentDidMount`         | sau khi một component được render lần đầu
+| `componentWillReceiveProps` | trước khi một component được render lại
+| `componentDidUpdate`        | sau khi một component được render lại
 
-One of the most common examples of side effect usage in a class component
-is to fetch data when a component is first rendered, then store that data
-in state. The following example shows a component that requests user
-information from a JSON API after the first time it gets rendered, then
-shows that information.
+Một trong những ví dụ phổ biến nhất về việc sử dụng tác động phụ trong thành phần lớp là lấy dữ liệu khi một component được render lần đầu, sau đó lưu dữ liệu đó vào state. Ví dụ sau đây cho thấy một component yêu cầu thông tin người dùng từ một API JSON sau lần render đầu tiên, rồi hiển thị thông tin đó.
 
 ```jsx
 import { Component } from 'preact';
 
 export default class App extends Component {
-  // this gets called after the component is first rendered:
+  // hàm này được gọi sau khi component được render lần đầu:
   componentDidMount() {
-    // get JSON user info, store in `state.user`:
+    // lấy thông tin user JSON, lưu vào `state.user`:
     fetch('/api/user')
       .then(response => response.json())
       .then(user => {
@@ -108,28 +86,26 @@ export default class App extends Component {
   render(props, state) {
     const { user } = state;
 
-    // if we haven't received data yet, show a loading indicator:
-    if (!user) return <div>Loading...</div>
+    // nếu chưa nhận được dữ liệu, hiển thị thông báo đang tải:
+    if (!user) return <div>Đang tải...</div>
 
-    // we have data! show the username we got back from the API:
+    // đã có dữ liệu! hiển thị tên người dùng lấy về từ API:
     return (
       <div>
-        <h2>Hello, {user.username}!</h2>
+        <h2>Xin chào, {user.username}!</h2>
       </div>
     )
   }
 }
 ```
 
-## Try it!
+## Thực hành!
 
-We'll keep this exercise simple: change the code sample on the right
-to log every time `count` changes, rather than only when `<App>` is
-first rendered.
+Chúng ta sẽ giữ bài tập này đơn giản: hãy thay đổi đoạn mã mẫu bên phải để log ra mỗi khi `count` thay đổi, thay vì chỉ khi `<App>` được render lần đầu.
 
 <solution>
-  <h4>🎉 Congratulations!</h4>
-  <p>You learned how to use side effects in Preact.</p>
+  <h4>🎉 Chúc mừng!</h4>
+  <p>Bạn đã học cách sử dụng tác động phụ trong Preact.</p>
 </solution>
 
 
@@ -161,7 +137,7 @@ function App() {
   useEffect(() => {
     console.log('Count is now: ', count)
   }, []);
-  // ^^ start here!
+  // ^^ bắt đầu từ đây!
 
   return <button onClick={() => setCount(count+1)}>{count}</button>
 }
@@ -179,7 +155,7 @@ function App() {
   useEffect(() => {
     console.log('Count is now: ', count)
   }, [count]);
-  // ^^ start here!
+  // ^^ bắt đầu từ đây!
 
   return <button onClick={() => setCount(count+1)}>{count}</button>
 }
@@ -187,4 +163,4 @@ function App() {
 render(<App />, document.getElementById("app"));
 ```
 
-[lifecycle methods]: /guide/v10/components#lifecycle-methods
+[phương thức vòng đời]: /guide/v10/components#lifecycle-methods
